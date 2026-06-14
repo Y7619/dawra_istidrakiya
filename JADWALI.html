@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع إنقاذ السنة الدراسية 🩺</title>
+    <style>
+        /* نظام الألوان والمتغيرات الخاصة بالوضع الداكن */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-color: #00adb5;
+            --success-color: #28a745;
+            --border-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 15px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px 10px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin: 20px 5px 10px 5px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        /* كرت المهمة اليومية */
+        .task-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* الستايل عند إتمام المهمة */
+        .task-card.completed {
+            opacity: 0.5;
+            border-color: var(--success-color);
+        }
+
+        .task-card.completed .task-text {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        /* تخصيص الـ Checkbox */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-top: 3px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--success-color);
+            cursor: pointer;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-time {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .task-text {
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+
+        /* كرت القواعد الذهبية */
+        .rules-card {
+            background-color: #1a2626;
+            border: 1px solid #005a60;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        .rules-card h3 {
+            color: #00f3ff;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .rules-card ul {
+            list-style-type: none;
+            padding-right: 5px;
+        }
+
+        .rules-card li {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            position: relative;
+            padding-right: 15px;
+        }
+
+        .rules-card li::before {
+            content: "🚨";
+            position: absolute;
+            right: -5px;
+            top: 0;
+        }
+
+        /* زر إعادة التعيين اليومي */
+        .reset-btn {
+            display: block;
+            width: 100%;
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 25px;
+            margin-bottom: 40px;
+            transition: background 0.2s;
+        }
+
+        .reset-btn:hover {
+            background-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🩺 مصنع إنقاذ السنة الدراسية</h1>
+        <p>الجدول اليومي المكثف (من 11 إلى 19 جوان)</p>
+    </header>
+
+    <div class="section-title">الفترة الصباحية الأولى: التركيز الذهني الخارق</div>
+    
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">03:30 – 04:00 (30 د)</span>
+            <p class="task-text">النهوض، غسل الوجه، الوضوء والصلاة، وشرب قهوة أو ماء لتهيئة الدماغ.</p>
+        </div>
+    </div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">04:00 – 06:30 (ساعتان ونصف)</span>
+            <p class="task-text"><strong>الجلسة الأولى (الوزن الثقيل):</strong> مراجعة الـ الوحدات المدمجة (UEIs) عبر حل الـ QCM واستعمال الـ AI عند الخطأ.</p>
+        </div>
+    </div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">06:30 – 07:00 (30 د)</span>
+            <p class="task-text">استراحة قصيرة + تناول فطور الصباح.</p>
+        </div>
+    </div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">07:00 – 09:30 (ساعتان ونصف)</span>
+            <p class="task-text"><strong>الجلسة الثانية:</strong> مواصلة حل الـ QCM للوحدات المدمجة وكتابة الملخصات العكسية للأخطاء فقط.</p>
+        </div>
+    </div>
+
+    <div class="section-title">الفترة الصباحية الثانية: تثبيت المعلومات</div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">09:30 – 10:00 (30 د)</span>
+            <p class="task-text">استراحة حركية (ابعد عينيك عن الشاشات تماماً).</p>
+        </div>
+    </div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">10:00 – 12:30 (ساعتان ونصف)</span>
+            <p class="task-text"><strong>الجلسة الثالثة:</strong> الانتقال إلى المواد المستقلة (Immunologie, Pharmacologie, Anapath...) بالتناوب عبر QCM الكليات.</p>
+        </div>
+    </div>
+
+    <div class="section-title">فترة الظهيرة: إعادة شحن الطاقة</div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">12:30 – 14:00 (ساعة ونصف)</span>
+            <p class="task-text">صلاة الظهر + وجبة الغداء + <strong>قيلولة إجبارية (20-30 دقيقة)</strong> لإعادة إنعاش الدماغ.</p>
+        </div>
+    </div>
+
+    <div class="section-title">الفترة المسائية: المعركة الأخيرة</div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">14:00 – 16:30 (ساعتان ونصف)</span>
+            <p class="task-text"><strong>الجلسة الرابعة:</strong> جولة QCM مكثفة وشاملة لخلط الأسئلة (سؤال وحدة / سؤال مستقلة) لتدريب مرونة العقل.</p>
+        </div>
+    </div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">16:30 – 17:00 (30 د)</span>
+            <p class="task-text">صلاة العصر + استراحة خفيفة.</p>
+        </div>
+    </div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">17:00 – 19:30 (ساعتان ونصف)</span>
+            <p class="task-text"><strong>الجلسة الخامسة والأخيرة:</strong> مراجعة الكراس الجانبي (أخطاء اليوم الطبية وأسبابها وتثبيتها).</p>
+        </div>
+    </div>
+
+    <div class="section-title">فترة العشاء والراحة الاستراتيجية</div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">19:30 – 21:00</span>
+            <p class="task-text">صلاة المغرب + وجبة العشاء + دوش سريع لتخفيف الضغط.</p>
+        </div>
+    </div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">21:00 – 21:45</span>
+            <p class="task-text">صلاة العشاء (تنتهي تماماً قبل العاشرة).</p>
+        </div>
+    </div>
+
+    <div class="task-card" onclick="toggleTask(this)">
+        <div class="checkbox-container"><input type="checkbox"></div>
+        <div class="task-content">
+            <span class="task-time">22:00</span>
+            <p class="task-text"><strong>النوم مباشرة وبدون أي نقاش لضمان طاقة الفجر.</strong></p>
+        </div>
+    </div>
+
+    <div class="rules-card">
+        <h3>💡 قواعد ذهبية للنجاح:</h3>
+        <ul>
+            <li>مجموع ساعات الدراسة الفعّالة: 12 ساعة ونصف في اليوم!</li>
+            <li>قاعدة الـ AI: لا تنتظر طويلاً أمام سؤال لم تفهمه، انسخه فوراً للـ AI واطلب الخلاصة.</li>
+            <li>الانضباط الإلكتروني: الهاتف يُفتح فقط للـ QCM أو الـ AI، أي إشعار آخر يعني خسارة دقيقة من الامتحان.</li>
+        </ul>
+    </div>
+
+    <button class="reset-btn" onclick="resetAllTasks()">إعادة تعيين الجدول ليوم جديد 🔄</button>
+</div>
+
+<script>
+    // دالة لتغيير حالة الكرت عند الضغط عليه أو على الخانة
+    function toggleTask(card) {
+        const checkbox = card.querySelector('input[type="checkbox"]');
+        // إذا كان الضغط ليس على التشيك بوكس نفسه، نقوم بعكس حالته
+        if (event.target !== checkbox) {
+            checkbox.checked = !checkbox.checked;
+        }
+        
+        if (checkbox.checked) {
+            card.classList.add('completed');
+        } else {
+            card.classList.remove('completed');
+        }
+        saveState();
+    }
+
+    // حفظ الحالة في LocalStorage حتى لا تضيع عند تحديث الصفحة
+    function saveState() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const state = Array.from(checkboxes).map(cb => cb.checked);
+        localStorage.setItem('medicalStudyScheduleState', JSON.stringify(state));
+    }
+
+    // استعادة الحالة عند فتح الصفحة
+    function loadState() {
+        const state = JSON.parse(localStorage.getItem('medicalStudyScheduleState'));
+        if (state) {
+            const cards = document.querySelectorAll('.task-card');
+            cards.forEach((card, index) => {
+                const checkbox = card.querySelector('input[type="checkbox"]');
+                checkbox.checked = state[index];
+                if (state[index]) {
+                    card.classList.add('completed');
+                }
+            });
+        }
+    }
+
+    // إعادة تعيين كل المهام ليوم جديد
+    function resetAllTasks() {
+        if(confirm("هل تريد إفراغ الجدول لبدء يوم جديد من الكفاح؟")) {
+            const cards = document.querySelectorAll('.task-card');
+            cards.forEach(card => {
+                card.classList.remove('completed');
+                card.querySelector('input[type="checkbox"]').checked = false;
+            });
+            localStorage.removeItem('medicalStudyScheduleState');
+        }
+    }
+
+    // تشغيل التحميل عند فتح الصفحة
+    window.onload = loadState;
+</script>
+
+</body>
+</html>

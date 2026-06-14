@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستعرض الصور - QCMs Viewer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --container-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --accent: #ef4444;
+            --accent-hover: #dc2626;
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .light-theme {
+            --bg-color: #f1f5f9;
+            --container-bg: #ffffff;
+            --text-color: #0f172a;
+            --text-muted: #64748b;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent: #dc2626;
+            --accent-hover: #b91c1c;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(0, 0, 0, 0.08);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Header / Toolbar */
+        .toolbar {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            font-size: 24px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-title {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            background: linear-gradient(to left, var(--text-color), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .controls-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Dropdown selection */
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper select {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--container-bg);
+            color: var(--text-color);
+            border: 1px solid var(--glass-border);
+            padding: 8px 16px 8px 36px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition);
+            appearance: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .select-wrapper select:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        .select-wrapper::after {
+            content: '▼';
+            font-size: 10px;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        /* Button design */
+        .btn {
+            background-color: var(--container-bg);
+            color: var(--text-color);
+            border: 1px solid var(--glass-border);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover:not(:disabled) {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        /* Zoom controls */
+        .zoom-controls {
+            display: flex;
+            align-items: center;
+            background-color: var(--container-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 3px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-zoom {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .btn-zoom:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .zoom-value {
+            font-size: 13px;
+            font-weight: 700;
+            padding: 0 8px;
+            min-width: 48px;
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Page indicator & Status */
+        .page-info {
+            font-size: 14px;
+            font-weight: 700;
+            background-color: var(--container-bg);
+            border: 1px solid var(--glass-border);
+            padding: 8px 16px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .page-info span {
+            color: var(--primary);
+        }
+
+        .status-toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .status-toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Viewer Area */
+        .viewer-container {
+            flex: 1;
+            overflow: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        .image-wrapper {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            transition: var(--transition);
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .light-theme .image-wrapper {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .image-display {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: opacity 0.2s ease, width 0.1s ease;
+            transform-origin: top center;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* Float Navigation Buttons (on image hover side hover) */
+        .float-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            background-color: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 10;
+            transition: var(--transition);
+            opacity: 0.6;
+        }
+
+        .float-nav:hover {
+            opacity: 1;
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .float-nav-next {
+            left: 24px; /* In RTL, next page is to the left */
+        }
+
+        .float-nav-prev {
+            right: 24px; /* In RTL, previous page is to the right */
+        }
+
+        /* Keyboard shortcuts cheat sheet button */
+        .btn-theme {
+            background-color: var(--container-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-theme:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Mobile adaptation */
+        @media (max-width: 1024px) {
+            .float-nav {
+                display: none; /* Hide side hover buttons on tablets/phones */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .toolbar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px;
+                align-items: stretch;
+            }
+            .controls-group {
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .brand {
+                justify-content: center;
+                margin-bottom: 4px;
+            }
+            .viewer-container {
+                padding: 8px;
+            }
+            .image-wrapper {
+                border-radius: 8px;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="toolbar">
+    <div class="brand">
+        <span class="brand-icon">📚</span>
+        <span class="brand-title">مستعرض الصور الطبي</span>
+    </div>
+
+    <div class="controls-group">
+        <div class="select-wrapper">
+            <select id="partSelector" onchange="changePart()">
+                <option value="part1" selected>المستند المصور (18 صفحة)</option>
+            </select>
+        </div>
+
+        <button class="btn btn-theme" id="themeBtn" title="تبديل المظهر (Light/Dark)" onclick="toggleTheme()">🌙</button>
+    </div>
+
+    <div class="controls-group">
+        <button class="btn" id="btnPrev" onclick="prevPage()">▶ السابق</button>
+        
+        <div class="page-info">
+            صفحة <span id="currentPage">1</span> من <span id="totalPages">18</span>
+        </div>
+        
+        <button class="btn" id="btnNext" onclick="nextPage()">التالي ◀</button>
+    </div>
+
+    <div class="controls-group">
+        <div class="zoom-controls">
+            <button class="btn-zoom" title="تصغير" onclick="zoomOut()">➖</button>
+            <span class="zoom-value" id="zoomText">100%</span>
+            <button class="btn-zoom" title="تكبير" onclick="zoomIn()">➕</button>
+            <button class="btn-zoom" title="إعادة التعيين" onclick="resetZoom()">🔄</button>
+        </div>
+    </div>
+</div>
+
+<div class="viewer-container" id="viewerContainer">
+    <button class="float-nav float-nav-next" title="التالي (سهم يسار)" onclick="nextPage()">◀</button>
+    
+    <div class="image-wrapper" id="imageWrapper">
+        <img id="mainImage" class="image-display" src="" alt="جاري تحميل الصفحة...">
+    </div>
+    
+    <button class="float-nav float-nav-prev" title="السابق (سهم يمين)" onclick="prevPage()">▶</button>
+</div>
+
+<!-- Autosave Toast -->
+<div class="status-toast" id="saveStatus">
+    <span>💾</span>
+    <span>تم حفظ التقدم تلقائياً</span>
+</div>
+
+<script>
+    // Configuration of parts
+    const partsConfig = {
+        part1: {
+            totalPages: 18,
+            basePath: "PDF/ilovepdf_pages-to-jpg/CamScanner 02-28-2025 20.02 (1)_page-",
+            bookmarkKey: "viewer_camscanner_bookmark"
+        }
+    };
+
+    let currentPart = "part1";
+    let currentPage = 1;
+    let zoomLevel = 100;
+
+    // LocalStorage key for storing the active part
+    const ACTIVE_PART_KEY = 'viewer_active_part';
+    // LocalStorage key for storing theme
+    const THEME_KEY = 'viewer_theme';
+
+    // Elements
+    const mainImage = document.getElementById('mainImage');
+    const currentPageSpan = document.getElementById('currentPage');
+    const totalPagesSpan = document.getElementById('totalPages');
+    const btnNext = document.getElementById('btnNext');
+    const btnPrev = document.getElementById('btnPrev');
+    const partSelector = document.getElementById('partSelector');
+    const viewerContainer = document.getElementById('viewerContainer');
+    const zoomText = document.getElementById('zoomText');
+    const imageWrapper = document.getElementById('imageWrapper');
+
+    function updateImage() {
+        const config = partsConfig[currentPart];
+        
+        // Pad the number with leading zeros (e.g., 0001)
+        const paddedNum = String(currentPage).padStart(4, '0');
+        
+        // Add smooth opacity transition
+        mainImage.style.opacity = 0.3;
+        
+        mainImage.onload = () => {
+            mainImage.style.opacity = 1;
+        };
+        
+        mainImage.src = `${config.basePath}${paddedNum}.jpg`;
+        currentPageSpan.innerText = currentPage;
+        totalPagesSpan.innerText = config.totalPages;
+        
+        // Update button states
+        btnPrev.disabled = (currentPage === 1);
+        btnNext.disabled = (currentPage === config.totalPages);
+        
+        // Scroll to top of image when changing pages
+        viewerContainer.scrollTop = 0;
+        viewerContainer.scrollLeft = 0;
+        
+        // Save bookmark automatically
+        localStorage.setItem(config.bookmarkKey, currentPage);
+        showSaveStatus();
+    }
+
+    function changePart() {
+        currentPart = partSelector.value;
+        localStorage.setItem(ACTIVE_PART_KEY, currentPart);
+        
+        // Load saved bookmark for this part, or default to 1
+        const config = partsConfig[currentPart];
+        const savedPage = localStorage.getItem(config.bookmarkKey);
+        if (savedPage && !isNaN(savedPage)) {
+            currentPage = parseInt(savedPage);
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > config.totalPages) currentPage = config.totalPages;
+        } else {
+            currentPage = 1;
+        }
+        
+        updateImage();
+    }
+
+    function applyZoom() {
+        imageWrapper.style.width = zoomLevel + '%';
+        zoomText.innerText = zoomLevel + '%';
+    }
+
+    function zoomIn() {
+        if (zoomLevel < 200) {
+            zoomLevel += 10;
+            applyZoom();
+        }
+    }
+
+    function zoomOut() {
+        if (zoomLevel > 30) {
+            zoomLevel -= 10;
+            applyZoom();
+        }
+    }
+
+    function resetZoom() {
+        zoomLevel = 100;
+        applyZoom();
+    }
+
+    let saveTimeout = null;
+    function showSaveStatus() {
+        const status = document.getElementById('saveStatus');
+        if (status) {
+            status.classList.add('show');
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                status.classList.remove('show');
+            }, 1500);
+        }
+    }
+
+    function nextPage() {
+        const config = partsConfig[currentPart];
+        if (currentPage < config.totalPages) {
+            currentPage++;
+            updateImage();
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            updateImage();
+        }
+    }
+
+    function toggleTheme() {
+        const isDark = document.body.classList.toggle('light-theme');
+        document.getElementById('themeBtn').innerText = isDark ? "☀️" : "🌙";
+        localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark');
+    }
+
+    window.onload = function() {
+        // Load theme
+        const savedTheme = localStorage.getItem(THEME_KEY);
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+            document.getElementById('themeBtn').innerText = "☀️";
+        }
+
+        // Load active part
+        const savedPart = localStorage.getItem(ACTIVE_PART_KEY);
+        if (savedPart && partsConfig[savedPart]) {
+            currentPart = savedPart;
+            partSelector.value = currentPart;
+        }
+        
+        // Load saved page bookmark
+        const config = partsConfig[currentPart];
+        const savedPage = localStorage.getItem(config.bookmarkKey);
+        if (savedPage && !isNaN(savedPage)) {
+            currentPage = parseInt(savedPage);
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > config.totalPages) currentPage = config.totalPages;
+        } else {
+            currentPage = 1;
+        }
+        
+        updateImage();
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                // In RTL, left arrow means Next (moving forward)
+                nextPage(); 
+            } else if (event.key === 'ArrowRight') {
+                // Right arrow means Previous
+                prevPage(); 
+            } else if (event.key === '=' || event.key === '+') {
+                zoomIn();
+            } else if (event.key === '-') {
+                zoomOut();
+            } else if (event.key === '0') {
+                resetZoom();
+            } else if (event.key === 't' || event.key === 'T') {
+                toggleTheme();
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

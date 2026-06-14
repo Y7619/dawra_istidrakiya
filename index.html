@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الطب - دورة استداركية | الصفحة الرئيسية</title>
+    <meta name="description" content="دورة استداركية شاملة في الطب - ملخصات احترافية ومراجعات موجهة للامتحانات">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════════
+           DESIGN SYSTEM - CSS Custom Properties
+           ═══════════════════════════════════════════════════ */
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #111827;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-card-hover: rgba(30, 41, 59, 0.8);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-teal: #14b8a6;
+            --accent-teal-light: #2dd4bf;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-rose: #f43f5e;
+            --accent-amber: #f59e0b;
+            --accent-emerald: #10b981;
+            --gradient-teal: linear-gradient(135deg, #0d9488, #14b8a6, #2dd4bf);
+            --gradient-blue: linear-gradient(135deg, #1d4ed8, #3b82f6, #60a5fa);
+            --gradient-purple: linear-gradient(135deg, #7c3aed, #8b5cf6, #a78bfa);
+            --gradient-rose: linear-gradient(135deg, #e11d48, #f43f5e, #fb7185);
+            --gradient-hero: linear-gradient(135deg, #0d9488 0%, #1e40af 50%, #7c3aed 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+            --border-radius-2xl: 24px;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           GLOBAL RESET & BASE
+           ═══════════════════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           ANIMATED BACKGROUND
+           ═══════════════════════════════════════════════════ */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 20% 10%, rgba(20, 184, 166, 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 500px 500px at 80% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 400px 300px at 50% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: bgShift 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.15; }
+            90% { opacity: 0.15; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           CONTAINER
+           ═══════════════════════════════════════════════════ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           HEADER / HERO SECTION
+           ═══════════════════════════════════════════════════ */
+        .hero {
+            padding: 60px 20px 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: heroPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes heroPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+            50% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-teal-light);
+            margin-bottom: 24px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-teal);
+            border-radius: 50%;
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4); }
+            50% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(20, 184, 166, 0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient-teal);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           SECTION TITLES
+           ═══════════════════════════════════════════════════ */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .section-header .accent-line {
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-teal);
+            border-radius: 2px;
+            margin: 16px auto 0;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           UNITS GRID
+           ═══════════════════════════════════════════════════ */
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 0 0 40px;
+        }
+
+        .unit-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-xl);
+            padding: 32px 28px;
+            backdrop-filter: blur(12px);
+            transition: all var(--transition-medium);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .unit-card:nth-child(1) { animation-delay: 0.1s; }
+        .unit-card:nth-child(2) { animation-delay: 0.2s; }
+        .unit-card:nth-child(3) { animation-delay: 0.3s; }
+        .unit-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .unit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: var(--border-radius-xl) var(--border-radius-xl) 0 0;
+            transition: height var(--transition-medium);
+        }
+
+        .unit-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .unit-card:hover::before {
+            height: 4px;
+        }
+
+        /* Unit color variants */
+        .unit-card--teal::before { background: var(--gradient-teal); }
+        .unit-card--blue::before { background: var(--gradient-blue); }
+        .unit-card--purple::before { background: var(--gradient-purple); }
+        .unit-card--rose::before { background: var(--gradient-rose); }
+        .unit-card--amber::before { background: linear-gradient(135deg, #d97706, #f59e0b, #fbbf24); }
+
+        .unit-card--teal .unit-icon { background: rgba(20, 184, 166, 0.12); color: var(--accent-teal); }
+        .unit-card--blue .unit-icon { background: rgba(59, 130, 246, 0.12); color: var(--accent-blue); }
+        .unit-card--purple .unit-icon { background: rgba(139, 92, 246, 0.12); color: var(--accent-purple); }
+        .unit-card--rose .unit-icon { background: rgba(244, 63, 94, 0.12); color: var(--accent-rose); }
+        .unit-card--amber .unit-icon { background: rgba(245, 158, 11, 0.12); color: var(--accent-amber); }
+
+        .unit-card--teal .unit-number { color: var(--accent-teal); }
+        .unit-card--blue .unit-number { color: var(--accent-blue); }
+        .unit-card--purple .unit-number { color: var(--accent-purple); }
+        .unit-card--rose .unit-number { color: var(--accent-rose); }
+        .unit-card--amber .unit-number { color: var(--accent-amber); }
+
+        .unit-card-top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .unit-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: transform var(--transition-fast);
+        }
+
+        .unit-card:hover .unit-icon {
+            transform: scale(1.1) rotate(-3deg);
+        }
+
+        .unit-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .unit-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .unit-description {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .unit-modules-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .unit-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .unit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: var(--border-radius-md);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .unit-btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .unit-btn--primary {
+            color: #fff;
+        }
+
+        .unit-card--teal .unit-btn--primary { background: var(--gradient-teal); }
+        .unit-card--blue .unit-btn--primary { background: var(--gradient-blue); }
+        .unit-card--purple .unit-btn--primary { background: var(--gradient-purple); }
+        .unit-card--rose .unit-btn--primary { background: var(--gradient-rose); }
+        .unit-card--amber .unit-btn--primary { background: linear-gradient(135deg, #d97706, #f59e0b, #fbbf24); }
+        .unit-card--emerald::before { background: linear-gradient(135deg, #059669, #10b981, #34d399); }
+        .unit-card--emerald .unit-icon { background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald); }
+        .unit-card--emerald .unit-number { color: var(--accent-emerald); }
+        .unit-card--emerald .unit-btn--primary { background: linear-gradient(135deg, #059669, #10b981, #34d399); }
+
+        .unit-btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .unit-btn--secondary {
+            background: var(--glass-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--glass-border);
+        }
+
+        .unit-btn--secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .unit-btn--disabled {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .unit-btn--disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-arrow {
+            transition: transform var(--transition-fast);
+            font-size: 1.1rem;
+        }
+
+        .unit-btn:hover .btn-arrow {
+            transform: translateX(-4px);
+        }
+
+        .unit-btn--disabled:hover .btn-arrow {
+            transform: none;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           MODULES SECTION
+           ═══════════════════════════════════════════════════ */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 0 60px;
+        }
+
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: 24px 20px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            transition: all var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .module-card:nth-child(1) { animation-delay: 0.1s; }
+        .module-card:nth-child(2) { animation-delay: 0.15s; }
+        .module-card:nth-child(3) { animation-delay: 0.2s; }
+        .module-card:nth-child(4) { animation-delay: 0.25s; }
+        .module-card:nth-child(5) { animation-delay: 0.3s; }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .module-emoji {
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 14px;
+            transition: transform var(--transition-medium);
+        }
+
+        .module-card:hover .module-emoji {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .module-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .module-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .module-badge {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        .module-badge--ready {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--accent-emerald);
+        }
+
+        .module-badge--soon {
+            background: rgba(245, 158, 11, 0.12);
+            color: var(--accent-amber);
+        }
+
+        /* ═══════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════ */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer .footer-brand {
+            font-weight: 700;
+            color: var(--accent-teal);
+        }
+
+        footer p {
+            margin-top: 8px;
+        }
+
+        /* ═══════════════════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════════════════ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           RESPONSIVE BREAKPOINTS
+           ═══════════════════════════════════════════════════ */
+
+        /* Tablets */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 16px 36px;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 1.6rem;
+            }
+
+            .units-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modules-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 14px;
+            }
+
+            .section-header {
+                margin: 40px 0 28px;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 480px) {
+            html {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 0 14px;
+            }
+
+            .hero {
+                padding: 32px 12px 28px;
+            }
+
+            .hero-badge {
+                font-size: 0.78rem;
+                padding: 6px 16px;
+            }
+
+            .hero-stats {
+                gap: 16px;
+            }
+
+            .stat-number {
+                font-size: 1.4rem;
+            }
+
+            .stat-label {
+                font-size: 0.78rem;
+            }
+
+            .unit-card {
+                padding: 24px 20px;
+            }
+
+            .unit-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.2rem;
+            }
+
+            .unit-title {
+                font-size: 1.1rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .module-card {
+                padding: 18px 14px;
+            }
+
+            .module-emoji {
+                font-size: 1.8rem;
+            }
+
+            .module-name {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero p {
+                font-size: 0.92rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1024px) {
+            .units-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           SCROLL REVEAL - JS controlled
+           ═══════════════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Particles Background -->
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ═══════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                دورة استداركية — الموسم الجامعي 2025/2026
+            </div>
+            <h1>🩺 الدورة الاستداركية في الطب</h1>
+            <p>ملخصات احترافية وموجهة لكل وحدة — مصممة لمساعدتك على التفوق في الامتحانات بأعلى الدرجات</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">وحدات تعليمية</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">موديولات</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">تحديثات مستمرة</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- ═══════════════════════════════════════════════════
+             UNITS SECTION
+             ═══════════════════════════════════════════════════ -->
+        <div class="section-header reveal">
+            <h2>📚 الوحدات التعليمية</h2>
+            <p>اختر الوحدة المطلوبة للوصول إلى الملخصات والمراجعات</p>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="units-grid">
+
+            <!-- UNIT 1 - Tous les modules -->
+            <div class="unit-card unit-card--teal reveal" id="unit-1">
+                <div class="unit-card-top">
+                    <div class="unit-icon">🔬</div>
+                    <div>
+                        <div class="unit-number">الوحدة الأولى</div>
+                        <div class="unit-title">جميع مقاييس الوحدة</div>
+                    </div>
+                </div>
+                <p class="unit-description">
+                    تشمل هذه الوحدة جميع ملخصات المقاييس: السيميولوجيا بأنواعها، الفيزيولوجيا المرضية، البيوكيمياء، والأشعة.
+                </p>
+                <div class="unit-modules-count">
+                    📄 تحتوي على ملخصات شاملة ومكثفة
+                </div>
+                <div class="unit-btn-group">
+                    <a href="Unité 1 - Sémiologie Générale.html" class="unit-btn unit-btn--primary">
+                        <span>Sémiologie Générale</span>
+                        <span class="btn-arrow">←</span>
+                    </a>
+                    <a href="Unité 1 - Sémiologie Pneumologique.html" class="unit-btn unit-btn--primary">
+                        <span>Sémiologie Pneumologique</span>
+                        <span class="btn-arrow">←</span>
+                    </a>
+                    <a href="Unité 1 - Sémiologie Cardiologique.html" class="unit-btn unit-btn--primary">
+                        <span>Sémiologie Cardiologique</span>
+                        <span class="btn-arrow">←</span>
+                    </a>
+                    <a href="Unité 1 - Physiopathologie.html" class="unit-btn unit-btn--secondary">
+                        <span>Physiopathologie</span>
+                        <span class="btn-arrow">←</span>
+                    </a>
+                    <a href="Unité 1 - Biochimie.html" class="unit-btn unit-btn--secondary">
+                        <span>Biochimie</span>
+                        <span class="btn-arrow">←</span>
+                    </a>
+                    <a href="Unité 1 - Radiologie.html" class="unit-btn unit-btn--secondary">
+                        <span>Radiologie</span>
+                        <span class="btn-arrow">←</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- UNIT 2 -->
+            <div class="unit-card unit-card--blue reveal" id="unit-2">
+                <div class="unit-card-top">
+                    <div class="unit-icon">🫀</div>
+                    <div>
+                        <div class="unit-number">الوحدة الثانية</div>
+                        <div class="unit-title">سيميولوجيا القلب والأوعية</div>
+                    </div>
+                </div>
+                <p class="unit-description">
+                    دراسة علامات أمراض القلب والأوعية الدموية، الفحص القلبي، أصوات القلب، ومتلازمات الدورة الدموية.
+                </p>
+                <div class="unit-modules-count">
+                    🔒 قريباً — جاري الإعداد
+                </div>
+                <div class="unit-btn-group">
+                    <button class="unit-btn unit-btn--disabled" disabled id="btn-unit-2">
+                        <span>قريباً...</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- UNIT 3 -->
+            <div class="unit-card unit-card--purple reveal" id="unit-3">
+                <div class="unit-card-top">
+                    <div class="unit-icon">🫁</div>
+                    <div>
+                        <div class="unit-number">الوحدة الثالثة</div>
+                        <div class="unit-title">سيميولوجيا الجهاز التنفسي</div>
+                    </div>
+                </div>
+                <p class="unit-description">
+                    العلامات السريرية لأمراض الرئتين والمسالك الهوائية، القرع والتسمع الرئوي، ومتلازمات الجنب والرئة.
+                </p>
+                <div class="unit-modules-count">
+                    🔒 قريباً — جاري الإعداد
+                </div>
+                <div class="unit-btn-group">
+                    <button class="unit-btn unit-btn--disabled" disabled id="btn-unit-3">
+                        <span>قريباً...</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- UNIT 4 -->
+            <div class="unit-card unit-card--rose reveal" id="unit-4">
+                <div class="unit-card-top">
+                    <div class="unit-icon">🦴</div>
+                    <div>
+                        <div class="unit-number">الوحدة الرابعة</div>
+                        <div class="unit-title">سيميولوجيا الجهاز الهضمي</div>
+                    </div>
+                </div>
+                <p class="unit-description">
+                    فحص البطن، علامات أمراض الكبد والمعدة والأمعاء، متلازمات اليرقان والاستسقاء والنزيف الهضمي.
+                </p>
+                <div class="unit-modules-count">
+                    🔒 قريباً — جاري الإعداد
+                </div>
+                <div class="unit-btn-group">
+                    <button class="unit-btn unit-btn--disabled" disabled id="btn-unit-4">
+                        <span>قريباً...</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- UNIT 5 - Pharmacologie -->
+            <div class="unit-card unit-card--amber reveal" id="unit-pharma">
+                <div class="unit-card-top">
+                    <div class="unit-icon">💊</div>
+                    <div>
+                        <div class="unit-number">مقياس مستقل</div>
+                        <div class="unit-title">الفارماكولوجي</div>
+                    </div>
+                </div>
+                <p class="unit-description">
+                    علم الأدوية (Pharmacologie): ملخص شامل للمقياس يحتوي على الشروحات التفصيلية والملاحظات الهامة.
+                </p>
+                <div class="unit-modules-count">
+                    📄 يحتوي على ملخص ليلة الامتحان
+                </div>
+                <div class="unit-btn-group">
+                    <a href="Pharmacologie - Cours Complet.html" class="unit-btn unit-btn--primary" id="btn-pharma">
+                        <span>فتح ملخص الفارماكولوجي</span>
+                        <span class="btn-arrow">←</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- UNIT 6 - Psychologie -->
+            <div class="unit-card unit-card--emerald reveal" id="unit-psycho">
+                <div class="unit-card-top">
+                    <div class="unit-icon">🧠</div>
+                    <div>
+                        <div class="unit-number">مقياس مستقل</div>
+                        <div class="unit-title">علم النفس الطبي</div>
+                    </div>
+                </div>
+                <p class="unit-description">
+                    علم النفس الطبي (Psychologie Médicale): ملخص شامل للمقياس يحتوي على الشروحات التفصيلية والملاحظات الهامة.
+                </p>
+                <div class="unit-modules-count">
+                    📄 يحتوي على ملخص ليلة الامتحان
+                </div>
+                <div class="unit-btn-group">
+                    <a href="Psychologie Médicale - Cours Complet.html" class="unit-btn unit-btn--primary" id="btn-psycho">
+                        <span>فتح ملخص علم النفس</span>
+                        <span class="btn-arrow">←</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════
+             MODULES SECTION
+             ═══════════════════════════════════════════════════ -->
+        <div class="section-header reveal">
+            <h2>🎓 الموديولات</h2>
+            <p>الموديولات الخمسة التي يشملها البرنامج</p>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="modules-grid">
+
+            <div class="module-card reveal" id="module-1">
+                <span class="module-emoji">🧬</span>
+                <div class="module-name">الموديول 1</div>
+                <div class="module-desc">المقدمة في السيميولوجيا والملاحظة الطبية</div>
+                <span class="module-badge module-badge--ready">✓ متوفر</span>
+            </div>
+
+            <div class="module-card reveal" id="module-2">
+                <span class="module-emoji">🩻</span>
+                <div class="module-name">الموديول 2</div>
+                <div class="module-desc">الاستجواب الطبي وتقنيات الفحص السريري</div>
+                <span class="module-badge module-badge--soon">قريباً</span>
+            </div>
+
+            <div class="module-card reveal" id="module-3">
+                <span class="module-emoji">🌡️</span>
+                <div class="module-name">الموديول 3</div>
+                <div class="module-desc">متلازمة الحمى ومنحنيات الحرارة</div>
+                <span class="module-badge module-badge--soon">قريباً</span>
+            </div>
+
+            <div class="module-card reveal" id="module-4">
+                <span class="module-emoji">⚖️</span>
+                <div class="module-name">الموديول 4</div>
+                <div class="module-desc">سيميولوجيا الوزن واضطرابات السوائل</div>
+                <span class="module-badge module-badge--soon">قريباً</span>
+            </div>
+
+            <div class="module-card reveal" id="module-5">
+                <span class="module-emoji">💊</span>
+                <div class="module-name">الموديول 5</div>
+                <div class="module-desc">تمارين QCM ومراجعة شاملة</div>
+                <span class="module-badge module-badge--soon">قريباً</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════ -->
+    <footer>
+        <span class="footer-brand">🩺 الطب — دورة استداركية</span>
+        <p>تصميم وإعداد خاص لمساعدتك على التفوق • الموسم الجامعي 2025/2026</p>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════
+         JAVASCRIPT - Particles & Scroll Reveal
+         ═══════════════════════════════════════════════════ -->
+    <script>
+        // ── Floating Particles Generator ──
+        (function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#14b8a6', '#3b82f6', '#8b5cf6', '#f43f5e', '#f59e0b'];
+            const count = window.innerWidth < 768 ? 12 : 20;
+
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 4 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const left = Math.random() * 100;
+                const duration = Math.random() * 20 + 15;
+                const delay = Math.random() * 10;
+
+                particle.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: ${color};
+                    left: ${left}%;
+                    animation-duration: ${duration}s;
+                    animation-delay: ${delay}s;
+                    box-shadow: 0 0 ${size * 2}px ${color};
+                `;
+                container.appendChild(particle);
+            }
+        })();
+
+        // ── Scroll Reveal Observer ──
+        (function initReveal() {
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        })();
+    </script>
+
+</body>
+</html>

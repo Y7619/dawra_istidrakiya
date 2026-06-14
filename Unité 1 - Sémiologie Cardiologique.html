@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sémiologie Cardiologique - Cours Complet PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f172a;--sidebar-bg:#111827;--card-bg:#1e2740;
+  --border:rgba(255,255,255,0.07);--accent:#ef4444;
+  --accent2:#10b981;--accent3:#f59e0b;--accent4:#3b82f6;
+  --text:#e2e8f0;--muted:#94a3b8;--danger:#ef4444;
+}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal','Inter',sans-serif;display:flex;min-height:100vh}
+
+/* ── SIDEBAR ── */
+.sidebar{width:280px;background:var(--sidebar-bg);border-left:1px solid var(--border);position:fixed;right:0;top:0;height:100vh;overflow-y:auto;padding:1.5rem 1rem;z-index:200;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent}
+.sidebar h2{font-family:'Inter',sans-serif;font-size:.95rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);text-align:center}
+.nav-btn{display:flex;justify-content:space-between;align-items:center;width:100%;background:transparent;border:1px solid var(--border);color:var(--muted);padding:.7rem 1rem;margin-bottom:.4rem;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:.9rem;cursor:pointer;transition:all .2s;text-align:right}
+.nav-btn:hover,.nav-btn.active{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.4);color:var(--accent)}
+.nav-btn .badge{background:rgba(239,68,68,.2);color:var(--accent);padding:.15rem .5rem;border-radius:20px;font-size:.78rem;font-weight:700}
+
+/* ── MAIN ── */
+.main-content{flex:1;margin-right:280px;padding:2rem 2.5rem;max-width:1100px}
+
+/* ── HEADER ── */
+.header-banner{background:linear-gradient(135deg,#7f1d1d 0%,#450a0a 100%);border:1px solid rgba(239,68,68,.25);border-radius:16px;padding:2.5rem;text-align:center;margin-bottom:2.5rem;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.header-banner h1{font-family:'Inter',sans-serif;font-size:2.2rem;font-weight:700;color:#f1f5f9;margin-bottom:.4rem}
+.header-banner .subtitle{color:#94a3b8;font-size:1.05rem}
+
+/* ── SECTION ── */
+.section-wrap{display:none}
+.section-wrap.active{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.section-title{font-family:'Inter',sans-serif;font-size:1.7rem;font-weight:700;color:var(--accent);border-bottom:2px solid rgba(239,68,68,.3);padding-bottom:.6rem;margin-bottom:1.8rem;display:flex;justify-content:space-between;align-items:center;direction:ltr;text-align:left}
+.section-count{font-size:.85rem;color:var(--muted);background:rgba(239,68,68,.1);padding:.25rem .75rem;border-radius:20px}
+
+/* ── QCM CARD ── */
+.qcm-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;margin-bottom:1.5rem;transition:border-color .25s,box-shadow .25s}
+.qcm-card:hover{border-color:rgba(239,68,68,.3);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+.q-num{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;padding:.3rem .9rem;border-radius:20px;font-weight:700;font-size:.9rem;white-space:nowrap}
+.q-ref{font-size:.78rem;color:var(--muted);font-family:'Inter',sans-serif;background:rgba(139,92,246,.15);padding:0.2rem 0.6rem;border-radius:12px;color:#a78bfa;}
+.q-ar{font-family:'Cairo','Tajawal',sans-serif;font-size:1.1rem;font-weight:700;color:#e2e8f0;margin-bottom:.6rem;direction:rtl;text-align:right;line-height:1.6}
+
+/* ANSWER BADGE */
+.answer-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:#6ee7b7;padding:.4rem 1rem;border-radius:20px;font-size:.88rem;font-weight:700;margin-top:.8rem}
+
+/* ── EXPLICATION BLOCK ── */
+.expl-block{margin-top:1.2rem;padding:1.4rem 1.6rem;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.15);border-radius:10px}
+.expl-section{margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.expl-section:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.expl-label{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem;padding:.25rem .7rem;border-radius:6px}
+.label-expl{background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.25)}
+.label-notes{background:rgba(6,182,212,.12);color:#67e8f9;border:1px solid rgba(6,182,212,.25)}
+.label-pieges{background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.25)}
+.expl-ar{font-family:'Cairo','Tajawal',sans-serif;font-size:1rem;color:#cbd5e1;direction:rtl;text-align:right;line-height:1.85;margin-bottom:.6rem}
+.expl-fr{font-family:'Inter',sans-serif;font-size:.92rem;color:#94a3b8;direction:ltr;text-align:left;line-height:1.75;font-style:italic}
+
+/* MOBILE */
+.mob-toggle{display:none;position:fixed;top:1rem;right:1rem;z-index:300;background:#ef4444;border:none;color:#fff;padding:.6rem .9rem;border-radius:8px;cursor:pointer;font-size:1.1rem}
+@media(max-width:900px){
+  .sidebar{transform:translateX(100%);transition:transform .3s}
+  .sidebar.open{transform:translateX(0)}
+  .main-content{margin-right:0;padding:1rem}
+  .mob-toggle{display:block}
+}
+</style>
+</head>
+<body>
+
+<button class="mob-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+<nav class="sidebar">
+  <h2>❤️ Sémiologie Cardio</h2>
+  <button class="nav-btn active" onclick="showSection('sec1', this)">الديناميكا الدموية (Q1-Q9)</button>
+  <button class="nav-btn" onclick="showSection('sec2', this)">الأعراض الوظيفية (Q10-Q20)</button>
+  <button class="nav-btn" onclick="showSection('sec3', this)">الغشيان والليبوتيميا (Q21-Q27)</button>
+  <button class="nav-btn" onclick="showSection('sec4', this)">الفحص السريري (Q28-Q33)</button>
+  <button class="nav-btn" onclick="showSection('sec5', this)">التسمع القلبي (Q34-Q49)</button>
+  <button class="nav-btn" onclick="showSection('sec6', this)">السيميولوجيا الوعائية (Q50-Q60)</button>
+  <button class="nav-btn" onclick="showSection('sec7', this)">تخطيط القلب ECG (Q61-Q79)</button>
+  <button class="nav-btn" onclick="showSection('sec8', this)">المتقدمة والمكملة (Q80-Q102)</button>
+</nav>
+
+<main class="main-content">
+  <div class="header-banner">
+    <h1>❤️ Sémiologie Cardiologique U1</h1>
+    <p class="subtitle">Collection MDM · Cours Complet PRO · Bilingue Arabe / Français</p>
+  </div>
+
+<div class="section-wrap active" id="sec1">
+  <div class="section-title">Hémodynamique Intracardiaque & Signes Fonctionnels - الديناميكا الدموية داخل القلب والأعراض الوظيفية</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q1</span><span class="q-ref">QCM n°29 U1 2024</span></div>
+  <div class="q-ar">الانقباض البطيني وحركة الصمامات أثناءه</div>
+  <div class="answer-badge">✅ Réponse : D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">أثناء <span class="kw">الانقباض البطيني</span> <span class="fr">Systole ventriculaire</span>، يرتفع الضغط داخل البطينين بشكل حاد مما يؤدي إلى <span class="danger">إغلاق الصمامات الأذينية البطينية</span> <span class="fr">Fermeture des valves auriculo-ventriculaires</span> (الميترالي وثلاثي الشرف)، وبالتالي يُمنع ارتجاع الدم نحو الأذينين. في المقابل، <span class="kw">تنفتح الصمامات الهلالية</span> <span class="fr">Valves sigmoïdes ouvertes</span> (الأبهرية والرئوية) ليُقذف الدم نحو الأوعية الكبيرة (<span class="fr">Gros vaisseaux</span>): الشريان الأبهر والشريان الرئوي.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">فخ QCM متكرر: القول بأن الصمامات الأذينية البطينية مفتوحة أثناء الانقباض خاطئ تماماً! هي مغلقة بإحكام لمنع الارتجاع.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Pendant la <b>systole ventriculaire</b>, les valves auriculo-ventriculaires (mitrale et tricuspide) se ferment, et les valves sigmoïdes (aortique et pulmonaire) s'ouvrent pour éjecter le sang vers les gros vaisseaux. <em>Piège QCM : les valves AV sont fermées pendant la systole !</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q2</span><span class="q-ref">QCM n°28 U1 2023</span></div>
+  <div class="q-ar">الصوت الأول للقلب (B1) ودلالاته الزمنية</div>
+  <div class="answer-badge">✅ Réponse : C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الصوت القلبي الأول <span class="fr">B1</span> ينتج عن <span class="kw">إغلاق الصمامات الأذينية البطينية</span> <span class="fr">Fermeture des valves auriculo-ventriculaires</span>، ويُعلن بداية الانقباض البطيني <span class="fr">Début de la systole ventriculaire</span>. يكون هذا الصوت <span class="kw">متزامناً مع النبض السباتي</span> <span class="fr">Synchrone du pouls carotidien</span>، وأقصى شدته عند قمة القلب <span class="fr">Apex</span> وليس عند قاعدته.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">لا تخلط: B1 ليس متزامناً مع إغلاق الصمامات الهلالية (ذلك هو B2)، وليس متزامناً مع فتح الصمامات الأذينية البطينية.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> <b>B1</b> résulte de la fermeture des valves auriculo-ventriculaires et marque le début de la systole ventriculaire. Il est synchrone du pouls carotidien et son maximum est à l'apex (pas à la base). <em>Ne pas confondre avec B2 (fermeture des sigmoïdes).</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q3</span><span class="q-ref">QCM n°32 U1 2022</span></div>
+  <div class="q-ar">الصوت الثاني للقلب (B2) وعلاقته بالصمامات الهلالية</div>
+  <div class="answer-badge">✅ Réponse : A, B, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">B2</span> يُعلن <span class="danger">نهاية الانقباض البطيني وبداية الانبساط</span> <span class="fr">Fin de la systole — Début de la diastole</span>. ينتج عن <span class="kw">إغلاق الصمامات الهلالية</span> <span class="fr">Fermeture des valves sigmoïdes</span> (الأبهرية والرئوية). يكون أقصى شدته عند <span class="fr">La base du cœur</span> (قاعدة القلب)، وليس عند القمة. يتميز بكونه أقصر وأكثر حدة من B1.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> <b>B2</b> marque la fin de la systole et le début de la diastole. Il résulte de la fermeture des valves sigmoïdes (aortique et pulmonaire). Maximum à la base du cœur. Plus court et plus aigu que B1.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q4</span><span class="q-ref">QCM n°22 U1 2021</span></div>
+  <div class="q-ar">مرحلة الامتلاء البطيني السريع ودلالتها المرضية</div>
+  <div class="answer-badge">✅ Réponse : B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الامتلاء البطيني السريع <span class="fr">Remplissage ventriculaire rapide</span> يحدث <span class="kw">مباشرة بعد فتح الصمامات الأذينية البطينية</span> <span class="fr">Immédiatement après l'ouverture des valves AV</span> في بداية الانبساط البطيني <span class="fr">Diastole ventriculaire</span>. هذه المرحلة هي المسؤولة عن ظهور <span class="danger">الصوت الثالث (B3)</span> عندما يكون مرضياً عند كبار السن (دليل على قصور القلب). يجب التمييز بين أنها لا تعتمد أساساً على الانقباض الأذيني، بل على فرق الضغط بين الأذين والبطين.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>remplissage ventriculaire rapide</b> survient immédiatement après l'ouverture des valves AV, en début de diastole. Il est responsable du <b>B3</b> pathologique chez le sujet âgé (signe d'insuffisance cardiaque). Il dépend du gradient de pression oreillette-ventricule, et non de la systole auriculaire.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q5</span><span class="q-ref">QCM n°47 S1 2019</span></div>
+  <div class="q-ar">حساب النتاج القلبي (الخلوص القلبي)</div>
+  <div class="answer-badge">✅ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">النتاج القلبي</span> <span class="fr">Débit cardiaque</span> يُحسب بالمعادلة: <span class="fr">VES × FC</span> (حجم النفضة الانقباضية × معدل ضربات القلب). يساوي تقريباً <span class="kw">5 لتر/دقيقة</span> عند الراحة عند البالغ. كذلك يمكن التعبير عنه بأنه يساوي الضغط الشرياني مقسوماً على المقاومات المحيطية <span class="fr">PA / Résistances périphériques</span>. وحجم النفضة الانقباضية <span class="fr">VES</span> يساوي الفرق بين حجم نهاية الانبساط وحجم نهاية الانقباض <span class="fr">VTD – VTS</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>débit cardiaque</b> = VES × FC ≈ 5 L/min au repos. Aussi : DC = PA / Résistances périphériques. Le VES = VTD − VTS.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q6</span><span class="q-ref">QCM n°31 S1 2018</span></div>
+  <div class="q-ar">العبء القبلي (Précharge) وأسباب ارتفاعه</div>
+  <div class="answer-badge">✅ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">العبء القبلي</span> <span class="fr">Précharge ventriculaire</span> يمثل درجة تمدد البطين في نهاية الانبساط. يزداد في حالات: القصور الأبهري <span class="fr">Insuffisance aortique</span>، فرط الحجم الدموي <span class="fr">Hypervolémie</span>، القصور الميترالي <span class="fr">Insuffisance mitrale</span>، وبطء القلب الشديد <span class="fr">Bradycardie importante</span>. أما <span class="danger">تضيق الأبهر الشديد</span> <span class="fr">Sténose aortique serrée</span> فهو يزيد <span class="kw">العبء البعدي</span> <span class="fr">Postcharge</span> وليس العبء القبلي — وهذا هو الاستثناء المطلوب في السؤال.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Info</div>
+      <div class="expl-ar">تذكر: تضيق الأبهر = عائق أمام القذف = زيادة العبء البعدي (Postcharge) وليس القبلي (Précharge).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>précharge ventriculaire</b> (degré d'étirement en fin de diastole) augmente dans : insuffisance aortique, hypervolémie, insuffisance mitrale, bradycardie sévère. <em>Attention : la sténose aortique serrée augmente la <b>postcharge</b>, pas la précharge.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q7</span><span class="q-ref">QCM n°14 S1 2017</span></div>
+  <div class="q-ar">العبء البعدي للبطين الأيسر (Postcharge VG)</div>
+  <div class="answer-badge">✅ Réponse : B, C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">العبء البعدي</span> <span class="fr">Postcharge VG</span> يمثل المقاومة التي يواجهها البطين أثناء القذف. يرتفع في حالتين أساسيتين: <span class="kw">تضيق الأبهر</span> <span class="fr">Rétrécissement aortique</span> (عائق ميكانيكي أمام صمام الأبهر) و<span class="kw">ارتفاع الضغط الشرياني الجهازي</span> <span class="fr">HTA systémique</span> (ارتفاع المقاومات الوعائية المحيطية). في المقابل، القصور الميترالي يسمح بالقذف نحو اتجاهين فيقلل العبء البعدي الفعلي.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>postcharge VG</b> représente la résistance à l'éjection. Elle augmente dans : le rétrécissement aortique (obstacle mécanique) et l'HTA systémique (résistances vasculaires périphériques élevées). L'insuffisance mitrale diminue la postcharge effective.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q8</span><span class="q-ref">QCM n°25 S1 2016</span></div>
+  <div class="q-ar">الانقباض الأذيني (الجهاز الأذيني) ودوره الفسيولوجي</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الانقباض الأذيني <span class="fr">Systole auriculaire</span> يحدث في <span class="kw">نهاية الانبساط البطيني</span> <span class="fr">Fin de la diastole ventriculaire</span>، وهو المسؤول عن موجة P في تخطيط القلب <span class="fr">Onde P sur l'ECG</span>. يساهم بنسبة <span class="kw">20-30%</span> من الامتلاء البطيني عند الراحة. في حالة <span class="danger">الرجفان الأذيني</span> <span class="fr">Fibrillation auriculaire</span>، يختفي هذا الانقباض المنظم تماماً ويفقد القلب هذه المساهمة في الامتلاء. الصوت الرابع <span class="fr">B4</span> ينتج عندما يصبح هذا الانقباض مسموعاً بسبب صلابة البطين.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>systole auriculaire</b> survient en fin de diastole ventriculaire, correspond à l'onde P sur l'ECG, et contribue à 20-30% du remplissage ventriculaire. Disparaît en FA. <b>B4</b> apparaît quand le ventricule est rigide.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q9</span><span class="q-ref">QCM n°40 S1 2015</span></div>
+  <div class="q-ar">أطوار الدورة القلبية: ما القضية الخاطئة؟</div>
+  <div class="answer-badge">✅ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">خلال مراحل <span class="fr">Phases isovolumétriques</span> (الانقباض والارتخاء متساويا الحجم)، <span class="kw">جميع الصمامات مغلقة</span> — لا الأذينية البطينية ولا الهلالية مفتوحة. الانقباض متساوي الحجم يسبق القذف، والارتخاء متساوي الحجم يسبق الامتلاء. القضية <span class="danger">الخاطئة</span> هي أن الانقباض البطيني أطول من الانبساط عند معدل نبض طبيعي — في الواقع <span class="kw">الانبساط أطول من الانقباض</span> عند معدل نبض طبيعي (60-80/دقيقة)، ويقصر فقط عند تسرع القلب.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Pendant les <b>phases isovolumétriques</b> (contraction et relaxation), toutes les valves sont fermées. Au repos (60-80 bpm), la <b>diastole est plus longue que la systole</b>. Elle ne raccourcit qu'en tachycardie.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-wrap" id="sec2">
+  <div class="section-title">Dyspnée, Douleurs Thoraciques & Palpitations - الأعراض الوظيفية — ضيق التنفس، الآلام الصدرية والخفقان</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q10</span><span class="q-ref">QCM n°32 U1 2024</span></div>
+  <div class="q-ar">ضيق التنفس ذو المنشأ القلبي</div>
+  <div class="answer-badge">✅ Réponse : B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ضيق التنفس القلبي <span class="fr">Dyspnée d'origine cardiaque</span> يرتبط بـ<span class="kw">ارتفاع الضغط في الشعيرات الرئوية</span> <span class="fr">Augmentation de la pression capillaire pulmonaire</span> نتيجة قصور البطين الأيسر <span class="fr">Insuffisance ventriculaire gauche</span>. يتفاقم عادة عند الاستلقاء (<span class="kw">الأورثوبنيا</span> <span class="fr">Orthopnée</span>) ويُصنف وفق مراحل جمعية نيويورك القلبية <span class="fr">NYHA</span> إلى 4 درجات.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">فخ: ضيق التنفس القلبي ليس زفيرياً مع صفير (ذلك هو الربو) — بل هو شهيقي في الغالب مع خراخر فرقعية.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>dyspnée d'origine cardiaque</b> est liée à l'augmentation de la pression capillaire pulmonaire (insuffisance VG). S'aggrave en décubitus (<b>orthopnée</b>). Classée selon la NYHA (stades I à IV). <em>Piège : dyspnée cardiaque = inspiratoire avec crépitants (pas expiratoire avec sibilants comme l'asthme).</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q11</span><span class="q-ref">QCM n°33 U1 2024</span></div>
+  <div class="q-ar">الأورثوبنيا: ضيق التنفس الاستلقائي</div>
+  <div class="answer-badge">✅ Réponse : B, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">الأورثوبنيا</span> <span class="fr">Orthopnée</span> هي ضيق تنفس يحدث عند <span class="danger">الاستلقاء</span> <span class="fr">En décubitus</span> ويُخفف بالجلوس أو الوقوف <span class="fr">Soulagée par la position assise ou debout</span>. تُعد علامة رئيسية وحاسمة لـ<span class="kw">قصور القلب الأيسر</span> <span class="fr">Insuffisance cardiaque gauche</span>. يجب عدم الخلط بينها وبين ضيق التنفس الجهدي فقط أو النوبات الليلية — فهي مرتبطة تحديداً بوضعية الاستلقاء.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>orthopnée</b> est une dyspnée de décubitus, soulagée par la position assise ou debout. Signe majeur d'<b>insuffisance cardiaque gauche</b>. Ne pas confondre avec la dyspnée d'effort seule.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q12</span><span class="q-ref">QCM n°34 U1 2024</span></div>
+  <div class="q-ar">ضيق التنفس الانتيابي الليلي (DPN)</div>
+  <div class="answer-badge">✅ Réponse : A, B, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ضيق التنفس الانتيابي الليلي <span class="fr">Dyspnée paroxystique nocturne (DPN)</span> يُوقظ المريض فجأة من نومه مع <span class="kw">إحساس بالاختناق الشديد</span> <span class="fr">Réveille le patient en sursaut avec sensation d'étouffement</span>. يتجلى غالباً في شكل نوبات ربو قلبي أو وذمة رئوية حادة <span class="fr">Asthme cardiaque ou OAP</span>. هو علامة على <span class="danger">احتقان رئوي حاد</span> <span class="fr">Stase pulmonaire aiguë</span>. لا يُخفف بالموسعات القصبية (بخلاف الربو الحقيقي) وليس مجرد نسخة خفيفة من الأورثوبنيا — بل هو أشد حدة منها.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>dyspnée paroxystique nocturne (DPN)</b> réveille le patient en sursaut avec sensation d'étouffement. Se manifeste par un asthme cardiaque ou un OAP. Signe de stase pulmonaire aiguë. <em>Ne répond pas aux bronchodilatateurs (contrairement à l'asthme vrai).</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q13</span><span class="q-ref">QCM n°35 S1 2018</span></div>
+  <div class="q-ar">الذبحة الصدرية الجهدية النموذجية (Angor d'effort)</div>
+  <div class="answer-badge">✅ Réponse : B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ألم الذبحة الصدرية النموذجية <span class="fr">Angor d'effort typique</span> يتميز بأنه <span class="kw">خلف القص</span> <span class="fr">Rétrosternale</span>، <span class="kw">ضاغط كالملزمة</span> <span class="fr">Constrictive, en étau</span>، ينتشر نحو الذراع الأيسر والفك أو الظهر <span class="fr">Irradiations au bras gauche, mâchoire, dos</span>. يُثار بالمجهود أو البرد أو التوتر <span class="fr">Effort, froid, stress</span>، ويُخفف سريعاً (أقل من 5 دقائق) بالنيتروجليسرين تحت اللسان <span class="fr">Trinitrine sublinguale</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">ليس ألماً نقطياً يُشار إليه بالإصبع (ذلك غالباً عضلي هيكلي). الذبحة القلبية ألم منتشر واسع.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>angor d'effort typique</b> : douleur rétrosternale, constrictive (en étau), irradiant au bras gauche, mâchoire ou dos. Déclenchée par l'effort, le froid ou le stress. Soulagée en &lt; 5 min par la trinitrine sublinguale. <em>Ce n'est pas une douleur ponctuelle pointée du doigt.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q14</span><span class="q-ref">QCM n°36 S1 2018</span></div>
+  <div class="q-ar">ألم الاحتشاء القلبي (IDM) مقارنة بالذبحة</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ألم الاحتشاء <span class="fr">Infarctus du myocarde (IDM)</span> يتميز عن الذبحة بعدة سمات حاسمة: شدة <span class="kw">غير محتملة ومقلقة</span> <span class="fr">Intensité intolérable, angoissante</span>، مدة تتجاوز <span class="danger">30 دقيقة</span> <span class="fr">Prolongée &gt; 30 min</span>، <span class="danger">مقاومة للنيتروجليسرين</span> <span class="fr">Résistante à la trinitrine</span>، ويحدث غالباً <span class="kw">أثناء الراحة</span> <span class="fr">Au repos</span>. لكنه يحتفظ بنفس نوع الانتشار (الذراع، الفك) — فالقول بغياب الانتشار كلياً خاطئ.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>infarctus du myocarde (IDM)</b> se distingue de l'angor par : intensité intolérable et angoissante, durée &gt; 30 min, résistance à la trinitrine, survenue au repos. Les irradiations sont conservées (bras, mâchoire).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q15</span><span class="q-ref">QCM n°37 S1 2018</span></div>
+  <div class="q-ar">ألم التهاب التامور الحاد (Péricardite aiguë)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ألم التهاب التامور <span class="fr">Péricardite aiguë</span> يزداد بالشهيق العميق والسعال <span class="fr">Augmentée par l'inspiration et la toux</span>، و<span class="kw">يُخفف بالانحناء للأمام</span> <span class="fr">Soulagée par l'antéflexion du tronc</span>. يستمر عدة أيام ولا يستجيب للنيتروجليسرين <span class="fr">Insensible à la trinitrine</span>. يترافق غالباً مع <span class="kw">سياق حموي أو شبيه بالإنفلونزا</span> <span class="fr">Contexte fébrile ou pseudo-grippal</span>. ليس مرتبطاً بالجهد البدني حصراً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La douleur de <b>péricardite aiguë</b> : augmentée par l'inspiration et la toux, soulagée par l'antéflexion du tronc. Dure plusieurs jours, insensible à la trinitrine. Contexte fébrile ou pseudo-grippal fréquent.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q16</span><span class="q-ref">QCM n°38 S1 2018</span></div>
+  <div class="q-ar">الألم الصدري الحاد المنتقل للظهر: التسلخ الأبهري</div>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ألم صدري <span class="kw">مفاجئ، ممزق، ينتشر للظهر بين الكتفين</span> <span class="fr">Brutale, transfixiante, irradiant entre les omoplates</span> يوحي في المقام الأول بـ<span class="danger">تسلخ الأبهر</span> <span class="fr">Dissection aortique</span>. هذا الوصف مميز ومختلف عن ألم الاحتشاء (الضاغط خلف القص) وعن الانسداد الرئوي (الجانبي التنفسي) وعن الاسترواح (المفاجئ مع ضيق تنفس).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Une douleur thoracique <b>brutale, transfixiante, irradiant entre les omoplates</b> évoque en priorité une <b>dissection aortique</b>. Différente de l'IDM (constrictive rétrosternale), de l'EP (latérale respiratoire) et du pneumothorax.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q17</span><span class="q-ref">QCM n°16 S1 2017</span></div>
+  <div class="q-ar">ألم الانسداد الرئوي (Embolie pulmonaire)</div>
+  <div class="answer-badge">✅ Réponse : A, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ألم الانسداد الرئوي <span class="fr">Embolie pulmonaire</span> يكون عادةً من النوع الجنبي <span class="fr">Type pleural, basithoracique</span>، يزداد بالتنفس <span class="fr">Augmentée par la respiration</span>، ويترافق مع <span class="kw">ضيق تنفس مفاجئ</span> <span class="fr">Dyspnée d'apparition brutale</span>، وأحياناً نفث دموي <span class="fr">Hémoptysie</span> وقلق شديد <span class="fr">Anxiété vive</span>. لا يُخفف بالنيتروجليسرين وليس ألماً خلف القص ضاغطاً نموذجياً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La douleur de l'<b>embolie pulmonaire</b> : type pleural, basithoracique, augmentée par la respiration. Associée à une dyspnée brutale, hémoptysie possible et anxiété vive. Insensible à la trinitrine.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q18</span><span class="q-ref">QCM n°17 S1 2017</span></div>
+  <div class="q-ar">الأسباب غير القلبية للآلام الصدرية</div>
+  <div class="answer-badge">✅ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">من الأسباب غير القلبية للآلام الصدرية: <span class="kw">الارتجاع المعدي المريئي</span> <span class="fr">RGO</span> (ألم حارق خلف القص)، <span class="kw">متلازمة تيتز</span> <span class="fr">Syndrome de Tietze</span> (ألم غضروفي ضلعي عند الضغط)، <span class="kw">الحزام الناري بين الأضلاع</span> <span class="fr">Zona intercostal</span> (ألم حارق يسبق أو يرافق الطفح)، و<span class="kw">الاسترواح الصدري الخانق</span> <span class="fr">Pneumothorax suffocant</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Causes non cardiaques de douleur thoracique : <b>RGO</b> (brûlure rétrosternale), <b>syndrome de Tietze</b> (douleur chondro-costale à la palpation), <b>zona intercostal</b> (brûlure avec éruption), <b>pneumothorax suffocant</b>.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q19</span><span class="q-ref">QCM n°20 S1 2017</span></div>
+  <div class="q-ar">الخفقان: تعريفه وأسبابه</div>
+  <div class="answer-badge">✅ Réponse : A, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">الخفقان</span> <span class="fr">Palpitations</span> هو إدراك غير طبيعي ومزعج لضربات القلب <span class="fr">Perception anormale et désagréable des battements</span>. ليس حكراً على أمراض القلب العضوية — فقد يكون ناتجاً عن التوتر أو الكافيين (حميداً غالباً). الإحساس بـ"توقف القلب" أو "نبضة قوية" يشير للنبضات البطنية المبكرة <span class="fr">Extrasystoles</span>. لا يعني بالضرورة تسرعاً قلبياً منتظماً دائماً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Les <b>palpitations</b> = perception anormale et désagréable des battements cardiaques. Pas exclusivement d'origine cardiaque (stress, caféine). Sensation de « pause » ou « coup fort » = extrasystoles. Ne signifie pas toujours tachycardie régulière.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q20</span><span class="q-ref">QCM n°28 S1 2016</span></div>
+  <div class="q-ar">الخفقان ذو البداية والنهاية المفاجئة</div>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">خفقان يبدأ وينتهي بشكل <span class="kw">مفاجئ (كالطقطقة)</span> <span class="fr">Début et fin brusques (déclic/déclac)</span> يوحي بشدة بـ<span class="danger">تسرع قلب انتيابي</span> <span class="fr">Tachycardie paroxystique</span>، مثل مرض بوفيريه <span class="fr">Maladie de Bouveret</span>. هذا النمط مختلف عن النبضات المبكرة المعزولة (التي تكون متفرقة) والرجفان الأذيني المزمن (الذي يكون غير منتظم باستمرار).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Des palpitations à <b>début et fin brusques (déclic/déclac)</b> évoquent fortement une <b>tachycardie paroxystique</b> (maladie de Bouveret). Différent des extrasystoles isolées et de la FA chronique.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-wrap" id="sec3">
+  <div class="section-title">Syncope & Lipothymie - الغشيان والليبوتيميا</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q21</span><span class="q-ref">QCM n°33 S1 2015</span></div>
+  <div class="q-ar">تعريف الغشيان (Syncope)</div>
+  <div class="answer-badge">✅ Réponse : B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">الغشيان</span> <span class="fr">Syncope</span> هو فقدان وعي <span class="danger">فجائي، كامل وقصير</span> <span class="fr">Brutale, complète et brève</span>، ناتج عن <span class="kw">نقص تروية دماغية شاملة ومؤقتة</span> <span class="fr">Hypoperfusion cérébrale globale et transitoire</span>. يتبعه عودة سريعة للوعي الطبيعي مع <span class="kw">فقدان ذاكرة كامل</span> <span class="fr">Amnésie totale</span> للحادثة. ليس فقداناً تدريجياً وليس مع حفظ المنعكسات.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>syncope</b> : perte de connaissance brutale, complète et brève, due à une hypoperfusion cérébrale globale et transitoire. Retour rapide à la normale avec amnésie totale de l'épisode.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q22</span><span class="q-ref">QCM n°35 S1 2015</span></div>
+  <div class="q-ar">الليبوتيميا مقارنة بالغشيان</div>
+  <div class="answer-badge">✅ Réponse : A, C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">الليبوتيميا</span> <span class="fr">Lipothymie</span> تتميز عن الغشيان بـ<span class="danger">غياب فقدان الوعي الكامل</span> <span class="fr">Absence de perte de connaissance complète</span> — إنها مجرد إحساس بالإغماء الوشيك. تسبقها <span class="kw">علامات تحذيرية</span> <span class="fr">Prodromes</span> (تعرق، غثيان، اضطرابات بصرية) مما يسمح للمريض بالاستلقاء. العودة للطبيعي تكون تدريجية. ليست طويلة لساعات وليست عصبية حصراً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>lipothymie</b> se distingue de la syncope par l'absence de perte de connaissance complète (simple sensation de malaise imminent). Précédée de prodromes (sueurs, nausées, troubles visuels). Retour progressif à la normale.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q23</span><span class="q-ref">QCM n°36 U1 2024</span></div>
+  <div class="q-ar">الغشيان المبهمي الوعائي (Syncope vasovagale)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الغشيان المبهمي <span class="fr">Syncope vasovagale</span> هو <span class="kw">الأكثر شيوعاً</span> خاصة عند الشباب <span class="fr">Cause la plus fréquente, sujet jeune</span>. يُثار بالوقوف الطويل، الحرارة، الأماكن المغلقة أو المشاعر القوية <span class="fr">Orthostatisme prolongé, chaleur, confinement, émotion</span>. يسبقه تعرق وشحوب وغثيان <span class="fr">Prodromes</span>. يترافق مع <span class="kw">بطء قلب وانخفاض ضغط</span> <span class="fr">Bradycardie + hypotension</span>. هو ناتج عن فرط نشاط الجهاز اللاودي <span class="fr">Parasympathique</span> وليس الودي <span class="fr">Sympathique</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">فخ متكرر: القول "فرط نشاط الجهاز الودي" خاطئ — هو فرط نشاط الجهاز اللاودي (المبهم).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>syncope vasovagale</b> : cause la plus fréquente (sujet jeune). Déclenchée par orthostatisme prolongé, chaleur, confinement, émotion. Prodromes présents. Bradycardie + hypotension. <em>Piège : hyperactivité parasympathique (pas sympathique !).</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q24</span><span class="q-ref">QCM n°37 U1 2024</span></div>
+  <div class="q-ar">هبوط الضغط الانتصابي (Hypotension orthostatique)</div>
+  <div class="answer-badge">✅ Réponse : A, B, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">يُعرف بانخفاض الضغط الانقباضي بـ<span class="kw">≥ 20 mmHg</span> و/أو الانبساطي بـ<span class="kw">≥ 10 mmHg</span> عند الوقوف <span class="fr">Passage en position debout</span>. يترافق مع دوار وتشوش بصري أو إغماء <span class="fr">Vertiges, flou visuel ou syncope</span>. من أسبابه: الجفاف <span class="fr">Déshydratation</span> والأدوية الخافضة للضغط <span class="fr">Antihypertenseurs</span>. القول "≥ 30 mmHg للانقباضي فقط" غير صحيح.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>hypotension orthostatique</b> : chute de PAS ≥ 20 mmHg et/ou PAD ≥ 10 mmHg au passage en position debout. Causes : déshydratation, antihypertenseurs. <em>Ce n'est pas ≥ 30 mmHg pour la systolique seule.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q25</span><span class="q-ref">QCM n°38 U1 2024</span></div>
+  <div class="q-ar">الغشيان القلبي الميكانيكي (أسباب انسدادية / Syncope mécanique obstructive)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الأسباب الميكانيكية للغشيان <span class="fr">Syncope de cause mécanique</span> تنتج عن انسداد مجرى الدم، وتشمل: <span class="kw">تضيق الأبهر الشديد</span> <span class="fr">Rétrécissement Aortique (RA) serré</span> والذي يسبب غالباً إغماءً جهدياً <span class="fr">Syncope d'effort</span>، <span class="kw">اعتلال العضلة القلبية التضخمي الانسدادي</span> <span class="fr">Cardiomyopathie Hypertrophique Obstructive (CMHO)</span>، <span class="kw">الورم المخاطي الأذيني</span> <span class="fr">Myxome de l'oreillette</span> (خاصة الأيسر)، و<span class="kw">الانسداد الرئوي الضخم</span> <span class="fr">Embolie Pulmonaire (EP) massive</span> الذي يعيق تدفق الدم للبطين الأيسر. الفتحة بين الأذينين الحميدة <span class="fr">Communication Interauriculaire (CIA)</span> ليست سبباً للغشيان عادةً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">فخ كلاسيكي: الغشيان في تضيق الأبهر (RA) يحدث عادة أثناء الجهد (Syncope d'effort) بسبب عدم قدرة القلب على زيادة النتاج القلبي، بينما غشيان اضطرابات النظم يحدث فجأة حتى في الراحة (à l'emporte-pièce).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Causes mécaniques (obstructives) de syncope : <b>RA serré</b> (typique : syncope d'effort par inadaptation du débit), <b>CMHO</b>, <b>myxome auriculaire</b> (tumeur bénigne intracardiaque), <b>EP massive</b>. La CIA isolée ne provoque pas de syncope.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q26</span><span class="q-ref">QCM n°39 U1 2024</span></div>
+  <div class="q-ar">متلازمة ستوكس-آدامز (Syndrome de Stokes-Adams)</div>
+  <div class="answer-badge">✅ Réponse : B, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">متلازمة ستوكس-آدامز</span> <span class="fr">Syndrome de Stokes-Adams</span> هي إغماء <span class="danger">فجائي جداً وبدون أي علامات منذرة</span> <span class="fr">Syncope brutale, à l'emporte-pièce, sans prodromes</span>، ناتج عن تباطؤ أو توقف القلب بسبب إحصار أذيني بطيني عالي الدرجة <span class="fr">Bloc Auriculo-Ventriculaire (BAV) de haut degré ou complet</span>. يتميز بـ<span class="kw">شحوب شديد</span> <span class="fr">Pâleur extrême</span> أثناء النوبة (بسبب توقف الدورة الدموية)، يتبعه <span class="kw">احمرار وتورد</span> <span class="fr">Rougeur / Flush</span> عند الإفاقة (بسبب عودة التروية السريعة أو توسع الأوعية التفاعلي <span class="fr">Vasodilatation réactionnelle</span>). هي حالة طوارئ قلبية قد تكون مميتة <span class="fr">Urgence vitale absolue</span> تتطلب تركيب ناظم خطى <span class="fr">Pacemaker</span>. ليست إغماء جهدي ولا تترافق مع عجز حركي بؤري <span class="fr">Déficit moteur focal</span> (ذلك يوجه نحو السكتة الدماغية <span class="fr">AVC</span>).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">فخ القصة السريرية: سقوط مفاجئ لمسن في الشارع أدى لجرح في الوجه دون أن يتذكر كيف سقط = فكر مباشرة في متلازمة ستوكس-آدامز (BAV). غياب المقدمات (Prodromes) هو المفتاح.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>syndrome de Stokes-Adams</b> : syncope "à l'emporte-pièce" (sans prodromes), due à un BAV de haut degré ou BAV complet. Pâleur pendant la crise puis rougeur (flush) au réveil. <b>Urgence vitale</b> nécessitant souvent un stimulateur cardiaque (Pacemaker). Ce n'est pas un AVC (pas de déficit focal).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q27</span><span class="q-ref">QCM n°40 U1 2024</span></div>
+  <div class="q-ar">الفحوصات الأولية الضرورية أمام كل غشيان (Bilan de première intention d'une syncope)</div>
+  <div class="answer-badge">✅ Réponse : A, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">أمام كل غشيان، الفحوصات الأساسية من الخط الأول (بجانب القصة السريرية والفحص الدقيق) تشمل: <span class="kw">تخطيط القلب 12 اتجاهاً</span> <span class="fr">ECG 12 dérivations</span> (إلزامي للبحث عن اضطرابات النظم أو التوصيل، تطاول QT، متلازمة بروغادا)، <span class="kw">قياس الضغط ملقياً وواقفاً</span> <span class="fr">Mesure de la PA couché et debout</span> (للبحث عن هبوط الضغط الانتصابي <span class="fr">Hypotension orthostatique</span>)، و<span class="kw">تحاليل دموية أساسية</span> <span class="fr">Bilan biologique de base</span> (سكر الدم <span class="fr">Glycémie</span> لاستبعاد نقص السكر، وشوارد <span class="fr">Ionogramme sanguin</span> لاستبعاد نقص البوتاسيوم). التصوير التاجي <span class="fr">Coronarographie</span> ليس من الخط الأول — يُطلب فقط إذا اشتبهنا بمتلازمة إكليلية حادة <span class="fr">SCA</span>. التروبونين <span class="fr">Troponine</span> قد يُطلب، لكنه ليس إلزامياً وروتينياً بنفس درجة الـ ECG.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Info</div>
+      <div class="expl-ar">معلومة هامة: الـ ECG طبيعي لا ينفي السبب القلبي! قد يكون اضطراب النظم متقطعاً (Paroxystique) ويحتاج لتسجيل هولتر 24-48 ساعة (Holter ECG).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Examens de première intention (systématiques) devant toute syncope : <b>ECG 12 dérivations</b> (obligatoire), test d'orthostatisme (PA couché/debout), glycémie capillaire (éliminer une hypoglycémie) et ionogramme. La coronarographie et l'échocardiographie sont de 2ème intention (orientées par la clinique/ECG).</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-wrap" id="sec4">
+  <div class="section-title">Inspection, Palpation, Percussion - الفحص الفيزيائي — التفتيش، الجس والقرع</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q28</span><span class="q-ref">QCM n°41 U1 2024</span></div>
+  <div class="q-ar">تفتيش المنطقة أمام القلب</div>
+  <div class="answer-badge">✅ Réponse : A, B, C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">التفتيش <span class="fr">Inspection</span> يمكن أن يكشف: <span class="kw">صدمة القمة المرئية</span> عند النحفاء <span class="fr">Choc de pointe visible</span>، <span class="kw">تحدب الصدر</span> <span class="fr">Voussure thoracique</span> الذي يدل على ضخامة قلبية قديمة منذ الطفولة، و<span class="kw">نبضات غير طبيعية</span> <span class="fr">Pulsations anormales</span> (مثل أمّ الدم الأبهرية). السحب بين الأضلاع <span class="fr">Tirage intercostal</span> علامة تنفسية وليست قلبية مباشرة. الهرير الخرخري <span class="fr">Frémissement cataire</span> يُكتشف بالجس وليس بالتفتيش.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>inspection</b> peut révéler : choc de pointe visible (sujet mince), voussure thoracique (cardiomégalie ancienne depuis l'enfance), pulsations anormales (anévrisme). Le frémissement cataire se détecte à la <b>palpation</b>, pas à l'inspection.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q29</span><span class="q-ref">QCM n°29 U1 2024</span></div>
+  <div class="q-ar">صدمة القمة الطبيعية بالجس (Choc de pointe)</div>
+  <div class="answer-badge">✅ Réponse : A, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">صدمة القمة <span class="fr">Choc de pointe</span> الطبيعية تقع في <span class="kw">الفراغ الوربي الخامس الأيسر على خط منتصف الترقوة</span> <span class="fr">5ème espace intercostal gauche, ligne médioclaviculaire</span>. تُحس كنبضة صغيرة وليست كانخفاض. تُستشعر أفضل في وضعية <span class="fr">Décubitus latéral gauche</span>. في حالة <span class="kw">تضخم أو توسع البطين الأيسر</span> تنحرف للأسفل والخارج <span class="fr">Déviée en bas et à gauche</span>. في القصور الأبهري الشديد تكون <span class="kw">واسعة وقوية</span> <span class="fr">Étalé et vigoureux</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>choc de pointe</b> normal : 5ème espace intercostal gauche, ligne médioclaviculaire. Mieux perçu en décubitus latéral gauche. En cas d'HVG : dévié en bas et à gauche. Dans l'IA sévère : étalé et vigoureux.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q30</span><span class="q-ref">QCM n°42 U1 2024</span></div>
+  <div class="q-ar">علامة هارزر (Signe de Harzer)</div>
+  <div class="answer-badge">✅ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">علامة هارزر</span> <span class="fr">Signe de Harzer</span> هي نبضان يُحس في <span class="kw">الحفرة الشرسوفية</span> <span class="fr">Creux épigastrique</span>، ويدل على <span class="danger">تضخم البطين الأيمن</span> <span class="fr">Hypertrophie ventriculaire droite</span>. ليست ارتجاعاً كبدياً وداجياً، وليست انحراف صدمة القمة للإبط، ولا هي علامة قصور أيسر — بل هي خاصة بالقلب الأيمن.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>signe de Harzer</b> = pulsation perçue au creux épigastrique, témoin d'une <b>hypertrophie ventriculaire droite</b>. Ce n'est pas un reflux hépato-jugulaire ni un signe d'insuffisance gauche.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q31</span><span class="q-ref">QCM n°43 U1 2024</span></div>
+  <div class="q-ar">الهرير (الارتعاش الخرخري) عند الجس</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">الهرير</span> <span class="fr">Frémissement cataire</span> هو المعادل اللمسي لنفخة قلبية شديدة <span class="fr">Grade ≥ 4/6</span>، يشبه إحساس خرخرة القط <span class="fr">Ronronnement d'un chat</span>. في البؤرة الأبهرية أثناء الانقباض يدل على <span class="kw">تضيق الأبهر</span> <span class="fr">RA</span>. في البؤرة الميترالية أثناء الانبساط يدل على <span class="kw">تضيق الميترال</span> <span class="fr">RM</span>. <span class="danger">ليس ظاهرة فسيولوجية طبيعية</span> — وجوده يعني دائماً شدة النفخة.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>frémissement cataire</b> = équivalent palpatoire d'un souffle intense (grade ≥ 4/6), comme le ronronnement d'un chat. Systolique au foyer aortique = RA. Diastolique au foyer mitral = RM. <b>Toujours pathologique.</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q32</span><span class="q-ref">QCM n°44 U1 2024</span></div>
+  <div class="q-ar">علامات قصور البطين الأيمن (IVD)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">علامات قصور القلب الأيمن <span class="fr">Insuffisance ventriculaire droite</span>: <span class="kw">انتفاخ الأوردة الوداجية</span> <span class="fr">Turgescence jugulaire</span>، <span class="kw">الارتجاع الكبدي الوداجي</span> <span class="fr">Reflux hépato-jugulaire (RHJ)</span>، <span class="kw">تضخم الكبد المؤلم</span> <span class="fr">Hépatomégalie douloureuse (foie cardiaque)</span>، و<span class="kw">وذمات الأطراف السفلية</span> <span class="fr">OMI déclives, bilatéraux, blancs, mous, prenant le godet</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">فخ: الخراخر الفرقعية في قاعدتي الرئتين هي علامة قصور أيسر (وليس أيمن)!</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Signes d'<b>insuffisance ventriculaire droite</b> : turgescence jugulaire, reflux hépato-jugulaire (RHJ), hépatomégalie douloureuse (foie cardiaque), OMI déclives bilatéraux blancs mous prenant le godet. <em>Piège : les râles crépitants bibasaux = signe d'insuffisance gauche !</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q33</span><span class="q-ref">QCM n°45 U1 2024</span></div>
+  <div class="q-ar">انتفاخ الأوردة الوداجية (Turgescence jugulaire)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">تُفحص عند مريض <span class="kw">جالس أو نصف جالس (45°)</span> <span class="fr">Assis ou semi-assis à 45°</span>. تعكس ارتفاع الضغط في الأذين الأيمن <span class="fr">Augmentation de la pression OD</span>. تختفي طبيعياً أثناء الشهيق العميق. في <span class="danger">التهاب التامور المضيق</span> <span class="fr">Péricardite constrictive</span> تصبح دائمة وثابتة — وهذا ما يُسمى <span class="kw">علامة كوسماول</span> <span class="fr">Signe de Kussmaul</span>. ليست مقياساً لوظيفة البطين الأيسر وحده.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>turgescence jugulaire</b> s'examine patient assis ou semi-assis à 45°. Reflète l'augmentation de pression OD. Disparaît normalement à l'inspiration. En péricardite constrictive : permanente = <b>signe de Kussmaul</b>.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-wrap" id="sec5">
+  <div class="section-title">Auscultation Cardiaque & Souffles - التسمع القلبي — الأصوات الطبيعية والمرضية والنفخات</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q34</span><span class="q-ref">QCM n°46 U1 2024</span></div>
+  <div class="q-ar">بؤر التسمع القلبي الكلاسيكية</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">البؤر الخمس: <span class="kw">البؤرة الأبهرية</span> <span class="fr">Foyer aortique</span>: الفراغ الوربي الثاني الأيمن. <span class="kw">البؤرة الرئوية</span> <span class="fr">Foyer pulmonaire</span>: الفراغ الوربي الثاني الأيسر. <span class="kw">بؤرة إرب</span> <span class="fr">Foyer d'Erb</span> (الأبهرية الإضافية): الفراغ الوربي الثالث الأيسر. <span class="kw">البؤرة الميترالية</span> <span class="fr">Foyer mitral</span>: عند صدمة القمة (الفراغ الوربي الخامس الأيسر). <span class="kw">البؤرة ثلاثية الشرف</span> <span class="fr">Foyer tricuspide</span>: عند قاعدة النتوء الخنجري <span class="fr">Appendice xiphoïde</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Les 5 foyers d'auscultation : <b>Foyer aortique</b> (2ème EIC droit), <b>Foyer pulmonaire</b> (2ème EIC gauche), <b>Foyer d'Erb</b> (3ème EIC gauche), <b>Foyer mitral</b> (apex, 5ème EIC gauche), <b>Foyer tricuspide</b> (appendice xiphoïde).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q35</span><span class="q-ref">QCM n°47 U1 2024</span></div>
+  <div class="q-ar">الانشطار الفسيولوجي للصوت الثاني (B2)</div>
+  <div class="answer-badge">✅ Réponse : B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الانشطار الفسيولوجي لـ B2 <span class="fr">Dédoublement physiologique de B2</span> يكون أقصاه أثناء <span class="kw">الشهيق العميق</span> <span class="fr">Inspiration profonde</span> بسبب زيادة العود الوريدي مما يؤخر إغلاق الصمام الرئوي <span class="fr">Retard de fermeture de la valve pulmonaire</span>. يختفي أثناء الزفير <span class="fr">Disparaît à l'expiration</span>. يُسمع عند البؤرة الرئوية وليس الميترالية. ليس علامة على إحصار الفرع الأيسر.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>dédoublement physiologique de B2</b> : maximal à l'inspiration profonde (retard de fermeture de la valve pulmonaire par augmentation du retour veineux). Disparaît à l'expiration. Entendu au foyer pulmonaire. Ce n'est pas un signe de BBG.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q36</span><span class="q-ref">QCM n°48 U1 2024</span></div>
+  <div class="q-ar">الصوت الثالث (B3) وإيقاع الخبب البدئي الانبساطي</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">B3 صوت <span class="kw">منخفض التردد، أجوف، بدئي انبساطي</span> <span class="fr">Sourd, basse fréquence, proto-diastolique</span>. يكون <span class="kw">فسيولوجياً عند الأطفال والشباب</span> <span class="fr">Physiologique chez l'enfant et l'adulte jeune</span>. عند كبار السن يعني <span class="danger">امتلاء بطيني سريع غير طبيعي</span> (قصور قلب). ينتج عنه إيقاع الخبب البدئي الانبساطي <span class="fr">Galop protodiastolique</span>. ليس متزامناً مع الانقباض الأذيني (ذلك B4).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> <b>B3</b> : sourd, basse fréquence, proto-diastolique. Physiologique chez l'enfant et l'adulte jeune. Chez le sujet âgé = remplissage rapide anormal (insuffisance cardiaque) → <b>galop protodiastolique</b>. <em>B3 ≠ systole auriculaire (c'est B4).</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q37</span><span class="q-ref">QCM n°49 U1 2024</span></div>
+  <div class="q-ar">الصوت الرابع (B4) وإيقاع الخبب قبل الانقباضي</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">B4 صوت <span class="kw">قبل انقباضي (نهاية انبساطي)</span> <span class="fr">Pré-systolique (télé-diastolique)</span>، ينتج عن <span class="kw">انقباض أذيني قوي ضد بطين صلب فقد مطاوعته</span> <span class="fr">Contraction auriculaire vigoureuse contre ventricule rigide</span>. يُسمع كثيراً في تضخم البطين الأيسر (ارتفاع ضغط، تضيق أبهر). <span class="danger">يختفي في الرجفان الأذيني</span> <span class="fr">Disparaît en FA</span> لأنه يتطلب انقباضاً أذينياً منظماً. ينتج إيقاع الخبب قبل الانقباضي <span class="fr">Galop présystolique</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">فخ ذهبي: B4 يختفي في الرجفان الأذيني لأنه يعتمد على انقباض الأذين المنظم!</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> <b>B4</b> : pré-systolique (télé-diastolique), dû à une contraction auriculaire vigoureuse contre un ventricule rigide (HVG, HTA, RA). <b>Disparaît en FA</b> (nécessite une systole auriculaire organisée) → <b>galop présystolique</b>.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q38</span><span class="q-ref">QCM n°50 U1 2024</span></div>
+  <div class="q-ar">إيقاع الخبب (Rythme de galop)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">إيقاع الخبب <span class="fr">Rythme de galop</span> هو إيقاع ثلاثي ناتج عن B3 أو B4 مرضي <span class="fr">Rythme à 3 temps</span>. يترافق عادة مع <span class="kw">تسرع قلب</span> <span class="fr">Tachycardie</span>. يُعد <span class="danger">علامة رئيسية لقصور القلب</span> <span class="fr">Signe majeur d'insuffisance cardiaque</span>. يختفي عند تحسن الوظيفة القلبية. يُسمع أفضل بالجزء الجرسي <span class="fr">Pavillon</span> (الترددات المنخفضة) وليس بالغشاء <span class="fr">Membrane</span> (الترددات العالية).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>rythme de galop</b> : rythme à 3 temps (B3 ou B4 pathologique). Associé à une tachycardie. <b>Signe majeur d'insuffisance cardiaque.</b> Mieux entendu au pavillon (basses fréquences), pas à la membrane.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q39</span><span class="q-ref">QCM n°51 U1 2024</span></div>
+  <div class="q-ar">الأصوات الإضافية الصمامية والتامورية</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">تشمل: <span class="kw">طرقة فتح الصمام الميترالي</span> <span class="fr">Claquement d'ouverture mitrale (COM)</span> في تضيق الميترال، <span class="kw">النقرة القذفية الانقباضية</span> <span class="fr">Clic éjectionnel systolique</span> (أبهرية أو رئوية)، <span class="kw">صوت الصمام الاصطناعي</span> <span class="fr">Déclic prothétique</span>، و<span class="kw">الاحتكاك التاموري</span> <span class="fr">Frottement péricardique</span>. <span class="danger">ليست جميعها انبساطية فقط</span> — بعضها انقباضي (كالنقرة القذفية) وبعضها في كلا الوقتين (الاحتكاك التاموري).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Bruits surajoutés : <b>claquement d'ouverture mitrale (COM)</b> dans le RM, <b>clic éjectionnel systolique</b> (aortique ou pulmonaire), <b>déclic prothétique</b>, et <b>frottement péricardique</b>. Certains sont systoliques, d'autres diastoliques.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q40</span><span class="q-ref">QCM n°52 U1 2024</span></div>
+  <div class="q-ar">الاحتكاك التاموري (Frottement péricardique)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">صوت <span class="kw">سطحي، جاف</span> يشبه حفيف الرق أو الجلد الجديد <span class="fr">Bruit de froissement du parchemin ou cuir neuf</span>. <span class="danger">يستمر عند قطع التنفس</span> <span class="fr">Persiste lors de l'apnée</span> (بخلاف الاحتكاك الجنبي الذي يختفي). <span class="kw">متغير وعابر</span> من فحص لآخر <span class="fr">Fugace et changeant</span>. يختفي إذا تراكم سائل تاموري كثير <span class="fr">Disparaît si épanchement abondant</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>frottement péricardique</b> : bruit superficiel, sec, comme un froissement de parchemin ou cuir neuf. <b>Persiste lors de l'apnée</b> (≠ frottement pleural). Fugace et changeant. Disparaît si épanchement abondant.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q41</span><span class="q-ref">QCM n°53 U1 2024</span></div>
+  <div class="q-ar">تعريف النفخة القلبية وتصنيفها</div>
+  <div class="answer-badge">✅ Réponse : A, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">النفخة القلبية</span> <span class="fr">Souffle cardiaque</span> هي صوت مطول غير طبيعي ناتج عن اضطراب جريان الدم <span class="fr">Turbulence du flux sanguin</span>. ليست دائماً دليلاً على آفة صمامية عضوية خطيرة. تُصنف حسب: الموقع، التوقيت، النبرة، الانتشار والشدة <span class="fr">Siège, chronologie, timbre, irradiations, intensité</span>. تُدرج من <span class="kw">1/6 (خفيفة جداً) إلى 6/6 (تُسمع بدون سماعة)</span>. الهرير يظهر ابتداءً من <span class="kw">الدرجة 4/6</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>souffle cardiaque</b> = bruit prolongé dû à une turbulence du flux sanguin. Caractérisé par : siège, chronologie, timbre, irradiations, intensité (1/6 à 6/6). Le frémissement cataire apparaît à partir du grade 4/6.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q42</span><span class="q-ref">QCM n°54 U1 2024</span></div>
+  <div class="q-ar">أنواع النفخات الانقباضية</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">النفخات الانقباضية تشمل: <span class="kw">نفخات القذف</span> <span class="fr">Souffles d'éjection</span> (عضوية أو وظيفية/بريئة) و<span class="kw">نفخات الارتجاع</span> <span class="fr">Souffles de régurgitation</span> (عضوية دائماً أو وظيفية بسبب التوسع). يمكن أن تكون شاملة للانقباض <span class="fr">Holosystoliques</span> (من B1 إلى B2) أو جزئية <span class="fr">Proto, méso, télésystoliques</span>. <span class="danger">ليست مرتبطة حصرياً بتضيق الميترال</span> — تضيق الميترال ينتج دحرجة انبساطية.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Souffles systoliques : <b>souffles d'éjection</b> (organiques ou fonctionnels/innocents) et <b>souffles de régurgitation</b>. Peuvent être holosystoliques (B1→B2) ou partiels (proto-, méso-, télésystoliques). <em>Le RM produit un roulement diastolique, pas un souffle systolique.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q43</span><span class="q-ref">QCM n°55 U1 2024</span></div>
+  <div class="q-ar">نفخة تضيق الأبهر (RA) النموذجية</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">نفخة <span class="kw">انقباضية قذفية</span> <span class="fr">Systolique d'éjection</span>، أقصاها في البؤرة الأبهرية وتنتشر نحو <span class="kw">الشرايين السباتية</span> <span class="fr">Carotides</span>. نبرتها <span class="kw">خشنة وقاسية</span> <span class="fr">Rude, râpeux, "cruel"</span>. شكلها <span class="kw">معيني (متصاعد-متناقص)</span> <span class="fr">Losangique, crescendo-decrescendo</span>. تزداد بعد فترة انبساطية طويلة <span class="fr">Augmentée après diastole longue</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Souffle du <b>RA</b> : systolique d'éjection, maximum au foyer aortique, irradiant aux carotides. Timbre rude, râpeux. Forme losangique (crescendo-decrescendo). Augmenté après diastole longue.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q44</span><span class="q-ref">QCM n°56 U1 2024</span></div>
+  <div class="q-ar">نفخة القصور الميترالي العضوي (IM)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">نفخة <span class="kw">انقباضية شاملة</span> <span class="fr">Holosystolique</span> (تبدأ من B1 وقد تطغى على B2)، أقصاها عند <span class="kw">القمة</span> <span class="fr">Apex</span>، تنتشر نحو <span class="kw">الإبط الأيسر</span> <span class="fr">Aisselle gauche</span>. نبرتها <span class="kw">ناعمة كنفث البخار</span> <span class="fr">Doux, en "jet de vapeur"</span>. لا تتناقص في وضعية الاستلقاء الجانبي الأيسر — بل قد تزداد.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Souffle de l'<b>IM</b> : holosystolique (B1 → peut masquer B2), maximum à l'apex, irradiant à l'aisselle gauche. Timbre doux, en « jet de vapeur ». Ne diminue pas en DLG — peut même augmenter.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q45</span><span class="q-ref">QCM n°57 U1 2024</span></div>
+  <div class="q-ar">النفخات الانبساطية: دائماً مرضية!</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">النفخات الانبساطية <span class="fr">Souffles diastoliques</span> هي <span class="danger">دائماً تقريباً مرضية (عضوية)</span> <span class="fr">Presque toujours pathologiques</span>. تشمل: دحرجات التضيق <span class="fr">Roulements de sténose</span> (RM, RT) ونفخات ارتجاع الصمامات الهلالية <span class="fr">Souffles de régurgitation (IA, IP)</span>. تبدأ بعد B2. ليست دائماً عالية التردد وسهلة السماع — بعضها (كدحرجة RM) منخفض التردد ويصعب سماعه.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Info</div>
+      <div class="expl-ar">قاعدة ذهبية للـ QCM: كل نفخة انبساطية = مرضية حتى يثبت العكس!</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Les <b>souffles diastoliques</b> sont <b>presque toujours pathologiques</b>. Types : roulements de sténose (RM, RT) et souffles de régurgitation sigmoïdienne (IA, IP). <em>Règle d'or QCM : souffle diastolique = pathologique jusqu'à preuve du contraire !</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q46</span><span class="q-ref">QCM n°58 U1 2024</span></div>
+  <div class="q-ar">نفخة القصور الأبهري (IA)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">نفخة <span class="kw">انبساطية ارتجاعية متناقصة</span> <span class="fr">Diastolique de régurgitation, mélodie décroissante</span>، تبدأ مباشرة بعد B2 <span class="fr">Proto-mésodiastolique</span>. أقصاها عند <span class="kw">بؤرة إرب</span> <span class="fr">3ème espace intercostal gauche</span>. نبرتها <span class="kw">ناعمة، ماصة، بعيدة</span> <span class="fr">Doux, humé, lointain, aspirant</span>. تُسمع أفضل والمريض <span class="kw">جالس مائل للأمام أثناء الزفير العميق</span> <span class="fr">Assis, penché en avant, expiration profonde</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Souffle de l'<b>IA</b> : diastolique de régurgitation, mélodie décroissante, proto-mésodiastolique. Maximum au 3ème EIC gauche (foyer d'Erb). Timbre doux, humé, lointain, aspirant. <b>Position optimale : assis, penché en avant, expiration profonde.</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q47</span><span class="q-ref">QCM n°59 U1 2024</span></div>
+  <div class="q-ar">الدحرجة الانبساطية لتضيق الميترال (RM)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">صوت <span class="kw">منخفض التردد، أجوف، هادر</span> <span class="fr">Basse fréquence, sourd, grondant</span>. يبدأ بعد <span class="kw">طرقة فتح الصمام الميترالي (COM)</span> <span class="fr">Claquement d'ouverture mitrale</span>. يُظهر <span class="kw">تعزيزاً قبل انقباضي</span> <span class="fr">Renforcement présystolique</span> إذا كان الإيقاع جيبياً. أقصاه عند القمة <span class="fr">Apex</span> دون انتشار كبير. يترافق مع <span class="kw">شدة B1</span> <span class="fr">Éclat de B1</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>roulement diastolique du RM</b> : basse fréquence, sourd, grondant. Débute après le COM. Renforcement présystolique (si rythme sinusal). Maximum à l'apex. Associé à un éclat de B1.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q48</span><span class="q-ref">QCM n°60 U1 2024</span></div>
+  <div class="q-ar">تعديل النفخات بالمناورات الديناميكية</div>
+  <div class="answer-badge">✅ Réponse : A, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">الشهيق العميق</span> يزيد أصوات ونفخات القلب الأيمن <span class="fr">Signe de Rivero-Carvallo</span>. <span class="kw">الزفير العميق</span> يفضل سماع نفخات القلب الأيسر. <span class="kw">القرفصاء</span> <span class="fr">Squat</span> يزيد معظم النفخات اليسرى. <span class="danger">الوقوف ينقص</span> نفخة اعتلال العضلة القلبية التضخمي الانسدادي (وليس يزيدها). مناورة فالسالفا <span class="fr">Valsalva</span> تنقص معظم النفخات ما عدا CMHO.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Manœuvres dynamiques : l'<b>inspiration</b> augmente les souffles droits (<b>signe de Rivero-Carvallo</b>). L'<b>expiration</b> favorise les souffles gauches. Le <b>squatting</b> augmente les souffles gauches. Valsalva diminue la plupart des souffles sauf CMHO.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q49</span><span class="q-ref">QCM n°61 U1 2024</span></div>
+  <div class="q-ar">النفخة المستمرة (Souffle continu)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">النفخة المستمرة <span class="fr">Souffle continu</span> تُسمع بدون انقطاع خلال الانقباض والانبساط <span class="fr">Sans interruption systole et diastole</span>. لها <span class="kw">تعزيز أقصى في نهاية الانقباض وبداية الانبساط</span>. مميزة لـ<span class="kw">بقاء القناة الشريانية</span> <span class="fr">Persistance du canal artériel (PCA)</span> وكذلك الناسور الشرياني الوريدي <span class="fr">Fistule artério-veineuse</span>. ليست تامورية المنشأ.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>souffle continu</b> (systole + diastole sans interruption) avec renforcement télésystolique. Caractéristique de la <b>persistance du canal artériel (PCA)</b> et des fistules artério-veineuses. Pas d'origine péricardique.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-wrap" id="sec6">
+  <div class="section-title">Pouls, PA, Sémiologie Veineuse & États de Choc - السيميولوجيا الوعائية — النبض، الضغط الشرياني، والصدمة</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q50</span><span class="q-ref"></span></div>
+  <div class="q-ar">فحص النبض المحيطي</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">يجب أن يكون <span class="kw">ثنائي الجانب ومقارناً دائماً</span> <span class="fr">Bilatéral et comparatif</span>. يشمل النبض الصدغي، السباتي، العضدي، الكعبري، الفخذي، المأبضي، الظنبوبي الخلفي والقدمي <span class="fr">Temporal, carotidien, huméral, radial, fémoral, poplité, tibial postérieur, pédieux</span>. نبض <span class="kw">غير متناظر أو مختفي</span> يوحي بمرض انسداد الشرايين <span class="fr">AOMI</span> أو تسلخ أبهري. النبض الفخذي يُبحث عنه عند الرضيع مرتفع الضغط (تضيق الأبهر). نبض جيد <span class="danger">لا ينفي</span> المرض الشرياني قطعياً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'examen du pouls doit être <b>bilatéral et comparatif</b>. Sites : temporal, carotidien, huméral, radial, fémoral, poplité, tibial postérieur, pédieux. Un pouls asymétrique ou absent évoque AOMI ou dissection aortique.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q51</span><span class="q-ref"></span></div>
+  <div class="q-ar">اضطرابات سعة النبض</div>
+  <div class="answer-badge">✅ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">نبض كوريغان</span> <span class="fr">Pouls de Corrigan</span>: واسع ونطاط — مميز للقصور الأبهري. <span class="kw">النبض الصغير المتأخر</span> <span class="fr">Pulsus parvus et tardus</span>: مميز لتضيق الأبهر الشديد. <span class="kw">النبض المتناقض</span> <span class="fr">Pouls paradoxal</span>: انخفاض ضغط الدم الانقباضي &gt; 10 mmHg أثناء الشهيق — مميز للاندحاق التاموري <span class="fr">Tamponnade</span>. <span class="kw">النبض المتناوب</span> <span class="fr">Pouls alternant</span>: تناوب بين نبضة قوية وضعيفة — علامة قصور أيسر شديد.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> <b>Pouls de Corrigan</b> (ample, bondissant) = IA. <b>Pulsus parvus et tardus</b> (petit, retardé) = RA serré. <b>Pouls paradoxal</b> (chute PAS &gt; 10 mmHg à l'inspiration) = tamponnade. <b>Pouls alternant</b> = IVG sévère.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q52</span><span class="q-ref"></span></div>
+  <div class="q-ar">قياس الضغط الشرياني الصحيح</div>
+  <div class="answer-badge">✅ Réponse : A, B, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">يتطلب: <span class="kw">كفة مناسبة لحجم الذراع</span> <span class="fr">Brassard adapté</span>، راحة <span class="kw">5 دقائق</span> على الأقل، تفريغ بطيء (2-3 mmHg/ث وليس 10)، قياس في <span class="kw">الذراعين</span> عند أول استشارة <span class="fr">PA aux deux bras</span>، وتأكيد بعدة قياسات.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Mesure correcte de la PA : brassard adapté, repos ≥ 5 min, dégonflage lent (2-3 mmHg/s), PA aux deux bras à la première consultation, confirmation par plusieurs mesures.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q53</span><span class="q-ref"></span></div>
+  <div class="q-ar">أطوار أصوات كوروتكوف</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الطور الأول <span class="fr">Phase I</span>: ظهور أول الأصوات = <span class="kw">الضغط الانقباضي</span> <span class="fr">PAS</span>. الطور الرابع: خفوت الأصوات <span class="fr">Assourdissement</span>. الطور الخامس <span class="fr">Phase V</span>: اختفاء كامل = <span class="kw">الضغط الانبساطي</span> <span class="fr">PAD</span>. عند الطفل أو الحامل قد لا تختفي الأصوات — فنعتمد الطور الرابع للانبساطي.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Bruits de Korotkoff : <b>Phase I</b> (apparition des sons) = PAS. <b>Phase V</b> (disparition complète) = PAD. Chez l'enfant ou la femme enceinte : utiliser la Phase IV si les sons ne disparaissent pas.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q54</span><span class="q-ref"></span></div>
+  <div class="q-ar">تعريف ارتفاع الضغط الشرياني (HTA)</div>
+  <div class="answer-badge">✅ Réponse : A, B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">في العيادة: <span class="kw">PAS ≥ 140</span> و/أو <span class="kw">PAD ≥ 90 mmHg</span>. في القياس الذاتي المنزلي: PAS ≥ 135 و/أو PAD ≥ 85. يجب تأكيده بعدة قياسات وليس قياساً واحداً تحت التوتر. ارتفاع الضغط الانقباضي المعزول عند كبار السن يُعرف بـ PAS ≥ 140 مع PAD طبيعي.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Définition de l'<b>HTA</b> en consultation : PAS ≥ 140 et/ou PAD ≥ 90 mmHg. En automesure : PAS ≥ 135 et/ou PAD ≥ 85. Confirmation par plusieurs mesures nécessaire.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q55</span><span class="q-ref"></span></div>
+  <div class="q-ar">علامات الخثار الوريدي العميق (TVP/Phlébite)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ألم أحادي الجانب في الربلة <span class="fr">Douleur unilatérale du mollet</span>، وذمة أحادية دافئة <span class="fr">Œdème unilatéral chaud</span>، نقص تموج الربلة <span class="fr">Diminution du ballottement</span>، و<span class="kw">علامة هومانز إيجابية</span> <span class="fr">Signe de Homans</span> (ألم بالعطف الظهري للقدم). <span class="danger">لا يوجد اختفاء للنبض القدمي</span> — ذلك علامة شريانية وليست وريدية.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Signes de <b>TVP (phlébite)</b> : douleur unilatérale du mollet, œdème unilatéral chaud, diminution du ballottement, signe de Homans positif (douleur à la dorsiflexion du pied). <em>Pas de disparition du pouls pédieux (signe artériel, pas veineux).</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q56</span><span class="q-ref"></span></div>
+  <div class="q-ar">القصور الوريدي المزمن السطحي (IVC)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">يتجلى بـ<span class="kw">الدوالي</span> <span class="fr">Varices</span>، ثقل الساقين يتفاقم مساءً وبالحرارة، اضطرابات جلدية غذائية <span class="fr">Dermite ocre, atrophie blanche, eczéma variqueux</span>، قرحات وريدية حول الكعب <span class="fr">Ulcères péri-malléolaires</span>، ووذمة ثنائية تأخذ الحفرة وتتحسن صباحاً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>IVC</b> : varices, lourdeur vespérale aggravée par la chaleur, troubles trophiques (dermite ocre, atrophie blanche, eczéma variqueux), ulcères péri-malléolaires, œdème bilatéral prenant le godet s'améliorant le matin.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q57</span><span class="q-ref"></span></div>
+  <div class="q-ar">الوذمة اللمفاوية مقارنة بالوذمة الوريدية</div>
+  <div class="answer-badge">✅ Réponse : A, B, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الوذمة اللمفاوية <span class="fr">Lymphœdème</span> تتميز بأنها <span class="kw">قاسية لا تأخذ الحفرة</span> <span class="fr">Dur, ne prend pas le godet</span> (مزمنة). <span class="kw">علامة ستيمر إيجابية</span> <span class="fr">Signe de Stemmer</span> (استحالة طي جلد الإصبع الثاني). أحادية الجانب غالباً ولا تتحسن بالراحة الليلية. تميل للإصابة بالحمرة <span class="fr">Érysipèle</span>. <span class="danger">لا تحافظ على نحافة أصابع القدم</span> — بل تتورم.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>lymphœdème</b> : dur, ne prend pas le godet (chronique). <b>Signe de Stemmer positif</b> (impossibilité de plisser la peau du 2ème orteil). Unilatéral, ne s'améliore pas au repos nocturne. Prédispose à l'érysipèle.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q58</span><span class="q-ref"></span></div>
+  <div class="q-ar">تعريف حالة الصدمة (État de choc)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">قصور الدورة الدموية الحاد: <span class="kw">PAS &lt; 90 mmHg</span> أو انخفاض 40 عن الأساسي، نقص تروية محيطية <span class="fr">Marbrures, extrémités froides et cyanosées</span>، اضطراب وعي، قلة بول <span class="fr">Oligurie &lt; 0.5 ml/kg/h</span>، وارتفاع حمض اللاكتيك <span class="fr">Hyperlactatémie</span> (دليل الاستقلاب اللاهوائي).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>état de choc</b> : PAS &lt; 90 mmHg ou chute de 40, hypoperfusion périphérique (marbrures, extrémités froides et cyanosées), troubles de conscience, oligurie &lt; 0.5 ml/kg/h, hyperlactatémie.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q59</span><span class="q-ref"></span></div>
+  <div class="q-ar">الصدمة القلبية (Choc cardiogénique)</div>
+  <div class="answer-badge">✅ Réponse : A, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">فشل بدئي في المضخة القلبية <span class="fr">Défaillance primitive de la pompe</span> (احتشاء واسع، التهاب عضلة قلبية). يترافق مع <span class="kw">انتفاخ وداجي وخراخر فرقعية</span> <span class="fr">Turgescence jugulaire + râles crépitants</span> (احتقان أمامي). <span class="kw">مؤشر القلب منهار</span> <span class="fr">Index cardiaque effondré</span>. ضغوط الامتلاء <span class="danger">مرتفعة وليست منخفضة</span>. المقاومات المحيطية مرتفعة (تضيق وعائي تعويضي) وليست منهارة.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>choc cardiogénique</b> : défaillance primitive de la pompe (IDM étendu, myocardite). Turgescence jugulaire + râles crépitants. Index cardiaque effondré. <b>Pressions de remplissage élevées</b> (pas basses). Résistances périphériques élevées.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q60</span><span class="q-ref"></span></div>
+  <div class="q-ar">أنواع الصدمة والترابطات الفسيولوجية المرضية</div>
+  <div class="answer-badge">✅ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">نقص الحجم</span> <span class="fr">Hypovolémique</span>: نقص العود الوريدي + PVC منخفضة + تضيق وعائي. <span class="kw">التحسسية</span> <span class="fr">Anaphylactique</span>: توزيعية مع توسع وعائي ضخم. <span class="kw">الإنتانية</span> <span class="fr">Septique</span>: توزيعية بنتاج قلبي مرتفع أولاً (صدمة دافئة) ثم ينهار. <span class="kw">الانسدادية</span> <span class="fr">Obstructif</span>: اندحاق تاموري أو انسداد رئوي ضخم. جميع هذه الترابطات صحيحة.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Types de choc : <b>Hypovolémique</b> (PVC basse), <b>Anaphylactique</b> (vasodilatation massive), <b>Septique</b> (distributif, DC élevé puis effondré), <b>Obstructif</b> (tamponnade, EP massive).</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-wrap" id="sec7">
+  <div class="section-title">Bases, Anomalies, Hypertrophies & Blocs - تخطيط القلب الكهربائي (ECG)</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q61</span><span class="q-ref"></span></div>
+  <div class="q-ar">الاتجاهات الأمامية (الطرفية) للتخطيط</div>
+  <div class="answer-badge">✅ Réponse : A, B, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">تشمل الثنائية القطب <span class="fr">D1, D2, D3</span> والأحادية المعززة <span class="fr">aVR, aVL, aVF</span>. تستكشف القلب في <span class="kw">المستوى الأمامي</span> <span class="fr">Plan frontal</span> (وليس الأفقي). تسمح بحساب المحور الكهربائي لمركب QRS. تتطلب 4 أقطاب على الأطراف (أحمر، أصفر، أخضر، أسود).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Dérivations frontales (périphériques) : bipolaires (D1, D2, D3) et unipolaires augmentées (aVR, aVL, aVF). Explorent le cœur dans le <b>plan frontal</b>. Permettent de calculer l'axe de QRS. 4 électrodes sur les membres.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q62</span><span class="q-ref"></span></div>
+  <div class="q-ar">الاتجاهات أمام القلب (V1-V6)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">تستكشف القلب في <span class="kw">المستوى الأفقي</span> <span class="fr">Plan horizontal</span>. V1-V2 على جانبي القص في الفراغ الوربي الرابع. V4 في الفراغ الخامس على خط منتصف الترقوة. <span class="kw">V1-V2</span> تستكشف البطين الأيمن والحاجز. <span class="kw">V5-V6</span> تستكشف الجدار الجانبي للبطين الأيسر.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Dérivations précordiales (V1-V6) : explorent le cœur dans le <b>plan horizontal</b>. V1-V2 = VD et septum. V5-V6 = paroi latérale VG. V4 = 5ème EIC ligne médioclaviculaire.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q63</span><span class="q-ref"></span></div>
+  <div class="q-ar">ورقة التخطيط: السرعة والمعايرة</div>
+  <div class="answer-badge">✅ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">بسرعة 25 مم/ث: المربع الصغير (1 مم) = <span class="kw">0.04 ثانية</span>. المربع الكبير (5 مم) = <span class="kw">0.20 ثانية</span>. المعايرة المعيارية: <span class="kw">1 mV = 10 mm</span>. سرعة 50 مم/ث توسع المركبات ظاهرياً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Papier ECG à 25 mm/s : petit carreau (1 mm) = <b>0.04 s</b>, grand carreau (5 mm) = <b>0.20 s</b>. Étalonnage standard : <b>1 mV = 10 mm</b>.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q64</span><span class="q-ref"></span></div>
+  <div class="q-ar">موجة P الطبيعية</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">تمثل <span class="kw">زوال استقطاب الأذينين</span> <span class="fr">Dépolarisation des oreillettes</span>. مدتها &lt; <span class="fr">0.12 s</span>. سعتها &lt; 2.5 mm. <span class="kw">سالبة دائماً في aVR</span> بالإيقاع الجيبي. لا تمثل عودة استقطاب الأذينين (تلك مخفية داخل QRS).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>onde P</b> = dépolarisation des oreillettes. Durée &lt; 0.12 s, amplitude &lt; 2.5 mm. <b>Toujours négative en aVR</b> en rythme sinusal. Ne représente pas la repolarisation auriculaire (masquée dans QRS).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q65</span><span class="q-ref"></span></div>
+  <div class="q-ar">مسافة PR (الفاصل الأذيني البطيني)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">من بداية P إلى بداية QRS. الطبيعي: <span class="kw">0.12 - 0.20 ثانية</span>. <span class="danger">PR قصير &lt; 0.12</span> = متلازمة WPW <span class="fr">Wolff-Parkinson-White</span> (سبق التنبيه). <span class="danger">PR طويل &gt; 0.20</span> = إحصار أذيني بطيني من الدرجة الأولى <span class="fr">BAV 1</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>intervalle PR</b> : du début de P au début de QRS. Normal : 0.12 - 0.20 s. PR court &lt; 0.12 = syndrome de <b>WPW</b> (pré-excitation). PR long &gt; 0.20 = <b>BAV 1</b>.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q66</span><span class="q-ref"></span></div>
+  <div class="q-ar">مركب QRS</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">يمثل <span class="kw">زوال استقطاب البطينين</span>. المدة الطبيعية &lt; <span class="kw">0.10 ثانية</span>. إذا كان ≥ 0.12 ثانية = <span class="danger">إحصار فرع</span> <span class="fr">Bloc de branche</span>. موجة Q هي أول انحراف <span class="kw">سالب</span> (وليس موجب). موجة R أول انحراف موجب. موجة S الانحراف السالب بعد R.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>complexe QRS</b> = dépolarisation ventriculaire. Durée normale &lt; 0.10 s. Si ≥ 0.12 s = <b>bloc de branche</b>. Onde Q = première déflexion négative. Onde R = première déflexion positive. Onde S = déflexion négative après R.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q67</span><span class="q-ref"></span></div>
+  <div class="q-ar">قطعة ST وموجة T</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">تمثلان <span class="kw">عودة استقطاب البطينين</span> <span class="fr">Repolarisation ventriculaire</span>. ST الطبيعية على خط الأساس <span class="fr">Isoélectrique</span>. موجة T طبيعياً غير متناظرة (صعود أبطأ من الهبوط)، موجبة في معظم الاتجاهات. <span class="danger">ارتفاع ST مستمر ومنهجي</span> يوحي باحتشاء حاد <span class="fr">IDM ST+</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>segment ST</b> et l'<b>onde T</b> = repolarisation ventriculaire. ST normalement isoélectrique. T asymétrique (montée lente, descente rapide), positive dans la plupart des dérivations. <b>Sus-décalage ST persistant et systématisé = IDM ST+.</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q68</span><span class="q-ref"></span></div>
+  <div class="q-ar">فاصل QT ومخاطره</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">من بداية QRS إلى نهاية T. يمثل مجمل الاستقطاب وعودته <span class="fr">Systole électrique</span>. يقصر مع تسرع القلب. يُصحح بمعادلة بازيت <span class="fr">Bazett</span> = QTc. <span class="danger">QT الطويل</span> يعرض لاضطرابات نظم بطينية خطيرة <span class="fr">Torsades de pointes</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>intervalle QT</b> : du début de QRS à la fin de T = systole électrique. Raccourcit en tachycardie. Corrigé par la formule de Bazett = QTc. <b>QT long = risque de torsades de pointes.</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q69</span><span class="q-ref"></span></div>
+  <div class="q-ar">الإيقاع الجيبي الطبيعي</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">يُعرف بـ: موجة P <span class="kw">موجبة في D1, D2, aVF وسالبة في aVR</span>. كل P يتبعها QRS. فواصل PP وRR منتظمة. <span class="kw">60-100 نبضة/دقيقة</span>. إيقاع منتظم بـ 120/دقيقة مع موجات P جيبية = تسرع جيبي <span class="fr">Tachycardie sinusale</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> <b>Rythme sinusal</b> : onde P positive en D1, D2, aVF et négative en aVR. Chaque P suivie d'un QRS. Intervalles PP et RR réguliers. FC = 60-100 bpm. Rythme régulier à 120/min avec P sinusales = tachycardie sinusale.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q70</span><span class="q-ref"></span></div>
+  <div class="q-ar">الرجفان الأذيني (FA) في التخطيط</div>
+  <div class="answer-badge">✅ Réponse : A, B, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">اختفاء كامل لموجات P</span> واستبدالها بارتعاش خط الأساس <span class="fr">Trémulation de la ligne de base (ondes f)</span>. مركبات QRS رفيعة لكن <span class="danger">غير منتظمة تماماً</span> <span class="fr">Totalement irréguliers</span> (فوضى بطينية). الفواصل RR <span class="danger">ليست ثابتة ومنتظمة</span>. التردد الأذيني 400-600/د. خطر انسداد صمّي يتطلب تمييع الدم.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>fibrillation auriculaire (FA)</b> : disparition complète des ondes P, remplacées par une trémulation de la ligne de base (ondes f). QRS fins mais <b>totalement irréguliers</b>. Intervalles RR irréguliers. Fréquence auriculaire 400-600/min.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q71</span><span class="q-ref"></span></div>
+  <div class="q-ar">الرفرفة الأذينية (Flutter auriculaire)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">موجات نشاط أذيني منتظمة تشبه <span class="kw">"أسنان المنشار" أو "سقف المصنع"</span> <span class="fr">Dents de scie / toit d'usine (ondes F)</span>. غياب خط الأساس في الاتجاهات السفلية. التردد الأذيني حوالي <span class="kw">300/د</span>. توصيل غالباً منتظم 2:1 = نبض بطيني 150/د. مركبات QRS <span class="danger">ليست عريضة ومتعددة الأشكال</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>flutter auriculaire</b> : ondes F régulières en « dents de scie / toit d'usine ». Absence de ligne isoélectrique. Fréquence auriculaire ≈ 300/min. Conduction habituelle 2:1 → FC ventriculaire ≈ 150/min. QRS non élargis.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q72</span><span class="q-ref"></span></div>
+  <div class="q-ar">النبضات البطينية المبكرة (ESV)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">مركب QRS <span class="kw">مبكر، عريض ≥ 0.12 s ومشوه</span>، بدون موجة P سابقة. موجة T معكوسة. وقفة تعويضية كاملة غالباً. <span class="danger">ليست حميدة دائماً</span> — كثرتها أو بعض أشكالها قد تكون خطيرة.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>extrasystole ventriculaire (ESV)</b> : QRS prématuré, large ≥ 0.12 s et déformé, sans onde P précédente. Onde T inversée. Pause compensatrice complète. <em>Pas toujours bénigne — certaines formes sont dangereuses.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q73</span><span class="q-ref"></span></div>
+  <div class="q-ar">تضخم الأذين الأيسر (HAG) في التخطيط</div>
+  <div class="answer-badge">✅ Réponse : B, C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">موجة P <span class="kw">عريضة ≥ 0.12 s ومزدوجة القمة</span> <span class="fr">Élargie, bifide (double bosse)</span> في D1, D2. انحراف طرفي سالب عريض وعميق في V1 <span class="fr">Déflexion terminale négative large en V1</span>. موجة P الواسعة المدببة في D2, D3, aVF تشير لتضخم الأذين <span class="danger">الأيمن</span> وليس الأيسر.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>HAG</b> (hypertrophie auriculaire gauche) : onde P élargie ≥ 0.12 s et bifide (double bosse) en D1, D2. Déflexion terminale négative large en V1. <em>Attention : P large et pointue en D2, D3, aVF = HAD (droite), pas gauche.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q74</span><span class="q-ref"></span></div>
+  <div class="q-ar">تضخم البطين الأيسر (HVG) ومعاييره</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">زيادة سعة QRS. مؤشر <span class="kw">سوكولوف-ليون</span>: S في V1 + R في V5/V6 <span class="kw">&gt; 35 mm</span>. مؤشر <span class="kw">كورنيل</span>: R في aVL + S في V3 &gt; 28 mm (رجل) أو &gt; 20 mm (امرأة). انحراف محوري أيسر. اضطرابات عودة الاستقطاب الثانوية <span class="fr">Troubles de repolarisation secondaires</span> في V5, V6, D1, aVL.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>HVG</b> : indice de Sokolow-Lyon (S en V1 + R en V5/V6 <b>&gt; 35 mm</b>). Indice de Cornell (R en aVL + S en V3 &gt; 28 mm homme, &gt; 20 mm femme). Déviation axiale gauche. Troubles de repolarisation secondaires en V5, V6, D1, aVL.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q75</span><span class="q-ref"></span></div>
+  <div class="q-ar">إحصار الفرع الأيمن الكامل (BBD)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">QRS <span class="kw">≥ 0.12 s</span>. مظهر <span class="kw">rsR' أو "أذني الأرنب"</span> <span class="fr">Oreilles de lapin</span> في V1-V2. موجة S عريضة في الاتجاهات اليسرى. اضطرابات عودة الاستقطاب (T سالبة) في V1-V2. <span class="danger">ليس هناك انحراف محوري أيسر إلزامي</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>BBD complet</b> : QRS ≥ 0.12 s, aspect rsR' ou « oreilles de lapin » en V1-V2, onde S large dans les dérivations gauches. T négatives en V1-V2. <em>Pas de déviation axiale gauche obligatoire.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q76</span><span class="q-ref"></span></div>
+  <div class="q-ar">إحصار الفرع الأيسر الكامل (BBG)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">QRS <span class="kw">≥ 0.12 s</span>. مظهر QS أو rS في V1-V2. موجة R وحيدة وعريضة ومقببة في V5-V6, D1, aVL. <span class="kw">اختفاء موجة q الفسيولوجية</span> في V5-V6. تعديلات ثانوية لـ ST و T معاكسة للانحراف الرئيسي لـ QRS.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>BBG complet</b> : QRS ≥ 0.12 s, QS ou rS en V1-V2, onde R monophasique large et voûtée en V5-V6, D1, aVL. Disparition de l'onde q physiologique en V5-V6. Modifications secondaires de ST et T.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q77</span><span class="q-ref"></span></div>
+  <div class="q-ar">الإحصارات الأذينية البطينية (BAV)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">BAV 1</span>: PR ثابت &gt; 0.20 s، كل P تتبعها QRS. <span class="kw">BAV 2 Mobitz I (Wenckebach)</span>: استطالة تدريجية لـ PR حتى حجب موجة P. <span class="kw">BAV 2 Mobitz II</span>: حجب P متقطع بدون استطالة سابقة. <span class="kw">BAV 3 (كامل)</span>: انفصال أذيني بطيني تام. <span class="danger">Mobitz II و BAV 3</span> يتطلبان غالباً ناظم قلب <span class="fr">Pacemaker</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Les <b>BAV</b> : BAV 1 = PR fixe &gt; 0.20 s. BAV 2 Mobitz I (Wenckebach) = allongement progressif de PR. BAV 2 Mobitz II = blocage intermittent sans allongement. BAV 3 (complet) = dissociation AV totale. <b>Mobitz II et BAV 3 = indication de pacemaker.</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q78</span><span class="q-ref"></span></div>
+  <div class="q-ar">ثلاثية التخطيط في الانسداد الرئوي الحاد</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">تسرع قلب جيبي (الأكثر شيوعاً لكن غير نوعي). المظهر الشهير <span class="kw">S1Q3</span> (موجة S عميقة في D1 + موجة Q مرضية في D3). إحصار فرع أيمن كامل أو غير كامل حديث. موجات T سالبة في V1-V4. <span class="danger">لا يوجد ارتفاع ST عملاق</span> من V1 إلى V6 — ذلك يوحي باحتشاء وليس انسداد رئوي.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> ECG dans l'<b>EP aiguë</b> : tachycardie sinusale (fréquent mais non spécifique), aspect <b>S1Q3</b> (S profonde en D1 + Q en D3), BBD récent, T négatives en V1-V4. <em>Pas de sus-décalage ST géant V1→V6 (c'est l'IDM).</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q79</span><span class="q-ref"></span></div>
+  <div class="q-ar">علامات فرط بوتاسيوم الدم في التخطيط</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">بالترتيب: موجات T <span class="kw">عالية، مدببة، متناظرة، ضيقة القاعدة</span> <span class="fr">En tente de campement</span>. ثم <span class="kw">اتساع تدريجي لـ QRS</span>. ثم تسطح واختفاء موجة P. ثم مظهر <span class="danger">موجة جيبية</span> <span class="fr">Onde sinusoïdale</span> (قبل التوقف القلبي). <span class="danger">ليس هناك تقصير كبير لـ PR</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> <b>Hyperkaliémie</b> à l'ECG (par ordre) : ondes T hautes, pointues, symétriques, à base étroite (« en tente de campement »). Puis élargissement progressif de QRS. Puis aplatissement/disparition de P. Puis onde sinusoïdale (pré-arrêt). <em>Pas de raccourcissement de PR.</em></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-wrap" id="sec8">
+  <div class="section-title">Sémiologie Avancée, Intégration Clinique & Examens Complémentaires - السيميولوجيا المتقدمة، التكامل السريري والفحوصات المكملة</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q80</span><span class="q-ref"></span></div>
+  <div class="q-ar">صورة الصدر الأمامية وتقييم القلب</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">تسمح بتقييم <span class="kw">الظل القلبي والمشعر القلبي الصدري</span> <span class="fr">ICT</span>. <span class="kw">ICT &gt; 0.50</span> = ضخامة قلبية <span class="fr">Cardiomégalie</span>. تقييم الأوعية الرئوية (إعادة توزيع نحو القمم، وذمة سنخية "أجنحة الفراشة"). تحديد الأقواس القلبية. <span class="danger">لا تكشف</span> شذوذات الحركية الجدارية القطعية الدقيقة — ذلك يتطلب إيكو أو رنين.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>radiographie thoracique</b> : évalue la silhouette cardiaque et l'<b>ICT</b> (&gt; 0.50 = cardiomégalie). Vascularisation pulmonaire (redistribution apicale, œdème en « ailes de papillon »). <em>Ne détecte pas les anomalies segmentaires de cinétique (échographie ou IRM nécessaires).</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q81</span><span class="q-ref"></span></div>
+  <div class="q-ar">الإيكو القلبي-دوبلر (ETT)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الفحص الأساسي غير الباضع في القلبية. يقيم: <span class="kw">أبعاد التجاويف</span>، سمك الجدران (تضخم)، <span class="kw">الكسر القذفي</span> <span class="fr">FEVG</span>، تشريح الصمامات (تضيق، تسريب)، والضغوط داخل القلب والرئوية عبر تحليل دوبلر.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>échocardiographie-Doppler (ETT)</b> : examen non invasif de référence en cardiologie. Évalue : dimensions des cavités, épaisseur pariétale, <b>FEVG</b>, anatomie valvulaire (sténose, fuite), pressions intracardiaques et pulmonaires.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q82</span><span class="q-ref"></span></div>
+  <div class="q-ar">الكسر القذفي الطبيعي للبطين الأيسر (FEVG)</div>
+  <div class="answer-badge">✅ Réponse : B, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الطبيعي بين <span class="kw">50% و 70%</span>. في قصور القلب بكسر قذفي منخفض <span class="fr">ICFEr</span>: FEVG &lt; 40%. قد يبقى الكسر القذفي <span class="kw">طبيعياً</span> في قصور القلب بكسر قذفي محفوظ <span class="fr">ICFEp</span> (مشكلة في الارتخاء وليس الانقباض).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> <b>FEVG</b> normale : 50-70%. ICFEr (IC à FE réduite) : FEVG &lt; 40%. L'ICFEp (IC à FE préservée) a une FEVG normale (problème de relaxation, pas de contraction).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q83</span><span class="q-ref"></span></div>
+  <div class="q-ar">الواسمات الحيوية الدموية القلبية</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">التروبونين</span>: دليل نخر عضلي قلبي (احتشاء، التهاب عضلة قلبية). <span class="kw">BNP/NT-proBNP</span>: دليل تمدد عضلي (قصور قلب). <span class="kw">D-dimères</span>: سلبيتها تنفي الجلطة الوريدية/الرئوية. <span class="kw">CRP</span>: التهاب (التهاب تامور/عضلة قلبية). <span class="danger">الترانساميناز (ASAT/ALAT) ليست نوعية</span> للاحتشاء — ترتفع في أمراض الكبد أيضاً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Biomarqueurs cardiaques : <b>Troponine</b> = nécrose myocardique. <b>BNP/NT-proBNP</b> = distension myocardique (IC). <b>D-dimères</b> négatifs = exclusion de TVP/EP. <b>CRP</b> = inflammation. <em>Les transaminases ne sont pas spécifiques de l'IDM.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q84</span><span class="q-ref"></span></div>
+  <div class="q-ar">الوذمة الرئوية الحادة القلبية (OAP)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ضيق تنفس مفاجئ، غالباً ليلي، مع أورثوبنيا كبرى. سعال مع <span class="kw">بصاق وردي رغوي</span> <span class="fr">Expectoration rosée, mousseuse, saumonée</span>. قلق شديد، تعرق، زراق. خراخر فرقعية ثنائية <span class="kw">صاعدة من القواعد نحو القمم</span> <span class="fr">Marée montante de râles crépitants</span>. الضغط <span class="danger">ليس منهاراً دائماً</span> — بل قد يكون مرتفعاً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>OAP cardiaque</b> : dyspnée brutale souvent nocturne avec orthopnée majeure. Expectoration rosée, mousseuse, saumonée. Marée montante de râles crépitants bilatéraux. <em>La PA n'est pas toujours effondrée — elle peut être élevée.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q85</span><span class="q-ref"></span></div>
+  <div class="q-ar">الاندحاق التاموري (Tamponnade)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">انخفاض ضغط مع <span class="kw">تقارب الضغط النبضي</span> <span class="fr">Pincement de la différentielle</span>. قصور قلب أيمن حاد (انتفاخ وداجي كبير). <span class="kw">أصوات قلب خافتة</span> <span class="fr">Bruits assourdis</span>. <span class="kw">نبض متناقض</span> <span class="fr">Pouls paradoxal</span>. صدمة قلبية أو انسدادية تتطلب <span class="danger">تفريغ تاموري عاجل</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>tamponnade</b> : hypotension avec pincement de la différentielle. IVD aiguë (turgescence jugulaire majeure). Bruits du cœur assourdis. <b>Pouls paradoxal.</b> Urgence = <b>drainage péricardique en urgence</b>.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q86</span><span class="q-ref"></span></div>
+  <div class="q-ar">المتلازمة التاجية الحادة مع ارتفاع ST (SCA ST+)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">انسداد خثاري كامل لشريان تاجي <span class="fr">Occlusion thrombotique aiguë et complète</span>. ألم ذبحي ممتد &gt; 30 دقيقة مقاوم للنيتروجليسرين. في التخطيط: <span class="kw">ارتفاع ST محدب للأعلى</span> <span class="fr">Onde de Pardee</span> في اتجاهين متجاورين على الأقل يستكشفان نفس المنطقة. يتطلب <span class="danger">إعادة تروية عاجلة</span> <span class="fr">Angioplastie primaire ou thrombolyse</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>SCA ST+</b> : occlusion thrombotique aiguë et complète d'une artère coronaire. Douleur angineuse &gt; 30 min résistante à la trinitrine. ECG : sus-décalage ST convexe en haut (<b>onde de Pardee</b>) dans ≥ 2 dérivations contiguës. <b>Revascularisation en urgence</b> (angioplastie primaire ou thrombolyse).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q87</span><span class="q-ref"></span></div>
+  <div class="q-ar">المنطقة السفلية في التخطيط</div>
+  <div class="answer-badge">✅ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الجدار السفلي للبطين الأيسر يُستكشف بـ: <span class="kw">D2, D3, aVF</span>. (وليس D1, aVL التي تستكشف الجانبي العلوي، ولا V1-V3 التي تستكشف الأمامي).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La paroi <b>inférieure</b> du VG est explorée par : <b>D2, D3, aVF</b>.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q88</span><span class="q-ref"></span></div>
+  <div class="q-ar">المنطقة الأمامية/الحاجزية في التخطيط</div>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">الجدار الأمامي والحاجز يُستكشف بـ: <span class="kw">V1, V2, V3, V4</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La paroi <b>antérieure / septale</b> est explorée par : <b>V1, V2, V3, V4</b>.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q89</span><span class="q-ref"></span></div>
+  <div class="q-ar">العلامات المحيطية للقصور الأبهري المزمن الشديد</div>
+  <div class="answer-badge">✅ Réponse : A, B, C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">رقص السباتيات</span> <span class="fr">Danse des carotides</span>. <span class="kw">علامة موسيه</span> <span class="fr">Signe de Musset</span> (إيماءة الرأس مع النبض). <span class="kw">علامة كوينك</span> <span class="fr">Signe de Quincke</span> (نبض شعيري في الأظافر). ضغط انقباضي مرتفع مع انبساطي منهار = <span class="kw">اتساع ضغط النبض</span> (وليس تقاربه).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Signes périphériques de l'<b>IA chronique sévère</b> : <b>danse des carotides</b>, <b>signe de Musset</b> (hochement de tête synchrone au pouls), <b>signe de Quincke</b> (pouls capillaire unguéal). PA différentielle <b>élargie</b> (pas pincée).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q90</span><span class="q-ref"></span></div>
+  <div class="q-ar">متلازمة كلود برنار-هورنر مع ألم صدري</div>
+  <div class="answer-badge">✅ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">(تدلي جفن، تقبض حدقة، غؤور عين) <span class="fr">Ptosis, myosis, enophtalmie</span> مع ألم صدري يوحي بـ<span class="kw">تسلخ أبهري ممتد للجذوع الشريانية الكبيرة</span> <span class="fr">Dissection aortique étendue</span>. ليس احتشاءً أمامياً ولا ذبحة مستقرة ولا التهاب تامور.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>syndrome de Claude Bernard-Horner</b> (ptosis, myosis, enophtalmie) + douleur thoracique évoque une <b>dissection aortique étendue</b> aux troncs supra-aortiques. Ce n'est ni un IDM, ni un angor stable, ni une péricardite.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q91</span><span class="q-ref"></span></div>
+  <div class="q-ar">العرج المتقطع (Claudication intermittente)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">ألم كالشد العضلي في الربلة يظهر بعد <span class="kw">مسافة معينة من المشي</span> <span class="fr">Distance de marche</span>، يجبر على التوقف، ويخف بالراحة في دقائق. دليل سريري على <span class="kw">AOMI</span>. <span class="danger">ليس ألماً وريدياً</span> (الدوالي) ولا مفصلياً (الفصال العظمي).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>claudication intermittente</b> : crampe du mollet apparaissant après une certaine distance de marche, obligeant à l'arrêt, soulagée par le repos. Signe clinique d'<b>AOMI</b>. <em>Ce n'est pas une douleur veineuse ni articulaire.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q92</span><span class="q-ref"></span></div>
+  <div class="q-ar">مؤشر الضغط الانقباضي (IPS)</div>
+  <div class="answer-badge">✅ Réponse : A, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">يُحسب: <span class="kw">ضغط الكاحل الانقباضي / ضغط الذراع الانقباضي</span> <span class="fr">PA cheville / PA bras</span>. الطبيعي: <span class="kw">0.90 - 1.30</span>. <span class="danger">IPS &lt; 0.90</span> = مرضي يؤكد AOMI.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>IPS</b> (Index de Pression Systolique) = PA cheville / PA bras. Normal : 0.90 - 1.30. <b>IPS &lt; 0.90 = AOMI confirmée.</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q93</span><span class="q-ref"></span></div>
+  <div class="q-ar">توقف الانقباض (Asystolie) في التخطيط</div>
+  <div class="answer-badge">✅ Réponse : A, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">خط مستقيم على الأساس</span> <span class="fr">Ligne droite isoélectrique</span> بدون أي نشاط كهربائي بطيني. <span class="danger">حالة طوارئ مطلقة</span> (توقف قلبي تنفسي) تتطلب تدليك قلب فوري. ليست تسرعاً بطينياً ولا رجفاناً بطينياً.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>asystolie</b> : ligne droite isoélectrique sans aucune activité électrique ventriculaire. <b>Urgence absolue</b> = arrêt cardio-respiratoire nécessitant un massage cardiaque immédiat. Ce n'est ni une TV ni une FV.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q94</span><span class="q-ref"></span></div>
+  <div class="q-ar">تسرع القلب البطيني (TV)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">≥ 3 نبضات بطينية مبكرة متتالية. إيقاع منتظم بمركبات <span class="kw">QRS عريضة ≥ 0.12 s</span> بتردد 150-200/د. انفصال أذيني بطيني. <span class="danger">ليس دائماً محتملاً سريرياً</span>. خطر التطور نحو الرجفان البطيني والموت المفاجئ.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>tachycardie ventriculaire (TV)</b> : ≥ 3 ESV consécutives. Rythme régulier à QRS larges ≥ 0.12 s, FC 150-200/min. Dissociation AV. <em>Pas toujours bien tolérée.</em> Risque d'évolution vers FV et mort subite.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q95</span><span class="q-ref"></span></div>
+  <div class="q-ar">الرجفان البطيني (FV)</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">فوضى كهربائية بطينية تامة</span> بدون QRS واضح. غياب فعالية ميكانيكية (توقف دوراني فوري). المريض فاقد الوعي بدون نبض. العلاج الوحيد: <span class="danger">صدمة كهربائية فورية</span> <span class="fr">Défibrillation immédiate</span>. <span class="danger">ليس اضطراباً حميداً</span> — هو الأخطر على الإطلاق.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> La <b>fibrillation ventriculaire (FV)</b> : anarchie électrique ventriculaire totale sans QRS identifiable. Aucune activité mécanique efficace. Patient inconscient sans pouls. Seul traitement : <b>défibrillation immédiate</b>. <b>C'est le trouble du rythme le plus mortel.</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q96</span><span class="q-ref"></span></div>
+  <div class="q-ar">علامات الإنذار لسوء تحمل اضطراب النظم</div>
+  <div class="answer-badge">✅ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">انخفاض ضغط أو صدمة. ألم صدري ذبحي. ضيق تنفس حاد أو خراخر فرقعية (OAP). اضطراب وعي أو دوار أو إغماء. <span class="danger">جميعها تفرض تدبيراً طبياً عاجلاً ومكثفاً</span>.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Signes de <b>mauvaise tolérance</b> d'un trouble du rythme : hypotension/choc, douleur angineuse, dyspnée aiguë/OAP, troubles de conscience/syncope. <b>Tous imposent une prise en charge urgente et intensive.</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q97</span><span class="q-ref"></span></div>
+  <div class="q-ar">طرقة فتح الصمام الميترالي (COM)</div>
+  <div class="answer-badge">✅ Réponse : B, D, E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">تُسمع في <span class="kw">الانبساط مباشرة بعد B2</span> <span class="fr">En diastole, juste après B2</span>. عند البؤرة الميترالية. <span class="kw">مميزة لتضيق الميترال العضوي</span> <span class="fr">Pathognomonique du RM organique</span>. ليست انقباضية.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Le <b>claquement d'ouverture mitrale (COM)</b> : en diastole juste après B2, au foyer mitral. <b>Pathognomonique du RM organique.</b> Ce n'est pas un bruit systolique.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q98</span><span class="q-ref"></span></div>
+  <div class="q-ar">النفخة الانقباضية الأبهرية وارتباطها بالتخطيط</div>
+  <div class="answer-badge">✅ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">نفخة انقباضية خشنة في الفراغ الوربي الثاني الأيمن تنتشر للسباتيات (= تضيق أبهر) تترافق غالباً في التخطيط بـ<span class="kw">علامات تضخم البطين الأيسر</span> <span class="fr">HVG (Sokolow &gt; 35 mm)</span>. ليس تضخم أيمن ولا إحصار أيمن بالضرورة.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> Un souffle systolique rude au 2ème EIC droit irradiant aux carotides (= RA) s'associe souvent à l'ECG à des signes d'<b>HVG (Sokolow &gt; 35 mm)</b>. Ce n'est ni une HVD ni un BBD.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q99</span><span class="q-ref"></span></div>
+  <div class="q-ar">قصور القلب الشامل (Insuffisance cardiaque globale)</div>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">عندما يتعقد قصور القلب الأيسر المتقدم بقصور أيمن ثانوي، نتحدث عن <span class="kw">قصور قلب شامل</span> <span class="fr">Insuffisance cardiaque globale</span>. ليس اعتلالاً خلقياً مزرقاً، ولا قلباً رئوياً مزمناً صرفاً، ولا متلازمة رينو، ولا التهاب عضلة قلبية صاعقاً بحد ذاته.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>insuffisance cardiaque globale</b> = IVG avancée compliquée d'IVD secondaire. Ce n'est pas une cardiopathie congénitale cyanogène, ni un cœur pulmonaire chronique isolé, ni un syndrome de Raynaud, ni une myocardite fulminante isolée.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q100</span><span class="q-ref"></span></div>
+  <div class="q-ar">وذمات الأطراف السفلية ذات المنشأ القلبي</div>
+  <div class="answer-badge">✅ Réponse : A, B, C, D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">مرتبطة بـ<span class="kw">احتباس الماء والملح</span> بتفعيل جهاز الرينين-أنجيوتنسين-ألدوستيرون. تُفاقم بارتفاع الضغط الوريدي <span class="fr">Pression hydrostatique veineuse</span>. <span class="kw">ثنائية، متناظرة، بيضاء، رخوة، تأخذ الحفرة</span>. تظهر في المناطق المنخفضة (كاحل واقفاً، عجز مستلقياً). <span class="danger">لا تختفي بالربط الوريدي وحده</span> — تتطلب علاج السبب القلبي.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> <b>OMI d'origine cardiaque</b> : rétention hydrosodée (activation SRAA). Bilatéraux, symétriques, blancs, mous, prenant le godet. Déclives (chevilles debout, sacrum couché). <em>Ne disparaissent pas par un simple bandage veineux — il faut traiter la cause cardiaque.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q101</span><span class="q-ref"></span></div>
+  <div class="q-ar">أم الدم الأبهرية البطنية (AAA)</div>
+  <div class="answer-badge">✅ Réponse : A, C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar">كتلة بطنية <span class="kw">نابضة ومتمددة</span> <span class="fr">Battante et expansive</span>، حول السرة أو فوق المعدة. قد تترافق مع نفخة انقباضية عند التسمع البطني <span class="fr">Souffle systolique abdominal</span>. ليست ألم ماكبيرني (التهاب زائدة) ولا تضخم كبد عقدي ولا اختفاء نبض سباتي.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>anévrisme de l'aorte abdominale (AAA)</b> : masse abdominale <b>battante et expansive</b>, péri-ombilicale ou épigastrique. Peut s'accompagner d'un souffle systolique abdominal. Ce n'est pas un signe de McBurney ni une hépatomégalie.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q102</span><span class="q-ref"></span></div>
+  <div class="q-ar">الرنين المغناطيسي القلبي (IRM Cardiaque)</div>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-ar"><span class="kw">IRM القلبي</span> <span class="fr">Imagerie par Résonance Magnétique cardiaque</span> هو الفحص الذي يسمح بتحليل ثلاثي الأبعاد دقيق جداً للتشريح القلبي، حجوم البطينين، و<span class="kw">كشف وقياس التليف أو حيوية العضلة القلبية</span> عبر التأخر في التعزيز <span class="fr">Rehaussement tardif</span>. ليس صورة الصدر الجانبية ولا الإيكو المريئي ولا الماسح بدون حقن ولا ومضان القلب الجهدي.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-fr"><b>📋 Note :</b> L'<b>IRM cardiaque</b> : analyse 3D précise de l'anatomie cardiaque, volumes ventriculaires, et détection/quantification de la fibrose ou viabilité myocardique par <b>rehaussement tardif</b>. Ce n'est ni une Rx latérale, ni un ETO, ni un scanner sans injection.</div>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+
+<script>
+function showSection(id, btn){
+    document.querySelectorAll('.section-wrap').forEach(el=>el.classList.remove('active'));
+    let sec = document.getElementById(id);
+    if(sec) sec.classList.add('active');
+    
+    document.querySelectorAll('.nav-btn').forEach(el=>el.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+    
+    if(window.innerWidth<=900) document.querySelector('.sidebar').classList.remove('open');
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+// Init
+window.onload = () => {
+    let firstBtn = document.querySelector('.nav-btn');
+    if(firstBtn) firstBtn.click();
+}
+</script>
+</body>
+</html>

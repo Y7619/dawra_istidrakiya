@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Psychologie Médicale - Cours Complet PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f172a;--sidebar-bg:#111827;--card-bg:#1e2740;
+  --border:rgba(255,255,255,0.07);--accent:#8b5cf6;
+  --accent2:#10b981;--accent3:#f59e0b;--accent4:#ec4899;
+  --text:#e2e8f0;--muted:#94a3b8;--danger:#ef4444;
+}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal','Inter',sans-serif;display:flex;min-height:100vh}
+
+/* ── SIDEBAR ── */
+.sidebar{width:280px;background:var(--sidebar-bg);border-left:1px solid var(--border);position:fixed;right:0;top:0;height:100vh;overflow-y:auto;padding:1.5rem 1rem;z-index:200;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent}
+.sidebar h2{font-family:'Inter',sans-serif;font-size:.95rem;color:#c4b5fd;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);text-align:center}
+.nav-btn{display:flex;justify-content:space-between;align-items:center;width:100%;background:transparent;border:1px solid var(--border);color:var(--muted);padding:.7rem 1rem;margin-bottom:.4rem;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:.9rem;cursor:pointer;transition:all .2s;text-align:right}
+.nav-btn:hover,.nav-btn.active{background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.4);color:#c4b5fd}
+.nav-btn .badge{background:rgba(139,92,246,.2);color:#c4b5fd;padding:.15rem .5rem;border-radius:20px;font-size:.78rem;font-weight:700}
+
+/* ── MAIN ── */
+.main-content{flex:1;margin-right:280px;padding:2rem 2.5rem;max-width:1100px}
+
+/* ── HEADER ── */
+.header-banner{background:linear-gradient(135deg,#2e1065 0%,#1a1030 100%);border:1px solid rgba(139,92,246,.25);border-radius:16px;padding:2.5rem;text-align:center;margin-bottom:2.5rem;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.header-banner h1{font-family:'Inter',sans-serif;font-size:2.2rem;font-weight:700;color:#f1f5f9;margin-bottom:.4rem}
+.header-banner .subtitle{color:#94a3b8;font-size:1.05rem}
+
+/* ── SECTION ── */
+.section-wrap{display:none}
+.section-wrap.active{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.section-title{font-family:'Inter',sans-serif;font-size:1.7rem;font-weight:700;color:#c4b5fd;border-bottom:2px solid rgba(139,92,246,.3);padding-bottom:.6rem;margin-bottom:1.8rem;display:flex;justify-content:space-between;align-items:center;direction:ltr;text-align:left}
+.section-count{font-size:.85rem;color:var(--muted);background:rgba(139,92,246,.1);padding:.25rem .75rem;border-radius:20px}
+
+/* ── QCM CARD ── */
+.qcm-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;margin-bottom:1.5rem;transition:border-color .25s,box-shadow .25s}
+.qcm-card:hover{border-color:rgba(139,92,246,.3);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+.q-num{background:linear-gradient(135deg,#6d28d9,#8b5cf6);color:#fff;padding:.3rem .9rem;border-radius:20px;font-weight:700;font-size:.9rem;white-space:nowrap}
+.q-ref{font-size:.78rem;color:var(--muted);font-family:'Inter',sans-serif}
+.q-fr{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:600;color:#e2e8f0;margin-bottom:.6rem;direction:ltr;text-align:left;line-height:1.6}
+.q-ar{font-size:1rem;color:#94a3b8;direction:rtl;text-align:right;line-height:1.7}
+
+/* OPTIONS */
+.options{list-style:none;margin:1.2rem 0;direction:ltr;text-align:left}
+.opt{display:flex;align-items:flex-start;gap:.7rem;padding:.7rem 1rem;margin-bottom:.4rem;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);font-family:'Inter',sans-serif;font-size:.95rem;color:#cbd5e1;transition:all .2s}
+.opt .ltr{font-weight:700;min-width:1.4rem;color:#64748b}
+.opt.correct{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.35);color:#6ee7b7}
+.opt.correct .ltr{color:#10b981}
+
+/* ANSWER BADGE */
+.answer-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:#6ee7b7;padding:.4rem 1rem;border-radius:20px;font-size:.88rem;font-weight:700;margin-top:.8rem}
+
+/* ── EXPLICATION BLOCK ── */
+.expl-block{margin-top:1.2rem;padding:1.4rem 1.6rem;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.15);border-radius:10px}
+.expl-section{margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.expl-section:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.expl-label{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem;padding:.25rem .7rem;border-radius:6px}
+.label-expl{background:rgba(139,92,246,.12);color:#a78bfa;border:1px solid rgba(139,92,246,.25)}
+.label-notes{background:rgba(6,182,212,.12);color:#67e8f9;border:1px solid rgba(6,182,212,.25)}
+.label-retenir{background:rgba(16,185,129,.12);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
+.label-pieges{background:rgba(245,158,11,.12);color:#fcd34d;border:1px solid rgba(245,158,11,.25)}
+.expl-ar{font-family:'Cairo','Tajawal',sans-serif;font-size:1rem;color:#cbd5e1;direction:rtl;text-align:right;line-height:1.85;margin-bottom:.6rem}
+.expl-fr{font-family:'Inter',sans-serif;font-size:.92rem;color:#94a3b8;direction:ltr;text-align:left;line-height:1.75;font-style:italic}
+
+/* MOBILE */
+.mob-toggle{display:none;position:fixed;top:1rem;right:1rem;z-index:300;background:#6d28d9;border:none;color:#fff;padding:.6rem .9rem;border-radius:8px;cursor:pointer;font-size:1.1rem}
+@media(max-width:900px){
+  .sidebar{transform:translateX(100%);transition:transform .3s}
+  .sidebar.open{transform:translateX(0)}
+  .main-content{margin-right:0;padding:1rem}
+  .mob-toggle{display:block}
+}
+</style>
+</head>
+<body>
+
+<button class="mob-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+<nav class="sidebar">
+  <h2>🧠 Psychologie Médicale</h2>
+  <button class="nav-btn" onclick="showSection('entretien',this)">Conduite Entretien <span class="badge">7</span></button>
+  <button class="nav-btn" onclick="showSection('annonce',this)">Annonce Diagnostic Grave <span class="badge">5</span></button>
+  <button class="nav-btn" onclick="showSection('stress',this)">Stress &amp; Maladie Psychosomatique <span class="badge">6</span></button>
+  <button class="nav-btn" onclick="showSection('douleur',this)">Psychologie de la Douleur <span class="badge">6</span></button>
+  <button class="nav-btn" onclick="showSection('fonct',this)">Fonctionnement Mental &amp; Personnalité <span class="badge">6</span></button>
+  <button class="nav-btn" onclick="showSection('examen',this)">Examen Mental <span class="badge">4</span></button>
+  <button class="nav-btn" onclick="showSection('reactions',this)">Réactions Patient dans le Soin <span class="badge">1</span></button>
+  <button class="nav-btn" onclick="showSection('prescription',this)">Psychologie de la Prescription <span class="badge">3</span></button>
+</nav>
+
+<main class="main-content">
+  <div class="header-banner">
+    <h1>🧠 Psychologie Médicale U1</h1>
+    <p class="subtitle">Collection MDM · Cours Complet PRO · Bilingue Arabe / Français · 38 Questions</p>
+  </div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 1 — CONDUITE ENTRETIEN (Q1–Q7)
+═══════════════════════════════════════════════════ -->
+<div class="section-wrap" id="entretien">
+  <div class="section-title">Conduite Entretien <span class="section-count">7 questions</span></div>
+
+<!-- Q1 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q1</span><span class="q-ref">QCM n°02 U1 2024</span></div>
+  <div class="q-fr">Lamía 45 ans, travaille dans un bureau de poste. Elle consulte pour des lombalgies. En explorant ses antécédents, elle vous relate un suivi pour une hernie discale depuis 5 ans. Vous lui demandez de « décrire la fois où la douleur a été la plus intense ». Cette question correspond à quel outil de gestion de l'entretien ?</div>
+  <div class="q-ar">لاميا، 45 سنة، تعمل في مكتب بريد. تستشيرك لألم أسفل الظهر. تطلب منها "وصف المرة التي كان فيها الألم أشد حدة". ما هي أداة إدارة المقابلة التي تستخدمها؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Résumé</li>
+    <li class="opt correct"><span class="ltr">B.</span> Reformulation</li>
+    <li class="opt"><span class="ltr">C.</span> Recadrage</li>
+    <li class="opt"><span class="ltr">D.</span> Renforcement</li>
+    <li class="opt"><span class="ltr">E.</span> Recontextualisation</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (B) الإعادة الصياغية (Reformulation). طلب المريضة وصف اللحظة الأكثر إيلاماً هو إعادة صياغة لما قالته بهدف التعمق في الموضوع وتشجيعها على التحدث أكثر. الإعادة الصياغية تعيد توجيه كلام المريض نحو عنصر محدد لاستكشافه أعمق.</div>
+      <div class="expl-fr">La Reformulation consiste à reprendre et recentrer les propos du patient sur un élément précis pour approfondir l'exploration. Demander de décrire le moment le plus douloureux est une technique de reformulation qui encourage le patient à développer un aspect particulier de son vécu.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 أدوات المقابلة الخمسة (5R): الملخص (Résumé)، إعادة الصياغة (Reformulation)، إعادة التأطير (Recadrage)، التعزيز (Renforcement)، إعادة السياق (Recontextualisation). كل منها يخدم هدفاً مختلفاً في المقابلة الطبية.</div>
+      <div class="expl-fr">Les 5 outils de gestion de l'entretien (5R) : Résumé, Reformulation, Recadrage, Renforcement, Recontextualisation. La reformulation ici invite Lamia à préciser et approfondir son expérience douloureuse.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الإعادة الصياغية = إعادة توجيه كلام المريض نحو عنصر محدد للتعمق فيه أكثر. السؤال "صف المرة الأشد إيلاماً" يعمق الاستكشاف.</div>
+      <div class="expl-fr">💡 Reformulation = reprendre un élément des propos du patient pour l'approfondir. Ici, centrer sur "la fois la plus douloureuse" pour explorer l'expérience subjective de la douleur.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ الفخ الشائع: الخلط بين Reformulation وRenforcement. التعزيز يشجع على الاستمرار في الحديث (مثل: "نعم، أخبرني أكثر")، بينما إعادة الصياغة تعيد توجيه نحو نقطة محددة.</div>
+      <div class="expl-fr">⚠️ Piège fréquent : confondre Reformulation et Renforcement. Le renforcement encourage à continuer (ex: "oui, dites-moi plus"), tandis que la reformulation recentre sur un point précis.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q2</span><span class="q-ref">QCM n°03 U1 2024</span></div>
+  <div class="q-fr">En faisant l'examen, vous constatez que Lamia arrive à marcher, garder la position assise facilement. La douleur est estimée à 2/10. Pourtant, elle insiste pour un traitement efficace et puissant. Elle a surtout peur d'aggraver son état et d'être obligée de rester allongée pendant des mois, sans assumer ses responsabilités. Malgré l'aide de l'entourage, elle ne supporte pas de dépendre des autres. Quel inconvénient de la maladie vous exprime-t-elle ?</div>
+  <div class="q-ar">تصل لاميا للمشي وتجلس بسهولة، الألم 2/10. لكنها تخاف من أن تظل طريحة الفراش لأشهر وعاجزة عن تحمل مسؤولياتها. لا تطيق الاعتماد على الآخرين. ما هو العائق المرضي الذي تعبر عنه؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Peur de la mort</li>
+    <li class="opt"><span class="ltr">B.</span> Atteinte narcissique</li>
+    <li class="opt"><span class="ltr">C.</span> Perte d'autonomie</li>
+    <li class="opt correct"><span class="ltr">D.</span> Atteinte de l'intégrité psychique</li>
+    <li class="opt"><span class="ltr">E.</span> Perte du soutien familial</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (D) المساس بالسلامة النفسية (Atteinte de l'intégrité psychique). الخوف من أن تُضطر للاعتماد على الآخرين وعدم تحمل ذلك يدل على تهديد لصورتها الداخلية عن نفسها (التكامل النفسي) وليس مجرد فقدان استقلالية جسدية. إنه مس بمفهوم الذات وهويتها الداخلية.</div>
+      <div class="expl-fr">L'Atteinte de l'intégrité psychique (D) correspond au sentiment de menace sur l'image intérieure de soi. Lamia ne supporte pas l'idée de dépendre des autres, ce qui atteint son identité profonde, son estime de soi et son image idéale de femme autonome et responsable.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 عوائق المرض النفسية: الخوف من الموت، المساس بالسلامة الجسدية، المساس بالسلامة النفسية، فقدان الاستقلالية، التعلق بالآخرين، المساس بالصورة النرجسية، الإحساس بالذنب، اضطراب الأدوار الاجتماعية.</div>
+      <div class="expl-fr">Les inconvénients psychologiques de la maladie incluent : peur de la mort, atteinte de l'intégrité corporelle, atteinte de l'intégrité psychique, perte d'autonomie, dépendance, atteinte narcissique, culpabilité, perturbation des rôles sociaux.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 المساس بالسلامة النفسية = تهديد الهوية الداخلية وصورة الذات. الكلمة المفتاحية: "لا تطيق الاعتماد على الآخرين" = تهديد للكيان النفسي.</div>
+      <div class="expl-fr">💡 Atteinte de l'intégrité psychique = menace sur l'identité intérieure. Mot-clé : "ne supporte pas de dépendre" = atteinte du sens de soi et de l'identité profonde.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: الخلط بين "فقدان الاستقلالية" (C) و"المساس بالسلامة النفسية" (D). فقدان الاستقلالية هو عدم القدرة الجسدية على الفعل، أما المساس بالسلامة النفسية فهو الأثر الداخلي على الهوية والمفهوم الذاتي.</div>
+      <div class="expl-fr">⚠️ Piège : confondre Perte d'autonomie (C) et Atteinte de l'intégrité psychique (D). La perte d'autonomie est fonctionnelle (ne peut plus faire), l'atteinte psychique concerne l'identité profonde et l'image de soi.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q3</span><span class="q-ref">QCM n°04 U1 2023</span></div>
+  <div class="q-fr">Quelles sont les propositions qui représentent les anomalies qualitatives de la mimique ?</div>
+  <div class="q-ar">ما هي الاقتراحات التي تمثل الاضطرابات النوعية لتعبيرات الوجه (Mimique) ؟</div>
+  <ul class="options">
+    <li class="opt correct"><span class="ltr">A.</span> Paramimie</li>
+    <li class="opt correct"><span class="ltr">B.</span> Sourire immotivé</li>
+    <li class="opt correct"><span class="ltr">C.</span> Oméga mélancolique</li>
+    <li class="opt"><span class="ltr">D.</span> Hypomimie</li>
+    <li class="opt"><span class="ltr">E.</span> Hypermimie</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : ABC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الاضطرابات النوعية للميميك: (A) البارامميا = تعبير وجه لا يتناسب مع الحالة الانفعالية، (B) الابتسامة بلا سبب = تعبير لا يتوافق مع الحالة النفسية، (C) الأوميغا الميلانخولي = ثني الجبهة المميز للاكتئاب. أما فرط الميميك (E) ونقص الميميك (D) فهي اضطرابات كمية (양).</div>
+      <div class="expl-fr">Anomalies qualitatives de la mimique : Paramimie (expression inadaptée à l'état émotionnel), Sourire immotivé (sourire sans cause), Oméga mélancolique (plissement du front caractéristique de la dépression). Hypomimie (D) et Hypermimie (E) sont des anomalies quantitatives.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 تصنيف اضطرابات الميميك: كمية: فرط (Hypermimie) ونقص (Hypomimie) وانعدام (Amimie). نوعية: البارامميا، الابتسامة اللاإرادية، الأوميغا الميلانخولي، الميميك المتناقض.</div>
+      <div class="expl-fr">Classification : Quantitatif → Hypermimie, Hypomimie, Amimie. Qualitatif → Paramimie, Sourire immotivé, Oméga mélancolique, Mimique paradoxale. Clé : qualitatif = inadéquation au contexte émotionnel.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 النوعية = عدم التطابق مع الحالة النفسية (نوع التعبير خاطئ). الكمية = زيادة أو نقص في كمية التعبير (كثير جداً أو قليل جداً).</div>
+      <div class="expl-fr">💡 Qualitatif = inadéquation qualitative (mauvais type d'expression). Quantitatif = trop ou trop peu d'expression. Oméga mélancolique = signe pathognomonique de la dépression.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: فرط الميميك (E) ونقص الميميك (D) اضطرابات كمية وليست نوعية. لا تخلط بين النوع والكم.</div>
+      <div class="expl-fr">⚠️ Piège classique : Hypomimie et Hypermimie = anomalies quantitatives (pas qualitatives). Seuls ABC sont qualitatifs car ils décrivent une inadéquation entre l'expression et le vécu émotionnel.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q4</span><span class="q-ref">QCM n°01 U1 2021</span></div>
+  <div class="q-fr">Vous menez un entretien avec Saddek qui présente un kyste hydatique du foie. Il coopère et il y a un bon engagement. Lorsque vous lui proposez l'hospitalisation pour une intervention chirurgicale, il change d'attitude, devient opposant et souhaite interrompre la discussion. Il refuse la chirurgie. Quel principe vous permet de vérifier la réussite de l'engagement ?</div>
+  <div class="q-ar">تجري مقابلة مع صادق الذي يعاني من كيس مائي في الكبد. كان يتعاون جيداً، ثم رفض الجراحة وأراد إنهاء الحوار. ما المبدأ الذي يسمح لك بالتحقق من نجاح الانخراط العلاجي؟</div>
+  <ul class="options">
+    <li class="opt correct"><span class="ltr">A.</span> Évaluation de l'alliance thérapeutique</li>
+    <li class="opt"><span class="ltr">B.</span> Transmission d'un sentiment d'empathie</li>
+    <li class="opt"><span class="ltr">C.</span> Création d'un climat de sécurité propice à la confidence</li>
+    <li class="opt"><span class="ltr">D.</span> Faculté à paraître authentique et naturel</li>
+    <li class="opt"><span class="ltr">E.</span> Capacité à afficher une compétence assurée</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (A) تقييم التحالف العلاجي. التحالف العلاجي هو مؤشر نجاح الانخراط في العلاج. حين يتغير موقف صادق فجأة ويرفض الاستمرار، يدل هذا على تدهور التحالف العلاجي. تقييم جودة هذا التحالف هو الأداة للتحقق من مستوى الانخراط.</div>
+      <div class="expl-fr">L'Évaluation de l'alliance thérapeutique (A) est le principe qui permet de vérifier la qualité de l'engagement. Le changement brutal d'attitude de Saddek signale une rupture de l'alliance. C'est l'indicateur principal de la réussite ou de l'échec de l'engagement thérapeutique.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 التحالف العلاجي = الرابط التعاوني بين المريض والطبيب. مكوناته: الاتفاق على الأهداف، الاتفاق على المهام، الرابط العاطفي. تدهوره = إشارة إنذار في العلاقة العلاجية.</div>
+      <div class="expl-fr">L'alliance thérapeutique = lien collaboratif médecin-patient. Composantes : accord sur les objectifs, accord sur les tâches, lien affectif. Sa rupture = signal d'alarme. Les autres options (B, C, D, E) sont des moyens pour créer ou maintenir l'alliance, non pour la vérifier.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 التحقق من نجاح الانخراط = تقييم التحالف العلاجي. الانخراط الجيد = تحالف علاجي قوي. الرفض المفاجئ = تدهور التحالف.</div>
+      <div class="expl-fr">💡 Vérifier la réussite de l'engagement = évaluer l'alliance thérapeutique. Alliance forte = bon engagement. Résistance soudaine = rupture de l'alliance à analyser.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: الخيارات B وC وD وE كلها وسائل لبناء الانخراط وليس للتحقق منه. السؤال يطلب "التحقق من النجاح" وليس "بناء الانخراط".</div>
+      <div class="expl-fr">⚠️ Piège : B, C, D, E sont des moyens pour créer l'engagement (pas pour le vérifier). La question demande "vérifier la réussite" → évaluation de l'alliance thérapeutique.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q5</span><span class="q-ref">QCM n°02 U1 2021</span></div>
+  <div class="q-fr">Saddek considère qu'il a juste un côlon irritable et que le kyste n'existe pas. Il trouve votre conduite excessive. Il pense qu'il suffit de prendre quelques infusions, mais refuse les médicaments ou l'intervention. Quelle proposition illustre le mieux sa réaction psychologique ?</div>
+  <div class="q-ar">صادق يعتقد أنه يعاني فقط من القولون العصبي وأن الكيس غير موجود. يرفض الأدوية والتدخل الجراحي ويكتفي بالأعشاب. ما هي ردة فعله النفسية؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Régression</li>
+    <li class="opt correct"><span class="ltr">B.</span> Déni</li>
+    <li class="opt"><span class="ltr">C.</span> Refus</li>
+    <li class="opt"><span class="ltr">D.</span> Dépendance</li>
+    <li class="opt"><span class="ltr">E.</span> Sublimation</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (B) الإنكار (Déni). صادق لا يعترف بوجود الكيس أصلاً ويعتقد أنه مجرد قولون عصبي. هذا إنكار الحقيقة الطبية = آلية دفاع نفسية يُنكر فيها المريض وجود المرض أو خطورته.</div>
+      <div class="expl-fr">Le Déni (B) : Saddek nie l'existence même du kyste hydatique, il reconstruit une réalité alternative (côlon irritable). Le déni est un mécanisme de défense inconscient qui refuse la réalité menaçante. ≠ Refus (C) qui est conscient et porte sur le traitement, pas sur le diagnostic.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 الفرق بين الإنكار والرفض: الإنكار (Déni) = لا أعترف بوجود المرض (لاوعي). الرفض (Refus) = أعترف بالمرض لكن أرفض العلاج (وعي). صادق ينكر وجود الكيس = إنكار.</div>
+      <div class="expl-fr">Distinction cruciale : Déni (inconscient) = nier la réalité de la maladie. Refus (conscient) = accepter le diagnostic mais refuser le traitement. Saddek nie le kyste lui-même → Déni.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 إنكار = إنكار وجود المرض نفسه (لاشعوري). رفض = قبول المرض ورفض العلاج (شعوري). "الكيس غير موجود" = إنكار.</div>
+      <div class="expl-fr">💡 Déni = nier la maladie elle-même (inconscient). Refus = accepter le diagnostic, refuser le traitement (conscient). "Le kyste n'existe pas" = Déni classique.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ الفخ الكلاسيكي: الخلط بين الإنكار (B) والرفض (C). الرفض يعني قبول التشخيص ورفض العلاج. الإنكار يعني رفض التشخيص ذاته.</div>
+      <div class="expl-fr">⚠️ Piège classique : Déni vs Refus. Si le patient dit "je n'ai pas cette maladie" = Déni. Si "j'ai la maladie mais je refuse l'opération" = Refus. Saddek est dans le premier cas.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q6</span><span class="q-ref">QCM n°03 U1 2021</span></div>
+  <div class="q-fr">Malgré la réticence de Saddek, vous êtes déterminé à l'aider. Plus vous essayez de le convaincre de la pertinence de la chirurgie, plus la qualité de l'engagement se détériore et il conteste ce que vous dites ou faites. Quelle proposition qualifie le mieux la qualité de la relation ?</div>
+  <div class="q-ar">كلما حاولت إقناع صادق بالجراحة أكثر، كلما تدهورت جودة الانخراط ورفض كل ما تقوله. كيف تصف جودة العلاقة؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Transfert neutre, contre-transfert négatif</li>
+    <li class="opt"><span class="ltr">B.</span> Transfert négatif, contre-transfert neutre</li>
+    <li class="opt correct"><span class="ltr">C.</span> Transfert négatif, contre-transfert positif</li>
+    <li class="opt"><span class="ltr">D.</span> Transfert positif, contre-transfert négatif</li>
+    <li class="opt"><span class="ltr">E.</span> Transfert négatif, contre-transfert négatif</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (C) نقل سلبي - نقل مضاد إيجابي. صادق يرفض ويعارض الطبيب (نقل سلبي من المريض). الطبيب مصمم على مساعدته ومتحمس للحل (نقل مضاد إيجابي من الطبيب). هذا التناقض يفسر تدهور العلاقة.</div>
+      <div class="expl-fr">Transfert négatif (Saddek) : le patient projette des sentiments négatifs sur le médecin (contestation, opposition). Contre-transfert positif (médecin) : le médecin est déterminé à aider, motivé positivement. Cette asymétrie crée une dynamique conflictuelle.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 النقل (Transfert) = مشاعر المريض تجاه الطبيب. النقل المضاد (Contre-transfert) = مشاعر الطبيب تجاه المريض. إيجابي = محبة وثقة. سلبي = عداء ومقاومة. محايد = بارد وحيادي.</div>
+      <div class="expl-fr">Transfert = sentiments du patient envers le médecin. Contre-transfert = sentiments du médecin envers le patient. (+) = amour, confiance. (-) = hostilité, méfiance. (neutre) = neutralité froide.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 المريض يرفض ويعارض = نقل سلبي. الطبيب يريد المساعدة بتحمس = نقل مضاد إيجابي. C هي الإجابة الصحيحة.</div>
+      <div class="expl-fr">💡 Patient oppose et conteste = Transfert négatif. Médecin déterminé à aider = Contre-transfert positif. → C : Transfert (-) / Contre-transfert (+).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: قد تعتقد أن الطبيب لديه نقل مضاد سلبي لأن العلاقة متوترة. لكن النص يقول "مصمم على مساعدته" = إيجابي وليس سلبياً. الطبيب يريد الخير لكن المريض يرفض.</div>
+      <div class="expl-fr">⚠️ Piège : penser que la tension implique un contre-transfert négatif. Mais "déterminé à aider" = motivation positive du médecin. C'est le transfert du patient qui est négatif, pas le contre-transfert du médecin.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q7</span><span class="q-ref">QCM n°07 U1 2021</span></div>
+  <div class="q-fr">Au cours d'un entretien, votre patient considère que la maladie infléchit le cours de sa vie et qu'il risque de perdre son travail. Il vous dit : « Je suis très angoissé par les complications de ma maladie ». Vous remarquez qu'il exprime une émotion. Pour le renforcer, laquelle des phrases suivantes choisissez-vous ?</div>
+  <div class="q-ar">مريضك يخشى أن تؤثر المرض على مسار حياته وعمله. يقول: "أنا قلق جداً من مضاعفات مرضي". لاحظت أنه يعبر عن مشاعر. لتعزيزه، أي عبارة تختار؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Quelle est la complication qui vous préoccupe le plus ?</li>
+    <li class="opt"><span class="ltr">B.</span> L'évolution de votre maladie vous inquiète ?</li>
+    <li class="opt"><span class="ltr">C.</span> Vous vous inquiétez donc, pour le travail et les complications de la maladie ?</li>
+    <li class="opt"><span class="ltr">D.</span> De toute façon, vous devez faire face aux complications</li>
+    <li class="opt correct"><span class="ltr">E.</span> Cela doit être difficile de faire face à ces complications</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (E) "يجب أن يكون صعباً مواجهة هذه المضاعفات". التعزيز الانفعالي يعترف بمشاعر المريض ويعكسها دون استجواب. الجملة (E) تعترف بالمشاعر وتعكس التعاطف. (A) سؤال محدد، (B) إعادة صياغة، (C) ملخص، (D) توجيه سلبي.</div>
+      <div class="expl-fr">Le Renforcement émotionnel (E) : reconnaître et valider l'émotion exprimée sans questionnement. "Cela doit être difficile..." = reflet empathique qui valide le ressenti. (A) est une question ciblée (Recadrage), (B) reformulation fermée, (C) résumé, (D) injonction négative.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 التعزيز الانفعالي = الاعتراف بمشاعر المريض وإعكاسها دون حكم أو توجيه. يشجع المريض على الاستمرار في التعبير عن مشاعره ويشعره بالفهم والقبول.</div>
+      <div class="expl-fr">Renforcement émotionnel = reflet empathique qui valide le vécu émotionnel du patient, l'encourageant à développer ses émotions. Se distingue de la reformulation (contenu) et du recadrage (redirection).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 التعزيز الانفعالي = "هذا يجب أن يكون صعباً" / "أفهم كيف تشعر". لا أسئلة، لا توجيهات، فقط اعتراف بالمشاعر.</div>
+      <div class="expl-fr">💡 Renforcement = "Cela doit être difficile..." / "Je comprends que c'est dur...". Pas de question, pas d'injonction. Juste reconnaissance et validation de l'émotion.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (C) "أنت قلق إذن بشأن العمل والمضاعفات" يبدو تعاطفاً لكنه في الواقع ملخص (Résumé). التعزيز الانفعالي يذهب أبعد ويعترف بالصعوبة الوجدانية وليس فقط بمحتوى الكلام.</div>
+      <div class="expl-fr">⚠️ Piège : (C) ressemble à de l'empathie mais c'est un résumé du contenu. Le renforcement émotionnel (E) valide la dimension affective ("difficile") et non seulement le contenu cognitif.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end #entretien -->
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2 — ANNONCE DIAGNOSTIC GRAVE (Q8–Q12)
+═══════════════════════════════════════════════════ -->
+<div class="section-wrap" id="annonce">
+  <div class="section-title">Annonce d'un Diagnostic de Maladie Grave <span class="section-count">5 questions</span></div>
+
+<!-- Q8 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q8</span><span class="q-ref">QCM n°01 U1 2024</span></div>
+  <div class="q-fr">Quelle est la proposition juste concernant les modalités d'annonce du diagnostic ?</div>
+  <div class="q-ar">ما هو الاقتراح الصحيح فيما يخص طرق الإخبار بالتشخيص؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Le rythme de communication de l'information au patient doit dépendre de l'état émotionnel de ce dernier</li>
+    <li class="opt"><span class="ltr">B.</span> Le médecin ne doit utiliser que les mots purement scientifiques pour communiquer l'information au patient</li>
+    <li class="opt correct"><span class="ltr">C.</span> Il est préférable de ne pas laisser l'opportunité au patient pour vous poser des questions sur sa maladie, car cela va contribuer à l'augmentation de son stress</li>
+    <li class="opt"><span class="ltr">D.</span> Le comportement non verbal du médecin importe peu au cours de l'annonce du diagnostic</li>
+    <li class="opt"><span class="ltr">E.</span> Ne jamais informer le patient sur les éventuels effets secondaires possibles du traitement envisageable car cela peut entraîner une mauvaise observance thérapeutique</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (C). في سياق الامتحان: السؤال يطلب البند الصحيح فيما يخص الإخبار. (C) تقول "لا تدع المريض يسأل لأن ذلك يزيد توتره" = هذا هو الموقف الخاطئ الذي يصفه الامتحان كـ"صحيح". انتبه: هذا سؤال عن الموقف الصحيح وفق المنهج المدروس لا الواقعي. وفق المصحح: C هي الإجابة المقبولة في هذا الامتحان.</div>
+      <div class="expl-fr">Selon la clé de réponse : C est la réponse correcte dans ce QCM. Note : A est en réalité juste en pratique (adapter le rythme à l'état émotionnel), mais selon les corrigés officiels de cet examen, C est retenue. Importante nuance à mémoriser pour l'examen.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 مبادئ الإخبار الصحيح: ① تكييف إيقاع التواصل مع حالة المريض الانفعالية، ② استخدام لغة بسيطة وليس مصطلحات علمية بحتة، ③ السماح للمريض بطرح الأسئلة، ④ اللغة غير اللفظية مهمة، ⑤ إخبار المريض بالآثار الجانبية للعلاج.</div>
+      <div class="expl-fr">Principes d'une bonne annonce : ① Adapter le rythme à l'état émotionnel, ② Utiliser un langage simple (pas que scientifique), ③ Permettre au patient de poser des questions, ④ Le non-verbal est crucial, ⑤ Informer des effets secondaires améliore l'observance.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الإجابة C هي الإجابة المقبولة في هذا الامتحان. تذكر المبادئ الصحيحة للإخبار: التكيف مع المريض، لغة بسيطة، السماح بالأسئلة، اللغة غير اللفظية مهمة، إخبار بالآثار الجانبية.</div>
+      <div class="expl-fr">💡 C est la réponse retenue par le corrigé officiel. Mémorisez les 5 faux principes (A,B,D,E = faux en pratique) et le vrai corrigé officiel (C = retenu pour l'exam).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ كبير: هذا السؤال يختبر الموقف المبدئي الصحيح وفق المنهج. تأكد من مراجعة المصحح الرسمي لهذا السؤال.</div>
+      <div class="expl-fr">⚠️ Piège majeur : Ce QCM a une formulation ambiguë. Référez-vous toujours au corrigé officiel de l'examen. La réponse C est celle validée officiellement.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q9 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q9</span><span class="q-ref">QCM n°06 U1 2022</span></div>
+  <div class="q-fr">Chafika est hospitalisée en urgence pour un infarctus du myocarde. Le lendemain, son médecin lui dit, avant qu'elle ne dise un mot, qu'elle a eu un infarctus et qu'elle aurait pu mourir. Laquelle des étapes nécessaires à l'annonce a été ignorée par le médecin ?</div>
+  <div class="q-ar">شافيقة مُدخلة بشكل طارئ لاحتشاء عضلة القلب. في اليوم التالي، يخبرها طبيبها قبل أن تقول كلمة واحدة بأنها أصيبت باحتشاء وأنها كادت تموت. ما هي الخطوة التي أهمل الطبيب القيام بها؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Vérifier les antécédents et l'évolution de la maladie</li>
+    <li class="opt correct"><span class="ltr">B.</span> Explorer ce qu'elle sait et souhaite savoir</li>
+    <li class="opt"><span class="ltr">C.</span> Annoncer le diagnostic de la maladie</li>
+    <li class="opt"><span class="ltr">D.</span> Exprimer de l'empathie et rassurer</li>
+    <li class="opt"><span class="ltr">E.</span> Résumer l'état clinique et le traitement</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (B) استكشاف ما تعرفه وما تريد معرفته. قبل الإخبار بالتشخيص، يجب على الطبيب دائماً استكشاف ما يعرفه المريض عن حالته وما يرغب في معرفته. الطبيب بدأ يتكلم قبل أن تتكلم شافيقة = أهمل هذه الخطوة الأساسية.</div>
+      <div class="expl-fr">Explorer ce que le patient sait et souhaite savoir (B) est une étape fondamentale AVANT l'annonce. Le médecin parle "avant qu'elle ne dise un mot" = il n'a pas exploré ses connaissances ni ses souhaits d'information. C'est la rupture de protocole.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 خطوات الإخبار بالتشخيص: ① التحقق من التحالف العلاجي، ② استكشاف ما يعرفه المريض وما يريد معرفته، ③ الإخبار بالتشخيص، ④ التعبير عن التعاطف والطمأنينة، ⑤ تلخيص الحالة والعلاج.</div>
+      <div class="expl-fr">Étapes de l'annonce : ① Vérifier l'alliance, ② Explorer ce que le patient sait/veut savoir, ③ Annoncer le diagnostic, ④ Exprimer empathie et soutien, ⑤ Résumer et planifier. L'étape ② est celle omise ici.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 قبل أي إخبار = استكشاف ما يعرفه المريض وما يريد معرفته. هذا يحترم استقلالية المريض ويحدد مقدار المعلومات التي يحتاجها.</div>
+      <div class="expl-fr">💡 Avant toute annonce = explorer ce que le patient sait et veut savoir. Cela respecte l'autonomie du patient et calibre le niveau d'information à fournir.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: الخيار (A) "التحقق من السوابق" ليس المقصود هنا. الطبيب قرأ الملف (A محقق). الخيار (D) التعاطف أُهمل أيضاً لكن السؤال يركز على مرحلة ما قبل الإخبار = (B).</div>
+      <div class="expl-fr">⚠️ Piège : Le médecin a bien lu le dossier (A ✓). Il a annoncé (C ✓). L'empathie (D) manque aussi, mais la question porte sur l'étape précédant l'annonce = Explorer (B) est la réponse clé.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q10 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q10</span><span class="q-ref">QCM n°05 U1 2022</span></div>
+  <div class="q-fr">L'excès de détails rapportés par le médecin est lié à quel type de risque dans l'annonce ?</div>
+  <div class="q-ar">الإفراط في التفاصيل الذي قدمه الطبيب مرتبط بأي نوع من مخاطر الإخبار؟</div>
+  <ul class="options">
+    <li class="opt correct"><span class="ltr">A.</span> La technique d'annonce</li>
+    <li class="opt"><span class="ltr">B.</span> Au processus d'annonce</li>
+    <li class="opt"><span class="ltr">C.</span> À la malade elle-même</li>
+    <li class="opt"><span class="ltr">D.</span> À l'infarctus du myocarde</li>
+    <li class="opt"><span class="ltr">E.</span> Au médecin annonceur</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (A) تقنية الإخبار. الإفراط في التفاصيل هو خطأ تقني في طريقة الإخبار. مخاطر الإخبار مرتبطة بـ: التقنية (كيفية القول)، أو العملية (توقيت ومكان الإخبار)، أو المريض نفسه (حالته)، أو الطبيب (قلقه هو).</div>
+      <div class="expl-fr">L'excès de détails est un risque lié à la technique d'annonce (A) : comment le médecin dit les choses (trop de détails, vocabulaire inadapté, rythme trop rapide). ≠ Processus (qui, quand, où) ≠ Patient (état psychologique du patient) ≠ Médecin (anxiété propre du médecin).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 مخاطر الإخبار: مرتبطة بالتقنية (كيف): الإفراط في التفاصيل، المصطلحات الصعبة، سرعة الكلام. مرتبطة بالعملية (متى/أين): التوقيت، المكان، الخصوصية. مرتبطة بالمريض: حالته النفسية. مرتبطة بالطبيب: قلقه الشخصي.</div>
+      <div class="expl-fr">Risques d'annonce liés à la technique : excès de détails, jargon médical, rythme inadapté. Liés au processus : timing, lieu, présence de tiers. Liés au patient : état émotionnel. Liés au médecin : anxiété propre, défenses.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الإفراط في التفاصيل = خطر تقني (A). الخلط بين التقنية والعملية شائع. التقنية = كيف تقول، العملية = متى وأين وبمن تقول.</div>
+      <div class="expl-fr">💡 Excès de détails = risque technique (A). Technique = COMMENT annoncer. Processus = QUI, QUAND, OÙ annoncer. Ne pas confondre les deux.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: قد تخلط بين "التقنية" و"الطبيب". الإفراط في التفاصيل هو سلوك تقني خاطئ وليس خطأً شخصياً من الطبيب بالمعنى النفسي (القلق الشخصي للطبيب).</div>
+      <div class="expl-fr">⚠️ Piège : confondre risque lié au médecin (E = anxiété personnelle du médecin) et risque lié à la technique (A = façon de dire). L'excès de détails = problème technique, pas psychologique du médecin.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q11 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q11</span><span class="q-ref">QCM n°07 U1 2022</span></div>
+  <div class="q-fr">Après cette annonce, Chafika se sent inquiète, ressent des palpitations et fait le parallèle avec son père décédé d'un infarctus il y a 25 ans. Elle pense qu'elle va mourir comme lui. Quel déterminant a le plus influencé la réaction de Chafika ?</div>
+  <div class="q-ar">بعد الإخبار، تشعر شافيقة بالقلق وتربط وضعها بوفاة والدها باحتشاء قلبي منذ 25 سنة. تعتقد أنها ستموت مثله. ما هو العامل الذي أثر أكثر في ردة فعلها؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> La représentation sociale de la maladie</li>
+    <li class="opt correct"><span class="ltr">B.</span> L'expérience de la maladie de son père</li>
+    <li class="opt"><span class="ltr">C.</span> La remise en cause de l'image idéale de soi</li>
+    <li class="opt"><span class="ltr">D.</span> Le réajustement de son rôle dans la famille</li>
+    <li class="opt"><span class="ltr">E.</span> La situation de faiblesse et de dépendance des autres</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (B) تجربة مرض والدها. شافيقة تقارن وضعها بوالدها الذي توفي بنفس المرض. هذه التجربة الشخصية (الخبرة السابقة بالمرض في أسرتها) هي التي تشكل تصورها الحالي عن المرض وتؤثر في ردة فعلها.</div>
+      <div class="expl-fr">L'expérience de la maladie du père (B) est le déterminant principal : Chafika établit un parallèle direct avec le décès de son père d'un infarctus. C'est son vécu antérieur de la maladie dans son environnement proche qui détermine sa représentation de la maladie et sa réaction.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 محددات ردة فعل المريض: التجارب السابقة بالمرض (في الأسرة أو الشخصية)، التصور الاجتماعي للمرض، الشخصية، الحالة الانفعالية، الموارد الدعم.</div>
+      <div class="expl-fr">Déterminants de la réaction du patient : expériences antérieures de la maladie (personnelle ou familiale), représentation sociale, personnalité, état émotionnel, ressources de soutien. Ici, c'est l'expérience du père qui prime.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 "توفي والدي بنفس المرض" = تجربة سابقة بالمرض عبر الأسرة = العامل الأكثر تأثيراً هنا.</div>
+      <div class="expl-fr">💡 "Mon père est mort de la même maladie" = expérience antérieure de la maladie via l'entourage = déterminant principal de la réaction de Chafika.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (A) التصور الاجتماعي للمرض يشير للصورة العامة في المجتمع. لكن هنا المحرك هو تجربة شخصية عائلية = (B) أدق وأصح.</div>
+      <div class="expl-fr">⚠️ Piège : (A) représentation sociale = image culturelle générale de la maladie. Ici c'est une expérience personnelle et familiale spécifique (père décédé) = (B) est plus précis et correct.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q12 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q12</span><span class="q-ref">QCM n°08 U1 2022</span></div>
+  <div class="q-fr">Laquelle des réactions du thérapeute conviendrait le mieux face aux larmes de Chafika ?</div>
+  <div class="q-ar">أي ردة فعل من الطبيب المعالج تكون الأنسب أمام دموع شافيقة؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Il lui dit qu'il plaisantait mais qu'elle a eu une hypotension bénigne</li>
+    <li class="opt"><span class="ltr">B.</span> Il lui tapote l'épaule et explique qu'elle doit s'estimer heureuse au lieu de pleurer</li>
+    <li class="opt"><span class="ltr">C.</span> Il se met en colère en voyant les larmes et lui dit d'arrêter tout de suite</li>
+    <li class="opt"><span class="ltr">D.</span> Il la laisse pleurer et il sort de la salle la confiant à un autre médecin</li>
+    <li class="opt correct"><span class="ltr">E.</span> Il dit que la situation peut inquiéter et l'interroge sur ce qui la préoccupe au juste</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (E). الرد الأمثل: الاعتراف بمشاعر المريضة ("الوضع يمكن أن يقلق") ثم طرح سؤال مفتوح لاستكشاف ما يقلقها تحديداً. هذا يجمع التعاطف والاستكشاف. الخيارات الأخرى إما تنفي المشاعر أو تتجاهلها.</div>
+      <div class="expl-fr">E combine reconnaissance émotionnelle ("la situation peut inquiéter") + question ouverte pour explorer le vécu ("ce qui la préoccupe au juste"). C'est la réponse empathique et thérapeutique. A/B/C/D minimisent, rejettent ou fuient l'émotion.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 الاستجابة المثلى للمشاعر: ① الاعتراف بالمشاعر (تطبيع)، ② السماح للمريض بالتعبير، ③ الاستكشاف بسؤال مفتوح، ④ عدم التقليل من شأن المشاعر أو إلغائها.</div>
+      <div class="expl-fr">Réponse optimale aux émotions : ① Reconnaître l'émotion (normalisation), ② Laisser s'exprimer, ③ Explorer par question ouverte, ④ Ne jamais minimiser ni rejeter. E réalise les 4 étapes.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 أمام الدموع = اعترف + اسمح + استكشف. لا تقلل، لا تهرب، لا تنكر. E هي الإجابة النموذجية.</div>
+      <div class="expl-fr">💡 Face aux larmes = Reconnaître + Autoriser + Explorer. Ne pas minimiser, ne pas fuir, ne pas nier. E = réponse modèle en psychologie médicale.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (D) "تركها تبكي والخروج" يبدو احتراماً لمشاعرها لكنه في الواقع هروب وتخلٍ عن المريضة. الطبيب يجب أن يبقى ويستكشف.</div>
+      <div class="expl-fr">⚠️ Piège : (D) "la laisser pleurer et sortir" peut sembler respectueux, mais c'est une fuite. Le médecin doit rester présent, reconnaître l'émotion et l'explorer.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end #annonce -->
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 3 — STRESS & MALADIE PSYCHOSOMATIQUE (Q13–Q18)
+═══════════════════════════════════════════════════ -->
+<div class="section-wrap" id="stress">
+  <div class="section-title">Stress &amp; Maladie Psychosomatique <span class="section-count">6 questions</span></div>
+
+<!-- Q13 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q13</span><span class="q-ref">QCM n°05 U1 2024</span></div>
+  <div class="q-fr">Mme Nassima, 48 ans, enseignante, consulte pour troubles du sommeil, irritabilité et tension musculaire depuis 3 semaines. Elle est sous pression depuis un mois à cause de conflits avec son directeur. L'examen clinique est normal. À quelle phase de stress se trouve Mme Nassima ?</div>
+  <div class="q-ar">السيدة نسيمة، 48 سنة، مدرّسة، تعاني من اضطرابات النوم والتوتر العضلي والانفعالية منذ 3 أسابيع بسبب ضغوط العمل. الفحص السريري طبيعي. في أي مرحلة إجهاد تتواجد؟</div>
+  <ul class="options">
+    <li class="opt correct"><span class="ltr">A.</span> Phase de résistance</li>
+    <li class="opt correct"><span class="ltr">B.</span> Phase du stress négatif</li>
+    <li class="opt"><span class="ltr">C.</span> Phase de la pression</li>
+    <li class="opt"><span class="ltr">D.</span> Phase d'alerte</li>
+    <li class="opt"><span class="ltr">E.</span> Phase d'épuisement</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : AB</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابتان الصحيحتان هما (A) مرحلة المقاومة و(B) الإجهاد السلبي. نسيمة تحت ضغط منذ شهر ولديها أعراض جسدية ونفسية مستمرة مع فحص طبيعي = مرحلة مقاومة. الأعراض دون تكيف = إجهاد سلبي (Distress).</div>
+      <div class="expl-fr">Phase de résistance (A) : le stress dure depuis 1 mois avec des symptômes persistants (troubles du sommeil, irritabilité, tension). Le corps résiste mais montre des signes d'usure. Stress négatif (B) : les symptômes apparaissent sans adaptation = distress.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 مراحل الإجهاد وفق Selye: ① مرحلة الإنذار (رد فعل فوري)، ② مرحلة المقاومة (مقاومة مستمرة مع أعراض)، ③ مرحلة الإنهاك (فشل المقاومة). الإجهاد الإيجابي (Eustress) vs السلبي (Distress).</div>
+      <div class="expl-fr">Phases du stress (Selye) : ① Alarme (réaction immédiate), ② Résistance (adaptation avec signes d'usure), ③ Épuisement (effondrement). Eustress (positif) vs Distress (négatif = symptômes sans adaptation).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 أعراض مستمرة منذ أسابيع مع ضغط مستمر = مرحلة المقاومة. أعراض دون تكيف إيجابي = إجهاد سلبي.</div>
+      <div class="expl-fr">💡 Symptômes persistants depuis semaines + pression continue = Phase de résistance. Symptômes sans adaptation positive = Distress (stress négatif).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: الإنذار (D) هو رد الفعل الفوري للضغط. الإنهاك (E) يكون عند تدهور الوظائف الحيوية. نسيمة في المرحلة المتوسطة = المقاومة.</div>
+      <div class="expl-fr">⚠️ Piège : Phase d'alerte (D) = réaction immédiate (court terme). Épuisement (E) = effondrement des fonctions vitales. Nassima est dans la phase intermédiaire = Résistance.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q14 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q14</span><span class="q-ref">QCM n°06 U1 2024</span></div>
+  <div class="q-fr">Mme Nassima est devenue agressive envers ses enfants, avec toute cette pression au travail. Les insultes qu'elle subit de son directeur se transforment en "une boule de nerf qu'elle décharge sur ses enfants". Quel est ce mécanisme de défense ?</div>
+  <div class="q-ar">نسيمة تحولت للعدوانية تجاه أطفالها بسبب ضغط العمل. الإهانات التي تتلقاها من مديرها تتحول إلى "كتلة توتر تُفرغها على أطفالها". ما هي آلية الدفاع المستخدمة؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> La régression</li>
+    <li class="opt correct"><span class="ltr">B.</span> La décharge des nerfs</li>
+    <li class="opt"><span class="ltr">C.</span> La sublimation</li>
+    <li class="opt"><span class="ltr">D.</span> Le transfert</li>
+    <li class="opt correct"><span class="ltr">E.</span> Le déni</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : BE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابتان الصحيحتان هما (B) تفريغ التوتر و(E) الإنكار. تفريغ التوتر = توجيه الانفعالات المكبوتة نحو شخص آخر (الأطفال بدلاً من المدير). الإنكار = قد تنكر نسيمة أن تصرفاتها ذات تأثير سلبي على أطفالها.</div>
+      <div class="expl-fr">Décharge des nerfs (B) : redirection de la tension émotionnelle réprimée vers une cible de substitution (enfants au lieu du directeur). Déni (E) : Nassima peut nier l'impact négatif de ses comportements. Sublimation (C) serait positive (transformer en créativité).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 آليات الدفاع: الإسقاط = إسناد مشاعري لشخص آخر. التفريغ = توجيه المشاعر نحو هدف آخر. النقل = تحويل المشاعر من شخص لآخر. التسامي = تحويل المشاعر نحو نشاط بنّاء.</div>
+      <div class="expl-fr">Mécanismes : Projection = attribuer mes sentiments à autrui. Décharge = diriger l'émotion vers une cible substitut. Déplacement = transférer l'émotion. Sublimation = transformer en activité constructive (≠ décharge).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 "تفرغ توترها على أطفالها" = تفريغ التوتر (الهدف البديل). ملاحظة: في هذا الامتحان الإجابة BE.</div>
+      <div class="expl-fr">💡 "Décharge sur ses enfants" = Décharge des nerfs (B) + possiblement Déni (E). Réponse officielle : BE.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: الإسقاط (D التسمية المختلطة) غير دقيق هنا. التفريغ يختلف عن الإسقاط. التفريغ = إفراغ الانفعال على هدف آخر. الإسقاط = إسناد مشاعري لشخص آخر.</div>
+      <div class="expl-fr">⚠️ Piège : Déplacement (D) ≠ Décharge. La décharge (B) redirige la tension émotionnelle vers un substitut. Le déplacement concerne le transfert d'attachement. Sublimation (C) est toujours positive/constructive.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q15 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q15</span><span class="q-ref">QCM n°09 U1 2022</span></div>
+  <div class="q-fr">Un autre médecin explique à Chafika les mesures à prendre. Elle rapporte qu'elle travaille 10h/jour depuis 3 ans, gère sa maison, ses enfants et sa mère âgée avec des séquelles d'AVC. Elle est épuisée mais a peur de déléguer ses responsabilités. Cette situation dure depuis des années. À quelle phase de stress se situe Chafika ?</div>
+  <div class="q-ar">شافيقة تعمل 10 ساعات يومياً منذ 3 سنوات، تدير منزلها وأطفالها وأمها المسنة. منهكة لكنها تخشى تفويض مسؤولياتها. هذا الوضع مستمر منذ سنوات. في أي مرحلة إجهاد تتواجد؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Alarme</li>
+    <li class="opt"><span class="ltr">B.</span> Réaction</li>
+    <li class="opt"><span class="ltr">C.</span> Résistance</li>
+    <li class="opt"><span class="ltr">D.</span> Renforcement</li>
+    <li class="opt correct"><span class="ltr">E.</span> Épuisement</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (E) مرحلة الإنهاك. شافيقة تعاني منذ سنوات (وليس أسابيع كنسيمة). الإنهاك المستمر على مدى سنوات مع احتشاء قلبي = مرحلة الإنهاك حيث تنهار آليات المقاومة وتظهر الأمراض العضوية.</div>
+      <div class="expl-fr">Phase d'épuisement (E) : le stress dure depuis des années avec effondrement physique (infarctus du myocarde) et mental (épuisement). ≠ Nassima (résistance = quelques semaines). Chafika = des années → épuisement = phase terminale du stress chronique.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 الفرق بين نسيمة وشافيقة: نسيمة = مقاومة (أسابيع، أعراض وظيفية). شافيقة = إنهاك (سنوات، مرض عضوي = احتشاء). الإنهاك يتميز بظهور الأمراض العضوية الفعلية.</div>
+      <div class="expl-fr">Distinction Nassima/Chafika : Nassima = Résistance (semaines, symptômes fonctionnels). Chafika = Épuisement (années, maladie organique = infarctus). L'épuisement se caractérise par l'émergence de maladies organiques réelles.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 إجهاد سنوات + مرض عضوي = إنهاك. إجهاد أسابيع + أعراض وظيفية = مقاومة.</div>
+      <div class="expl-fr">💡 Stress des années + maladie organique = Épuisement. Stress des semaines + symptômes fonctionnels = Résistance. Règle mnémotechnique.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: لا تخلط بين نسيمة (مقاومة) وشافيقة (إنهاك). المدة والمضاعفات العضوية هما مفتاح التمييز.</div>
+      <div class="expl-fr">⚠️ Piège : Ne pas confondre Nassima (résistance, semaines) et Chafika (épuisement, années + infarctus). Durée + complications organiques = clé de distinction.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q16 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q16</span><span class="q-ref">QCM n°10 U1 2022</span></div>
+  <div class="q-fr">À part la cardiopathie ischémique de cette patiente, quelles autres maladies pourraient être la conséquence de ce stress ?</div>
+  <div class="q-ar">بخلاف الاحتشاء القلبي لهذه المريضة، ما الأمراض الأخرى التي يمكن أن تكون نتيجة لهذا الإجهاد؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Cancer du sein</li>
+    <li class="opt"><span class="ltr">B.</span> Tuberculose</li>
+    <li class="opt correct"><span class="ltr">C.</span> Fibromyalgie</li>
+    <li class="opt"><span class="ltr">D.</span> Hyperthyroïdie</li>
+    <li class="opt"><span class="ltr">E.</span> Thrombophlébite</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (C) الفيبروميالجيا. الفيبروميالجيا هي أحد الأمراض النفسجسدية المرتبطة بالإجهاد المزمن. هي اضطراب ألم واسع الانتشار يرتبط بالإجهاد والضغط النفسي المزمن. الأمراض النفسجسدية الكلاسيكية: قرحة المعدة، ربو، ارتفاع ضغط الدم، الصداع النصفي، التهاب القولون، الفيبروميالجيا.</div>
+      <div class="expl-fr">Fibromyalgie (C) = maladie psychosomatique liée au stress chronique. Les maladies psychosomatiques classiques : ulcère gastrique, asthme, HTA, migraine, colite, fibromyalgie. Cancer, tuberculose (infections) et hyperthyroïdie (endocrinien) ne sont pas directement psychosomatiques.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 الأمراض النفسجسدية المرتبطة بالإجهاد: الفيبروميالجيا، قرحة الهضمية، الربو، ارتفاع ضغط الدم الأساسي، الصداع التوتري، التهاب القولون العصبي، الصدفية، الأكزيما.</div>
+      <div class="expl-fr">Maladies psychosomatiques liées au stress : fibromyalgie, ulcère gastrique, asthme, HTA essentielle, céphalée de tension, syndrome de l'intestin irritable, psoriasis, eczéma.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الفيبروميالجيا = نموذج الأمراض النفسجسدية المرتبطة بالإجهاد المزمن. تذكر: ألم جسدي مزمن بلا سبب عضوي = فيبروميالجيا.</div>
+      <div class="expl-fr">💡 Fibromyalgie = prototype de maladie psychosomatique du stress chronique. Douleur diffuse chronique sans cause organique + contexte de stress = fibromyalgie.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: السرطان والسل ليسا نفسجسديين بالمعنى الدقيق (رغم أن الإجهاد قد يضعف المناعة). فرط الغدة الدرقية له أسباب عضوية محددة. الفيبروميالجيا = الإجابة الأنسب.</div>
+      <div class="expl-fr">⚠️ Piège : Cancer et tuberculose = pas psychosomatiques au sens strict. Hyperthyroïdie = étiologie endocrinienne. Fibromyalgie = seule option clairement psychosomatique liée au stress chronique.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q17 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q17</span><span class="q-ref">QCM n°04 U1 2021</span></div>
+  <div class="q-fr">Dalila 60 ans, ménopausée, présente des saignements gynécologiques. Après avoir vérifié la qualité du rapport collaboratif, quelle étape est indispensable avant d'annoncer le diagnostic de cancer du col de l'utérus ?</div>
+  <div class="q-ar">داليلة، 60 سنة، تعاني من نزيف تناسلي. بعد التحقق من جودة العلاقة التعاونية، ما هي الخطوة الضرورية قبل الإخبار بتشخيص سرطان عنق الرحم؟</div>
+  <ul class="options">
+    <li class="opt correct"><span class="ltr">A.</span> Explorer ce que la patiente sait ou souhaite savoir</li>
+    <li class="opt"><span class="ltr">B.</span> Exprimer de l'empathie à la patiente</li>
+    <li class="opt"><span class="ltr">C.</span> Annoncer à sa famille, avant de lui annoncer à elle</li>
+    <li class="opt"><span class="ltr">D.</span> Détailler les moyens thérapeutiques</li>
+    <li class="opt"><span class="ltr">E.</span> Faire une consultation chez le psychologue</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (A) استكشاف ما تعرفه وما تريد معرفته. بعد التحقق من التحالف العلاجي، الخطوة التالية قبل الإخبار هي استكشاف مستوى معرفة المريضة بحالتها وما تريد معرفته. هذا يحدد طريقة وكمية المعلومات المقدمة.</div>
+      <div class="expl-fr">Après vérification de l'alliance → Explorer ce que la patiente sait/veut savoir (A) → PUIS annoncer. L'empathie (B) est exprimée après l'annonce. Détailler les thérapeutiques (D) vient encore après. Annoncer à la famille (C) est contraire à l'éthique sans accord de la patiente.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 ترتيب خطوات الإخبار: ① التحقق من التحالف (قد تم هنا) → ② استكشاف المعرفة → ③ الإخبار → ④ التعاطف والدعم → ⑤ الملخص والخطة.</div>
+      <div class="expl-fr">Séquence d'annonce : ① Alliance ✓ (déjà fait) → ② Explorer savoir/vouloir savoir → ③ Annoncer → ④ Empathie et soutien → ⑤ Résumé et plan thérapeutique.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 بعد التحالف وقبل الإخبار = استكشاف ما يعرفه المريض. هذا الترتيب ثابت في كل سؤال عن الإخبار.</div>
+      <div class="expl-fr">💡 Après alliance, avant annonce = Explorer. Ordre fixe : Alliance → Explorer → Annoncer → Empathie → Résumer.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (C) إخبار الأسرة قبل المريضة = غير أخلاقي بدون موافقة المريضة. (B) التعاطف يأتي بعد الإخبار وليس قبله.</div>
+      <div class="expl-fr">⚠️ Piège : (C) annoncer à la famille avant la patiente = contraire à l'éthique et au droit du patient. (B) l'empathie vient APRÈS l'annonce, pas avant.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q18 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q18</span><span class="q-ref">QCM n°05 U1 2021</span></div>
+  <div class="q-fr">Après l'annonce du diagnostic à Dalila, elle devient angoissée et présente une crise d'asthme déclenchée par l'émotion. Elle explique que son asthme est stable depuis des années mais que les émotions déclenchent ou aggravent les crises. Laquelle des propositions désigne le mieux cette crise d'asthme ?</div>
+  <div class="q-ar">بعد الإخبار، تصاب داليلة بنوبة ربو مثيرها الانفعال. ربوها كان مستقراً لسنوات. ما أفضل وصف لهذه النوبة؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Une formation réactionnelle</li>
+    <li class="opt"><span class="ltr">B.</span> Une réaction de résistance au stress</li>
+    <li class="opt"><span class="ltr">C.</span> Un déplacement de l'angoisse</li>
+    <li class="opt correct"><span class="ltr">D.</span> Une pathologie psychosomatique</li>
+    <li class="opt"><span class="ltr">E.</span> Une simple comorbidité</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (D) مرض نفسجسدي. الربو المستقر الذي تُثيره العوامل الانفعالية هو نموذج كلاسيكي للمرض النفسجسدي: مرض عضوي حقيقي يتأثر بالعوامل النفسية في نشوئه وتطوره وتفاقمه.</div>
+      <div class="expl-fr">Pathologie psychosomatique (D) : maladie organique réelle (asthme confirmé) dont l'évolution est influencée par les facteurs psychologiques (émotion déclenche la crise). ≠ Comorbidité (E) = deux maladies indépendantes coexistantes. L'asthme de Dalila est directement influencé par l'état psychologique.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 المرض النفسجسدي = مرض عضوي حقيقي تؤثر فيه العوامل النفسية. الاعتلال الوظيفي = أعراض جسدية دون مرض عضوي. المرافقة = مرضان مستقلان يتواجدان معاً.</div>
+      <div class="expl-fr">Pathologie psychosomatique = maladie organique réelle influencée par le psychisme. Trouble fonctionnel = symptômes sans maladie organique. Comorbidité = 2 maladies indépendantes coexistantes.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الربو + مثير انفعالي = مرض نفسجسدي. الأمراض النفسجسدية الكلاسيكية: الربو، القرحة، ارتفاع ضغط الدم، الصداع النصفي، التهاب القولون العصبي.</div>
+      <div class="expl-fr">💡 Asthme + déclencheur émotionnel = psychosomatique. Maladies psychosomatiques classiques : asthme, ulcère, HTA, migraine, côlon irritable, fibromyalgie, eczéma, psoriasis.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (E) المرافقة تعني مرضان مستقلان. الربو هنا ليس مستقلاً = يتأثر بالانفعال = نفسجسدي. (C) نقل القلق = آلية دفاع نفسية وليس تفسيراً للمرض النفسجسدي.</div>
+      <div class="expl-fr">⚠️ Piège : (E) comorbidité = 2 maladies indépendantes. Ici l'asthme est directement lié à l'émotion → pas indépendant. (C) déplacement de l'angoisse = mécanisme de défense psychologique ≠ pathologie psychosomatique.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end #stress -->
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 4 — PSYCHOLOGIE DE LA DOULEUR (Q19–Q24)
+═══════════════════════════════════════════════════ -->
+<div class="section-wrap" id="douleur">
+  <div class="section-title">Psychologie de la Douleur <span class="section-count">6 questions</span></div>
+
+<!-- Q19 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q19</span><span class="q-ref">QCM n°07 U1 2024</span></div>
+  <div class="q-fr">Melle B.M, 20 ans, est ramenée aux urgences pour une douleur de la fosse iliaque droite avec nausées, vomissements et fièvre depuis quelques heures. Le diagnostic d'appendicite est posé. Quel type de douleur présente-t-elle ?</div>
+  <div class="q-ar">مبارك. م.، 20 سنة، مُحضرة للإسعاف بسبب ألم في الحفرة الحرقفية اليمنى مع غثيان وقيء وحمى منذ ساعات. التشخيص: التهاب الزائدة الدودية. ما نوع الألم الذي تعاني منه؟</div>
+  <ul class="options">
+    <li class="opt correct"><span class="ltr">A.</span> Nociceptive</li>
+    <li class="opt"><span class="ltr">B.</span> Neuropathique</li>
+    <li class="opt correct"><span class="ltr">C.</span> Aiguë</li>
+    <li class="opt"><span class="ltr">D.</span> Chronique</li>
+    <li class="opt"><span class="ltr">E.</span> Idiopathique</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : BC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابتان الصحيحتان هما (B) الألم العصبي و(C) الألم الحاد. انتبه: الإجابة الرسمية BC. الألم الحاد (C) = ألم بدأ منذ ساعات قليلة = توقيت حاد. الألم الاستيعابي (A) = ألم الأنسجة. الألم العصبي (B) = ألم من تلف عصبي. في سياق الامتحان الرسمي: BC هي الإجابة المقبولة.</div>
+      <div class="expl-fr">Réponse officielle : BC. Douleur aiguë (C) = début depuis quelques heures (≠ chronique ≥ 3 mois). Neuropathique (B) est retenu dans la correction officielle. Note : en pratique, l'appendicite génère une douleur nociceptive (A) et aiguë (C). Suivre le corrigé officiel : BC.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 تصنيف الألم حسب الآلية: استيعابي (Nociceptif) = تلف نسيجي. عصبي (Neuropathique) = تلف عصبي. وظيفي (Fonctionnel) = دون آفة. حسب المدة: حاد (&lt;3 أشهر) vs مزمن (≥3 أشهر).</div>
+      <div class="expl-fr">Classification de la douleur par mécanisme : Nociceptive (lésion tissulaire), Neuropathique (lésion nerveuse), Fonctionnelle (sans lésion). Par durée : Aiguë (&lt;3 mois) vs Chronique (≥3 mois). Corrigé officiel retient BC.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الألم الحاد = بدأ منذ ساعات/أيام. الألم المزمن = 3 أشهر فأكثر. الإجابة الرسمية لهذا السؤال: BC.</div>
+      <div class="expl-fr">💡 Douleur aiguë = début récent (heures/jours). Chronique = ≥3 mois. Nociceptive = lésion tissulaire. Neuropathique = lésion nerveuse. Corrigé officiel = BC.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ مهم: قد تظن أن الإجابة AC (استيعابي + حاد) منطقياً. لكن المصحح الرسمي يعطي BC. اتبع المصحح الرسمي في الامتحان.</div>
+      <div class="expl-fr">⚠️ Piège crucial : logiquement AC (nociceptive + aiguë) semble correct pour appendicite. Mais le corrigé officiel retient BC. Suivre toujours le corrigé officiel pour l'examen.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q20 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q20</span><span class="q-ref">QCM n°01 U1 2023</span></div>
+  <div class="q-fr">Saadi 36 ans, maçon, consulte pour une hernie discale hyperalgique. Il se plaint de son incapacité à travailler et à couvrir les dépenses de sa famille. Son épouse vend de la galette, lui aide un ami dans un magasin. Quel outil d'entretien choisissez-vous pour exprimer votre empathie ?</div>
+  <div class="q-ar">سعدي، 36 سنة، بنّاء، يعاني من فتق قرصي. يشتكي من عجزه عن العمل وتأمين نفقات عائلته. ما أداة المقابلة التي تختارها للتعبير عن تعاطفك؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Résumer</li>
+    <li class="opt"><span class="ltr">B.</span> Reformuler</li>
+    <li class="opt correct"><span class="ltr">C.</span> Renforcer</li>
+    <li class="opt"><span class="ltr">D.</span> Recontextualiser</li>
+    <li class="opt"><span class="ltr">E.</span> Refléter</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (C) التعزيز. التعزيز الانفعالي يستخدم للتعبير عن التعاطف والاعتراف بمشاعر المريض. سعدي يعبر عن الألم الاجتماعي والعائلي = التعزيز يعترف بهذا الألم ويشجعه على الاستمرار.</div>
+      <div class="expl-fr">Renforcement (C) = outil d'empathie par excellence. Il reconnaît et valide les émotions exprimées par Saadi (difficulté financière, rôle de père). ≠ Résumé (contenu), Reformulation (redirection), Recontextualisation (mise en contexte).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 التعزيز الانفعالي = التعبير عن التعاطف. أمثلة: "أفهم كم هذا صعب عليك"، "هذا الوضع يبدو مرهقاً جداً"، "أنت تقوم بكل ما في وسعك رغم الظروف".</div>
+      <div class="expl-fr">Renforcement émotionnel = empathie. Exemples : "Je comprends à quel point c'est difficile", "Vous faites tout votre possible malgré les circonstances". C'est l'outil de l'empathie dans les 5R.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 التعبير عن التعاطف = التعزيز. هذا ثابت: كلما طُلب التعاطف = التعزيز الانفعالي.</div>
+      <div class="expl-fr">💡 Exprimer l'empathie = Renforcement. Règle fixe : quand la question demande d'exprimer l'empathie → Renforcement émotionnel (C).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: إعادة الصياغة (B) تُعمق الاستكشاف ولا تعبر عن التعاطف. التعزيز (C) هو أداة التعاطف الخاصة في المقابلة.</div>
+      <div class="expl-fr">⚠️ Piège : Reformulation (B) approfondit l'exploration mais n'exprime pas directement l'empathie. Renforcement (C) = outil spécifique de l'empathie dans les 5R de l'entretien.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q21 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q21</span><span class="q-ref">QCM n°02 U1 2023</span></div>
+  <div class="q-fr">Saadi regrette d'avoir arrêté ses études en 7ème année. Il reconnaît qu'il est dépensier et n'anticipe pas assez. En plus de l'atteinte de son intégrité corporelle, quel inconvénient de la maladie exprime-t-il le plus ?</div>
+  <div class="q-ar">سعدي يندم على تركه الدراسة في السنة السابعة ويعترف أنه مبذّر وغير استشرافي. إضافة للمساس بسلامته الجسدية، ما هو العائق المرضي الذي يعبر عنه أكثر؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Atteinte de l'intégrité psychique</li>
+    <li class="opt correct"><span class="ltr">B.</span> Remise en cause de l'image idéale de soi</li>
+    <li class="opt"><span class="ltr">C.</span> Peur de l'abandon</li>
+    <li class="opt"><span class="ltr">D.</span> État de dépendance</li>
+    <li class="opt"><span class="ltr">E.</span> Remise en cause du soutien familial</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (B) المساس بصورة الذات المثالية. سعدي يقارن نفسه بـ"ما كان يمكن أن يكونه": لو أكمل دراسته، لو كان أقل تبذيراً... هذا يدل على المساس بالصورة المثالية عن الذات = الفجوة بين ما هو عليه وما يتمنى أن يكون.</div>
+      <div class="expl-fr">Remise en cause de l'image idéale de soi (B) : Saadi compare ce qu'il est à ce qu'il aurait pu être ("si j'avais mieux étudié, si j'avais été prévoyant"). C'est la confrontation douloureuse entre le soi réel et le soi idéal. ≠ Intégrité psychique (identité profonde).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 الفرق: الصورة المثالية للذات = الفجوة بين الأنا الحقيقية والأنا المأمولة. السلامة النفسية = تهديد الهوية الجوهرية. الصورة النرجسية = احترام الذات والكبرياء.</div>
+      <div class="expl-fr">Distinctions : Image idéale de soi = écart entre soi réel et soi idéal. Intégrité psychique = menace sur l'identité fondamentale. Image narcissique = estime de soi et amour propre. Ici : "si j'avais été mieux..." = image idéale.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 "لو كنت..." = صورة الذات المثالية. كلمات مفتاحية: الأسف على الماضي، المقارنة بين ما هو عليه وما يتمنى أن يكون.</div>
+      <div class="expl-fr">💡 "Si j'avais été..." = Image idéale de soi. Mots-clés : regrets, comparaison entre soi réel et soi idéalisé, "les choses auraient été différentes".</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: الخلط بين "السلامة النفسية" (A) و"صورة الذات المثالية" (B). صورة الذات المثالية = الفجوة بين ما أنا عليه وما يجب أن أكون. السلامة النفسية = تهديد وجودي للهوية الجوهرية.</div>
+      <div class="expl-fr">⚠️ Piège : Intégrité psychique (A) = menace existentielle sur l'identité fondamentale. Image idéale de soi (B) = écart entre soi réel et soi idéal. "Si j'avais étudié..." → (B) car c'est une comparaison avec un idéal.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q22 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q22</span><span class="q-ref">QCM n°03 U1 2023</span></div>
+  <div class="q-fr">En revoyant Saadi après quelques jours, il se sent mieux et rapporte des détails sur la douleur, les effets et les horaires des traitements. Il prend ses médicaments à heure fixe, s'angoissant s'il dépasse de 2 minutes. Il a aussi lu plusieurs documents sur sa maladie. Quelle proposition illustre le mieux la réaction de votre patient ?</div>
+  <div class="q-ar">سعدي يأخذ دواءه في وقت محدد بدقة ويقلق إذا تأخر 2 دقيقة. قرأ وثائق عديدة عن مرضه. ما أفضل وصف لردة فعله؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Formation réactionnelle</li>
+    <li class="opt"><span class="ltr">B.</span> Dénégation</li>
+    <li class="opt"><span class="ltr">C.</span> Minimisation</li>
+    <li class="opt correct"><span class="ltr">D.</span> Obsessionnalisation</li>
+    <li class="opt"><span class="ltr">E.</span> Focalisation</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (D) التوسوس (Obsessionnalisation). سعدي يأخذ دواءه في وقت محدد بدقة متناهية (2 دقيقة = قلق)، يتتبع تفاصيل الألم، يبحث بشكل مفرط عن المعلومات = سلوك وسواسي. هذا ردة فعل دفاعية من خلال الضبط والسيطرة المفرطة.</div>
+      <div class="expl-fr">Obsessionnalisation (D) : Saadi gère son anxiété par un contrôle obsessionnel (prise de médicaments à la minute, suivi minutieux des détails, recherche excessive d'informations). C'est un mécanisme de défense par contrôle compulsif de la situation.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 التوسوس = آلية دفاع تقوم على الضبط المفرط والتحكم لتسكين القلق. مؤشراته: الانضباط الزمني المبالغ، متابعة التفاصيل بدقة مرضية، البحث الوسواسي عن المعلومات.</div>
+      <div class="expl-fr">Obsessionnalisation = mécanisme de défense par contrôle excessif pour maîtriser l'angoisse. Indicateurs : rigueur temporelle excessive, suivi minutieux des détails, recherche obsessionnelle d'informations sur la maladie.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 التوسوس = السيطرة المفرطة كدفاع ضد القلق. القلق عند التأخر 2 دقيقة + تتبع التفاصيل = علامات كلاسيكية.</div>
+      <div class="expl-fr">💡 Obsessionnalisation = contrôle excessif comme défense contre l'anxiété. S'angoisser pour 2 minutes de retard + suivi minutieux = signes classiques d'obsessionnalisation.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: التركيز (E) هو الانشغال بالألم فقط دون السيطرة الوسواسية. التوسوس أوسع ويشمل الضبط المفرط لكل جوانب العلاج.</div>
+      <div class="expl-fr">⚠️ Piège : Focalisation (E) = attention portée uniquement sur la douleur. Obsessionnalisation (D) = contrôle compulsif de tous les aspects (timing, détails, recherche d'info). Plus large que la focalisation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q23 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q23</span><span class="q-ref">QCM n°13 U1 2022</span></div>
+  <div class="q-fr">Un patient n'a pas pu reprendre son travail. Il pense à sa douleur toute la journée, même lorsqu'elle ne se manifeste pas. Il essaie de l'interpréter, de suivre son irradiation et de mesurer son intensité. Il la compare d'une minute à l'autre. Selon la description, laquelle des composantes de la douleur est la plus développée ?</div>
+  <div class="q-ar">مريض يفكر في ألمه طوال اليوم حتى حين لا يكون موجوداً. يحاول تفسيره ومتابعة امتداده وقياس شدته. ما أكثر مكونات الألم تطوراً؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Relationnelle</li>
+    <li class="opt"><span class="ltr">B.</span> Émotionnelle</li>
+    <li class="opt"><span class="ltr">C.</span> Organique</li>
+    <li class="opt correct"><span class="ltr">D.</span> Cognitive</li>
+    <li class="opt"><span class="ltr">E.</span> Comportementale</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (D) المكون المعرفي. المريض يفسر الألم، يتتبعه، يقيسه، يقارنه = عمليات ذهنية معرفية. المكون المعرفي يشمل: تفسير الألم، التفكير فيه، مراقبته باستمرار.</div>
+      <div class="expl-fr">Composante Cognitive (D) : interpréter la douleur, suivre son irradiation, mesurer son intensité, la comparer = processus cognitifs (mentaux). ≠ Émotionnelle (tristesse, peur) ≠ Comportementale (comportement observable) ≠ Relationnelle (impact sur les relations).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 مكونات الألم: ① العضوية (physiologique): الإشارة العصبية. ② الانفعالية: القلق، الحزن. ③ المعرفية: التفسير، الانتباه، التقييم. ④ السلوكية: التجنب، التعبير. ⑤ العلائقية: أثر الألم على العلاقات.</div>
+      <div class="expl-fr">Composantes de la douleur : ① Organique (signal nociceptif), ② Émotionnelle (anxiété, tristesse), ③ Cognitive (interprétation, attention, évaluation), ④ Comportementale (comportements d'évitement), ⑤ Relationnelle (impact social).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 التفسير + المتابعة + القياس + المقارنة = مكون معرفي. الكلمات المفتاحية: يفكر، يفسر، يراقب، يقيس.</div>
+      <div class="expl-fr">💡 Interpréter + suivre + mesurer + comparer = Composante Cognitive. Mots-clés cognitifs : penser, interpréter, surveiller, mesurer, comparer.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: "يفكر في الألم طوال اليوم" قد يوحي بالانفعال. لكن الفعل الذهني (التفسير، المتابعة، القياس) = معرفي. الانفعالي يشمل المشاعر (قلق، حزن).</div>
+      <div class="expl-fr">⚠️ Piège : "pense à sa douleur" peut évoquer l'émotionnel. Mais "interpréter, suivre, mesurer" sont des processus mentaux = Cognitif. Émotionnel = sentiments (anxiété, tristesse, peur).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q24 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q24</span><span class="q-ref">QCM n°06 U1 2021</span></div>
+  <div class="q-fr">Anis, 21 ans, footballeur, se blesse à la cheville lors d'un match crucial et est exclu avec un carton rouge. Son équipe perd. Depuis, la douleur de sa cheville est permanente et invalidante malgré des explorations rassurantes. Lequel des facteurs suivants a aggravé la perception de la douleur ?</div>
+  <div class="q-ar">أنيس، 21 سنة، لاعب كرة قدم، يُصاب في كاحله خلال مباراة حاسمة ويُطرد بطاقة حمراء. فريقه يخسر. منذ ذلك اليوم الألم دائم ومُعجز رغم فحوصات مطمئنة. ما العامل الذي فاقم إدراك الألم؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Âge jeune</li>
+    <li class="opt"><span class="ltr">B.</span> Gravité de l'atteinte de la cheville</li>
+    <li class="opt"><span class="ltr">C.</span> L'association de la douleur avec une maladie grave</li>
+    <li class="opt"><span class="ltr">D.</span> L'absence de pathologie psychiatrique</li>
+    <li class="opt correct"><span class="ltr">E.</span> L'anxiété et la culpabilité dues à l'échec</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (E) القلق والذنب الناجمان عن الفشل. الفحوصات مطمئنة = لا أسباب عضوية تفسر الألم المعجز. العامل المُفاقِم هو الحالة النفسية: القلق وشعور الذنب بسبب الطرد والخسارة. هذا يضخم إدراك الألم (الألم النفسي يُفاقم الألم الجسدي).</div>
+      <div class="expl-fr">Anxiété et culpabilité liées à l'échec (E) : Les examens sont rassurants = pas de cause organique importante. L'amplification de la douleur est d'origine psychologique : culpabilité pour l'exclusion + anxiété de l'échec de l'équipe. État émotionnel négatif → hyperalgésie psychologique.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 عوامل تفاقم الألم: القلق والاكتئاب، الذنب، الكارثية (catastrophisation)، الأحداث الصادمة المرتبطة بالألم، التوقعات السلبية، الانتباه المفرط للألم.</div>
+      <div class="expl-fr">Facteurs aggravant la perception de la douleur : anxiété, dépression, culpabilité, catastrophisation, traumatismes associés à la douleur, attentes négatives, hypervigilance à la douleur.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 فحوصات طبيعية + ألم معجز = عامل نفسي مفاقِم. هنا: القلق والذنب = أكبر محرك لتفاقم إدراك الألم.</div>
+      <div class="expl-fr">💡 Examens normaux + douleur invalidante = facteur psychologique amplificateur. Ici : anxiété + culpabilité = principal moteur d'amplification de la douleur chez Anis.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (B) خطورة إصابة الكاحل = الفحوصات مطمئنة إذن ليست هي السبب. (C) لا توجد مرض خطير مرتبط. (E) هو المحرك النفسي الواضح.</div>
+      <div class="expl-fr">⚠️ Piège : (B) gravité de la cheville = non, car les examens sont rassurants. (C) pas de maladie grave associée. (E) facteur psychologique (anxiété + culpabilité) = seule explication cohérente.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end #douleur -->
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 5 — FONCTIONNEMENT MENTAL & PERSONNALITÉ (Q25–Q30)
+═══════════════════════════════════════════════════ -->
+<div class="section-wrap" id="fonct">
+  <div class="section-title">Fonctionnement Mental &amp; Développement de la Personnalité <span class="section-count">6 questions</span></div>
+
+<!-- Q25 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q25</span><span class="q-ref">QCM n°04 U1 2024</span></div>
+  <div class="q-fr">Cochez la ou les réponse(s) juste(s) :</div>
+  <div class="q-ar">اختر الإجابة/الإجابات الصحيحة:</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Le développement de la personnalité commence à partir de la deuxième année de vie</li>
+    <li class="opt correct"><span class="ltr">B.</span> La sublimation est un mécanisme de défense</li>
+    <li class="opt correct"><span class="ltr">C.</span> Le surmoi est l'instance de la personnalité centrale</li>
+    <li class="opt"><span class="ltr">D.</span> Le ça est un réservoir de pulsions</li>
+    <li class="opt"><span class="ltr">E.</span> Le préconscient est appelé le moi officiel</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : ABC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الرسمية: ABC. (A) التطور يبدأ منذ الولادة (أو من السنة الثانية حسب بعض المراجع). (B) التسامي = آلية دفاع إيجابية (صحيح). (C) السوبر أنا = المرجعية الأخلاقية المركزية. (D) الهو = خزان الغرائز (صحيح لكن غير مدرج في الإجابة الرسمية). (E) مسبق الوعي = الطبقة الوسطى (ليس الأنا الرسمي).</div>
+      <div class="expl-fr">Réponse officielle ABC : (B) Sublimation = mécanisme de défense ✓. (C) Surmoi = instance morale centrale ✓. (D) Ça = réservoir de pulsions (vrai en soi mais corrigé officiel retient ABC). Suivre le corrigé officiel.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 الجهازين النفسيين لفرويد: الطوبوغرافي: اللاوعي، مسبق الوعي، الوعي. الهيكلي: الهو (غرائز)، الأنا (واقعي)، السوبر أنا (أخلاقي). التسامي = تحويل الغرائز نحو نشاط اجتماعي مقبول.</div>
+      <div class="expl-fr">Deux topiques de Freud : 1ère topique (Inconscient, Préconscient, Conscient). 2ème topique : Ça (pulsions), Moi (réalité), Surmoi (moral). Sublimation = mécanisme de défense mature (transforme les pulsions en activité socialement valorisée).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الإجابة الرسمية: ABC. السوبر أنا = مركز الشخصية (الأخلاق). التسامي = آلية دفاع ناضجة. التطور يبدأ مبكراً.</div>
+      <div class="expl-fr">💡 Réponse officielle : ABC. Surmoi = instance morale centrale. Sublimation = mécanisme de défense mature. Développement = commence dès la naissance (ou 2ème année selon les références).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (D) "الهو = خزان الغرائز" صحيح من حيث الفهم لكن غير مدرج في الإجابة الرسمية. اتبع المصحح الرسمي ABC.</div>
+      <div class="expl-fr">⚠️ Piège : (D) "Le ça est un réservoir de pulsions" est vrai en théorie mais non retenu dans le corrigé officiel. Suivre ABC selon le corrigé.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q26 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q26</span><span class="q-ref">QCM n°07 U1 2023</span></div>
+  <div class="q-fr">Selon Piaget :</div>
+  <div class="q-ar">وفق بياجيه:</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> L'intelligence est innée</li>
+    <li class="opt correct"><span class="ltr">B.</span> L'intelligence est fonction de l'environnement</li>
+    <li class="opt correct"><span class="ltr">C.</span> Le développement se fait en 4 stades successifs</li>
+    <li class="opt"><span class="ltr">D.</span> Le développement se fait en 5 stades successifs</li>
+    <li class="opt"><span class="ltr">E.</span> Tous les enfants passent par les différents stades au même moment avec le même rythme</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : BC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابتان الصحيحتان هما (B) الذكاء وظيفة البيئة و(C) التطور في 4 مراحل متتالية. وفق بياجيه: الذكاء ليس فطرياً بل يتطور بالتفاعل مع البيئة. المراحل الأربعة: حسي-حركي (0-2)، ما قبل العمليات (2-7)، العمليات الملموسة (7-11)، العمليات الشكلية (11+).</div>
+      <div class="expl-fr">Piaget : (B) Intelligence = interaction entre l'organisme et l'environnement (pas innée). (C) 4 stades : Sensori-moteur (0-2), Pré-opératoire (2-7), Opérations concrètes (7-11), Opérations formelles (11+). (E) faux : rythme variable selon les enfants mais ordre fixe.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 المراحل الأربعة لبياجيه: ① حسي-حركي (0-2 سنة): الحواس والحركات. ② ما قبل العمليات (2-7): الرمز واللغة. ③ العمليات الملموسة (7-11): المنطق على الأشياء المادية. ④ العمليات الشكلية (11+): التفكير المجرد.</div>
+      <div class="expl-fr">4 stades de Piaget : ① Sensori-moteur (0-2 ans), ② Pré-opératoire (2-7 ans), ③ Opérations concrètes (7-11 ans), ④ Opérations formelles (11+ ans). L'ordre est invariable mais le rythme varie selon les individus.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 4 مراحل لبياجيه (وليس 5). الذكاء = بيئة + تفاعل. الترتيب ثابت لكن الإيقاع يتفاوت.</div>
+      <div class="expl-fr">💡 4 stades Piaget (pas 5). Intelligence = environnement + interaction. Ordre fixe, rythme variable. B et C = vraies.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (D) 5 مراحل = إريكسون (وليس بياجيه). (E) الترتيب ثابت لكن الإيقاع يختلف من طفل لآخر.</div>
+      <div class="expl-fr">⚠️ Piège : (D) 5 stades = Erikson (pas Piaget). (E) l'ordre est fixe mais le rythme varie. Ne pas confondre Piaget (4 stades cognitifs) et Erikson (8 stades psychosociaux).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q27 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q27</span><span class="q-ref">QCM n°08 U1 2023</span></div>
+  <div class="q-fr">Le stade sensori-moteur :</div>
+  <div class="q-ar">المرحلة الحسية-الحركية:</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Est marqué par le développement du langage</li>
+    <li class="opt correct"><span class="ltr">B.</span> Est le stade des réflexes et des réactions automatiques</li>
+    <li class="opt correct"><span class="ltr">C.</span> Est marqué par l'enrichissement des émotions qui deviennent appropriées aux situations</li>
+    <li class="opt"><span class="ltr">D.</span> Correspond à un âge entre 2 et 7 ans</li>
+    <li class="opt correct"><span class="ltr">E.</span> Est marqué par l'utilisation des sens</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : BCE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابات الصحيحة: BCE. المرحلة الحسية-الحركية (0-2 سنة): (B) مرحلة الانعكاسات والردود الآلية ✓. (C) تطور المشاعر المناسبة للمواقف ✓. (E) استخدام الحواس ✓. (A) اللغة = المرحلة ما قبل العمليات. (D) 2-7 سنة = ما قبل العمليات وليس الحسي-حركي.</div>
+      <div class="expl-fr">BCE : Stade sensori-moteur (0-2 ans) : (B) réflexes et réactions automatiques ✓, (C) enrichissement des émotions adaptées ✓, (E) utilisation des sens ✓. (A) langage = stade pré-opératoire. (D) 2-7 ans = pré-opératoire (pas sensori-moteur).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 المرحلة الحسية-الحركية (0-2 سنة): الحواس، الانعكاسات، دائمية الموضوع، تطور التآزر الحسي-الحركي. ما قبل العمليات (2-7): اللغة، التمثيل الرمزي، التمركز حول الذات.</div>
+      <div class="expl-fr">Sensori-moteur (0-2 ans) : sens, réflexes, permanence de l'objet, coordination sensori-motrice. Pré-opératoire (2-7 ans) : langage, représentation symbolique, égocentrisme. Opérations concrètes (7-11) : logique sur objets. Formelles (11+) : abstraction.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الحسي-الحركي = 0-2 سنة = الحواس + الانعكاسات. اللغة = ما قبل العمليات (2-7). لا تخلط بين المرحلتين.</div>
+      <div class="expl-fr">💡 Sensori-moteur = 0-2 ans = sens + réflexes. Langage = pré-opératoire (2-7 ans). Ne pas confondre. Réponse BCE.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (A) اللغة تبدأ في ما قبل العمليات. (D) 2-7 سنة = ما قبل العمليات. الحسي-الحركي = 0-2 سنة فقط.</div>
+      <div class="expl-fr">⚠️ Piège fréquent : (A) langage → pré-opératoire, pas sensori-moteur. (D) 2-7 ans → pré-opératoire. Sensori-moteur = 0-2 ans. Ne jamais inverser les âges.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q28 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q28</span><span class="q-ref">QCM n°09 U1 2023</span></div>
+  <div class="q-fr">Cochez la (les) réponse(s) juste(s) :</div>
+  <div class="q-ar">اختر الإجابة/الإجابات الصحيحة:</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Le conscient est le Moi officiel</li>
+    <li class="opt correct"><span class="ltr">B.</span> Le conscient est situé à la périphérie de l'appareil psychique</li>
+    <li class="opt"><span class="ltr">C.</span> Le conscient est la partie archaïque de l'appareil psychique</li>
+    <li class="opt correct"><span class="ltr">D.</span> L'inconscient est caractérisé par un processus primaire, il est régi par le plaisir</li>
+    <li class="opt correct"><span class="ltr">E.</span> Le conscient est le siège des processus de la pensée et du raisonnement</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : BDE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابات الصحيحة: BDE. (B) الوعي = الطبقة السطحية/المحيطية للجهاز النفسي ✓. (D) اللاوعي = عملية أولية مبنية على مبدأ اللذة ✓. (E) الوعي = مقر التفكير والاستدلال ✓. (A) الأنا الرسمي = مسبق الوعي. (C) الجزء البدائي = اللاوعي.</div>
+      <div class="expl-fr">BDE : (B) Le conscient est en périphérie de l'appareil psychique ✓. (D) L'inconscient = processus primaire régi par le principe de plaisir ✓. (E) Le conscient = siège de la pensée et du raisonnement ✓. (A) Moi officiel = préconscient. (C) partie archaïque = inconscient.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 1ère Topique: اللاوعي (le plus profond، عملية أولية، مبدأ اللذة) → مسبق الوعي (وسط، عملية ثانوية) → الوعي (السطح، التفكير، الاستدلال). الأنا الرسمي = مسبق الوعي.</div>
+      <div class="expl-fr">1ère topique : Inconscient (profond, processus primaire, principe plaisir) → Préconscient (intermédiaire, "moi officiel") → Conscient (surface, pensée, raisonnement). L'inconscient est archaïque (pas le conscient).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الوعي = السطح + التفكير. اللاوعي = العمق + اللذة + البدائية. مسبق الوعي = الأنا الرسمي. الإجابة: BDE.</div>
+      <div class="expl-fr">💡 Conscient = surface + pensée + raisonnement. Inconscient = profond + plaisir + archaïque. Préconscient = "moi officiel". Réponse officielle : BDE.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (A) الأنا الرسمي = مسبق الوعي وليس الوعي. (C) الجزء البدائي/الأرخائي = اللاوعي وليس الوعي.</div>
+      <div class="expl-fr">⚠️ Piège : (A) Moi officiel = préconscient (pas conscient). (C) partie archaïque = inconscient (pas conscient). Bien distinguer les 3 niveaux topiques.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q29 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q29</span><span class="q-ref">QCM n°01 U1 2022</span></div>
+  <div class="q-fr">Dans la théorie psychanalytique, Freud a décrit dans sa seconde topique trois instances. Laquelle correspond au Ça ?</div>
+  <div class="q-ar">في النظرية التحليلية النفسية، وصف فرويد في طوبوغرافيته الثانية ثلاث أجهزة. أيها يقابل "الهو" (Ça) ؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Il est conscient</li>
+    <li class="opt"><span class="ltr">B.</span> Il est formé par l'éducation parentale</li>
+    <li class="opt correct"><span class="ltr">C.</span> Il est le siège des pulsions</li>
+    <li class="opt"><span class="ltr">D.</span> Il joue le rôle d'arbitre</li>
+    <li class="opt"><span class="ltr">E.</span> Il est parfois conscient</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (C) الهو = مقر الغرائز. الهو (Ça): لاوعي بالكامل، خزان الغرائز والدوافع البدائية، يعمل وفق مبدأ اللذة. (B) التربية الوالدية = السوبر أنا. (D) دور الحَكَم = الأنا. (E) أحياناً واعٍ = الأنا أو مسبق الوعي.</div>
+      <div class="expl-fr">Ça = siège des pulsions (C) : entièrement inconscient, réservoir des pulsions primitives, fonctionne selon le principe de plaisir. (B) éducation parentale = Surmoi. (D) rôle d'arbitre = Moi. (E) parfois conscient = Moi ou préconscient.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 2ème Topique: الهو (Ça) = غرائز، لاوعي، مبدأ اللذة. الأنا (Moi) = واقعي، حَكَم، مبدأ الواقع. السوبر أنا (Surmoi) = أخلاق، تربية، قانون.</div>
+      <div class="expl-fr">2ème topique : Ça = pulsions, inconscient, principe plaisir. Moi = réalité, arbitre, principe réalité. Surmoi = morale, éducation, loi. Ça ≠ conscient, toujours inconscient.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الهو = غرائز + لاوعي + لذة. الأنا = واقع + حَكَم. السوبر أنا = أخلاق + تربية. (C) هي الإجابة الصحيحة.</div>
+      <div class="expl-fr">💡 Ça = pulsions + inconscient + plaisir. Moi = réalité + arbitre. Surmoi = morale + éducation. Réponse C = siège des pulsions.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (D) دور الحَكَم = الأنا (وليس الهو). (B) التربية الوالدية = السوبر أنا. لا تخلط بين الثلاثة.</div>
+      <div class="expl-fr">⚠️ Piège : (D) rôle d'arbitre = Moi (pas Ça). (B) éducation parentale = Surmoi. Mémorisez : Ça = pulsions, Moi = arbitre, Surmoi = morale.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q30 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q30</span><span class="q-ref">QCM n°02 U1 2022</span></div>
+  <div class="q-fr">Mohamed est étudiant. Il a échoué à ses examens à cause des jeux vidéo. À ses parents, il dit que c'était la faute de l'enseignant qui avait posé des questions non abordables. De quel mécanisme de défense s'agit-il ?</div>
+  <div class="q-ar">محمد طالب رسب في امتحاناته بسبب الألعاب الإلكترونية. لوالديه يقول إنه خطأ الأستاذ الذي طرح أسئلة لم تُدرَّس. ما آلية الدفاع هذه؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> La sublimation</li>
+    <li class="opt correct"><span class="ltr">B.</span> Le déni</li>
+    <li class="opt"><span class="ltr">C.</span> La formation réactionnelle</li>
+    <li class="opt"><span class="ltr">D.</span> La rationalisation</li>
+    <li class="opt"><span class="ltr">E.</span> La projection</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الرسمية: (B) الإنكار. محمد ينكر مسؤوليته ويحيل الفشل لعامل خارجي (الأستاذ). يمكن القول أيضاً أن هذا إسقاط (E) لكن الإجابة الرسمية B. الإنكار = رفض قبول الواقع المؤلم (مسؤوليته في الرسوب).</div>
+      <div class="expl-fr">Réponse officielle B (Déni) : Mohamed nie sa responsabilité dans l'échec en attribuant à l'enseignant. Note : certains diraient Projection (E) = attribuer à autrui. Mais corrigé officiel = B (Déni de la réalité de sa propre responsabilité). Suivre B.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 آليات الدفاع: الإنكار = رفض الواقع. الإسقاط = إسناد مشاعري لآخر. التبرير (Rationalisation) = تقديم أسباب منطقية مقبولة. التكوين التفاعلي = عكس المشاعر الحقيقية.</div>
+      <div class="expl-fr">Mécanismes de défense : Déni = nier la réalité. Projection = attribuer ses propres sentiments à autrui. Rationalisation = justification intellectuelle. Formation réactionnelle = inverser les sentiments vrais. Corrigé officiel retient B (Déni).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الإجابة الرسمية: B. محمد ينكر مسؤوليته = إنكار. يمكن أيضاً قراءته كإسقاط لكن المصحح الرسمي يختار B.</div>
+      <div class="expl-fr">💡 Réponse officielle : B (Déni). Mohamed nie sa responsabilité. Peut aussi être lu comme Projection mais corrigé officiel = Déni.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (D) التبرير يعني تقديم أسباب منطقية مقبولة لتبرير سلوك. هنا محمد لا يبرر، ينكر. (E) الإسقاط أيضاً ممكن لكن المصحح يختار B.</div>
+      <div class="expl-fr">⚠️ Piège : (D) Rationalisation = justification intellectuelle acceptable. (E) Projection aussi possible mais corrigé choisit B. Suivre toujours le corrigé officiel.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end #fonct -->
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 6 — EXAMEN MENTAL (Q31–Q34)
+═══════════════════════════════════════════════════ -->
+<div class="section-wrap" id="examen">
+  <div class="section-title">Examen Mental <span class="section-count">4 questions</span></div>
+
+<!-- Q31 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q31</span><span class="q-ref">QCM n°08 U1 2024</span></div>
+  <div class="q-fr">Les troubles du comportement quantitatifs sont :</div>
+  <div class="q-ar">اضطرابات السلوك الكمية هي:</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Hyperactivité</li>
+    <li class="opt correct"><span class="ltr">B.</span> Tasikinésie</li>
+    <li class="opt"><span class="ltr">C.</span> TIC</li>
+    <li class="opt"><span class="ltr">D.</span> Stéréotypies comportementales</li>
+    <li class="opt correct"><span class="ltr">E.</span> Bizarreries comportementales</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : BCE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الرسمية: BCE. التاسيكينيسيا (B) = قلق حركي مفرط (كمي). الغرابة السلوكية (E) = سلوكيات غريبة وغير مألوفة (كمي). الإجابة الرسمية BCE. فرط النشاط (A) وTIC (C) والصور النمطية (D) تصنيفها يختلف.</div>
+      <div class="expl-fr">Réponse officielle BCE. Tasikinésie (B) = agitation motrice excessive (quantitatif). Bizarreries comportementales (E) = comportements étranges (quantitatif). TIC (C) et Stéréotypies (D) sont plutôt qualitatifs. Corrigé officiel : BCE.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 تصنيف اضطرابات السلوك: كمية: فرط النشاط، خمول، ذهول. نوعية: TIC، الصور النمطية، الغرابة، التاسيكينيسيا. ملاحظة: التصنيف يختلف حسب المرجع. اتبع المصحح الرسمي: BCE.</div>
+      <div class="expl-fr">Classification des troubles du comportement : Quantitatifs = excès ou manque d'activité globale. Qualitatifs = nature bizarre, inadaptée. La classification précise varie selon les références. Suivre le corrigé officiel BCE.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الإجابة الرسمية: BCE. تاسيكينيسيا + غرابة سلوكية = كمي وفق هذا الامتحان.</div>
+      <div class="expl-fr">💡 Réponse officielle : BCE. Tasikinésie + Bizarreries = quantitatifs selon ce corrigé.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: التصنيف قد يختلف بين المراجع. دائماً اتبع المصحح الرسمي للامتحان. BCE هو الصحيح هنا.</div>
+      <div class="expl-fr">⚠️ Piège : la classification peut varier selon les références. Toujours suivre le corrigé officiel de l'examen. BCE ici.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q32 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q32</span><span class="q-ref">QCM n°05 U1 2023</span></div>
+  <div class="q-fr">Les troubles du comportement quantitatifs sont :</div>
+  <div class="q-ar">اضطرابات السلوك الكمية هي:</div>
+  <ul class="options">
+    <li class="opt correct"><span class="ltr">A.</span> Hyperactivité</li>
+    <li class="opt correct"><span class="ltr">B.</span> Tasikinésie</li>
+    <li class="opt"><span class="ltr">C.</span> TIC</li>
+    <li class="opt"><span class="ltr">D.</span> Stéréotypies comportementales</li>
+    <li class="opt"><span class="ltr">E.</span> Bizarreries comportementales</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : AB</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الرسمية لهذا الامتحان: AB. فرط النشاط (A) = زيادة كمية في النشاط الحركي الإرادي. التاسيكينيسيا (B) = قلق حركي شديد. كلاهما يتعلق بزيادة كمية في السلوك الحركي.</div>
+      <div class="expl-fr">Réponse officielle AB. Hyperactivité (A) = augmentation quantitative de l'activité motrice volontaire. Tasikinésie (B) = agitation motrice intense. Les deux concernent une augmentation quantitative de l'activité motrice.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 ملاحظة مهمة: السؤالان 31 و32 متشابهان جداً لكن إجاباتهما تختلف (BCE vs AB). هذا يعكس اختلاف التصنيف بين الامتحانات. اتبع دائماً المصحح المقابل لكل سؤال.</div>
+      <div class="expl-fr">Note importante : Q31 et Q32 semblent identiques mais ont des corrigés différents (BCE vs AB). Cela reflète des variations de classification entre examens. Toujours suivre le corrigé spécifique à chaque examen.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 Q31 → BCE. Q32 → AB. انتبه للفرق رغم تشابه الصياغة. الكمي = ما يتعلق بزيادة أو نقصان في الحجم/الكمية.</div>
+      <div class="expl-fr">💡 Q31 → BCE. Q32 → AB. Attention à la différence malgré la formulation similaire. Quantitatif = augmentation ou diminution en quantité/fréquence.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ كبير: سؤالان متشابهان بإجابتين مختلفتين! اقرأ السؤال جيداً وتتبع المصحح الرسمي لكل سنة.</div>
+      <div class="expl-fr">⚠️ Piège majeur : deux questions identiques avec des corrigés différents selon l'année d'examen ! Lisez attentivement et suivez le corrigé correspondant à l'année.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q33 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q33</span><span class="q-ref">QCM n°06 U1 2023</span></div>
+  <div class="q-fr">Les troubles des conduites alimentaires sont représentés par :</div>
+  <div class="q-ar">اضطرابات سلوك التغذية تتمثل في:</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> L'insomnie</li>
+    <li class="opt correct"><span class="ltr">B.</span> L'anorexie</li>
+    <li class="opt"><span class="ltr">C.</span> Les paraphilies</li>
+    <li class="opt"><span class="ltr">D.</span> Le somnambulisme</li>
+    <li class="opt correct"><span class="ltr">E.</span> L'hyperphagie</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : BE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابتان الصحيحتان هما (B) فقدان الشهية ورفض الطعام و(E) الشراهة في الأكل. كلاهما اضطرابات سلوكية في التغذية. الأرق (A) = اضطراب نوم. الباراحيليا (C) = اضطراب جنسي. المشي أثناء النوم (D) = اضطراب نوم.</div>
+      <div class="expl-fr">Anorexie (B) et Hyperphagie (E) = troubles des conduites alimentaires. (A) Insomnie = trouble du sommeil. (C) Paraphilies = troubles sexuels. (D) Somnambulisme = trouble du sommeil. Réponse BE.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 اضطرابات السلوك الغذائي: فقدان الشهية (Anorexie)، الشراهة (Boulimie/Hyperphagie)، متلازمة بيكا (Pica = أكل مواد غير غذائية)، مضغ الطعام وإعادته (Mérycisme).</div>
+      <div class="expl-fr">Troubles des conduites alimentaires : Anorexie (refus de manger), Boulimie/Hyperphagie (excès alimentaire), Pica (ingestion de substances non alimentaires), Mérycisme (régurgitation et remastication).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 اضطرابات التغذية = فقدان الشهية + الشراهة (وليس النوم أو الجنس). الإجابة: BE.</div>
+      <div class="expl-fr">💡 Conduites alimentaires = Anorexie + Hyperphagie (pas sommeil, pas sexualité). Réponse : BE.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: الأرق والمشي أثناء النوم = اضطرابات نوم. الباراحيليا = اضطرابات جنسية. لا تخلطها باضطرابات التغذية.</div>
+      <div class="expl-fr">⚠️ Piège : Insomnie + Somnambulisme = troubles du sommeil. Paraphilies = troubles sexuels. Ne pas les confondre avec les troubles alimentaires.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q34 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q34</span><span class="q-ref">QCM n°03 U1 2022</span></div>
+  <div class="q-fr">Mohamed se force à réviser à la dernière minute. Il constate qu'il a du mal à se concentrer. Il reste assis devant la feuille mais pense à autre chose. Avec le temps, il ne peut maintenir son attention ni lors des révisions, ni lors de discussions prolongées ou même des jeux. Quel terme sémiologique désigne ce trouble de l'attention ?</div>
+  <div class="q-ar">محمد لا يستطيع التركيز. يجلس أمام أوراقه لكن يفكر في أشياء أخرى. مع الوقت لا يستطيع الانتباه حتى في الألعاب. ما المصطلح السيميولوجي لهذا الاضطراب؟</div>
+  <ul class="options">
+    <li class="opt correct"><span class="ltr">A.</span> Hypoprosexie</li>
+    <li class="opt"><span class="ltr">B.</span> Hypotension</li>
+    <li class="opt"><span class="ltr">C.</span> Amnésie</li>
+    <li class="opt"><span class="ltr">D.</span> Bradypsychie</li>
+    <li class="opt"><span class="ltr">E.</span> Bradyphémie</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (A) نقص الانتباه (Hypoprosexie). نقص الانتباه = انخفاض قدرة التركيز والانتباه الإرادي. صعوبة التركيز، التشتت، عدم القدرة على الانتباه في سياقات متعددة = هيبوبروسيكسي.</div>
+      <div class="expl-fr">Hypoprosexie (A) = diminution de l'attention et de la concentration. Mohamed présente une difficulté à maintenir l'attention = hypoprosexie. (D) Bradypsychie = ralentissement de la pensée. (E) Bradyphémie = ralentissement de la parole. (C) Amnésie = trouble de la mémoire.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 اضطرابات الانتباه: فرط الانتباه (Hyperprosexie) ↑، نقص الانتباه (Hypoprosexie) ↓، ضيق الانتباه (Aprosexie) = انعدام تام. البرادبسيكيا = بطء التفكير. البرادفيميا = بطء الكلام.</div>
+      <div class="expl-fr">Troubles de l'attention : Hyperprosexie (↑), Hypoprosexie (↓), Aprosexie (0). Bradypsychie = lenteur de la pensée. Bradyphémie = lenteur du débit verbal. Amnésie = trouble de la mémoire. Ne pas confondre ces termes.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 نقص الانتباه = Hypoprosexie. صعوبة التركيز في سياقات متعددة = Hypoprosexie وليس أمنيسيا أو برادبسيكيا.</div>
+      <div class="expl-fr">💡 Hypoprosexie = diminution de l'attention. Difficulty to concentrate in multiple contexts = Hypoprosexie. ≠ Bradypsychie (pensée lente) ≠ Amnésie (mémoire) ≠ Bradyphémie (parole lente).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: البرادبسيكيا (D) = بطء التفكير وليس نقص الانتباه. الأمنيسيا (C) = اضطراب الذاكرة وليس الانتباه. دائماً ميّز بين الانتباه والذاكرة والتفكير والكلام.</div>
+      <div class="expl-fr">⚠️ Piège : Bradypsychie (D) ≠ Hypoprosexie. Amnésie (C) = mémoire pas attention. Toujours distinguer : attention (prosexie), mémoire (mnésie), pensée (psychie), parole (phémie).</div>
+    </div>
+  </div>
+</div>
+</div><!-- end #examen -->
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 7 — RÉACTIONS PATIENT DANS LE SOIN (Q35)
+═══════════════════════════════════════════════════ -->
+<div class="section-wrap" id="reactions">
+  <div class="section-title">Réactions particulières du Patient dans le Soin <span class="section-count">1 question</span></div>
+
+<!-- Q35 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q35</span><span class="q-ref">QCM n°04 U1 2022</span></div>
+  <div class="q-fr">Après son examen, Mohamed décide de consulter un thérapeute. Il lui fait confiance et souhaite s'améliorer car ce trouble impacte ses relations. Le thérapeute est aussi motivé pour mobiliser toutes les ressources afin d'aider son patient. Quelle proposition correspond le mieux aux mouvements transférentiels entre eux ?</div>
+  <div class="q-ar">محمد يثق بمعالجه ويريد التحسن. المعالج أيضاً متحمس ومحفز لمساعدته. ما أفضل وصف للديناميكيات التحويلية بينهما؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Transfert neutre contre-transfert neutre</li>
+    <li class="opt"><span class="ltr">B.</span> Transfert neutre contre-transfert positif</li>
+    <li class="opt"><span class="ltr">C.</span> Transfert positif contre-transfert neutre</li>
+    <li class="opt correct"><span class="ltr">D.</span> Transfert positif contre-transfert positif</li>
+    <li class="opt"><span class="ltr">E.</span> Transfert positif contre-transfert négatif</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (D) نقل إيجابي - نقل مضاد إيجابي. محمد يثق في معالجه ويريد التحسن = نقل إيجابي. المعالج متحمس ومحفز ويريد مساعدة مريضه = نقل مضاد إيجابي. كلاهما في موقف إيجابي = D.</div>
+      <div class="expl-fr">Transfert positif (Mohamed) : confiance, motivation au changement. Contre-transfert positif (thérapeute) : motivation à aider, mobilisation des ressources. Les deux = positifs → D : Transfert (+) / Contre-transfert (+). Alliance thérapeutique idéale.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 تذكر: النقل الإيجابي + النقل المضاد الإيجابي = أفضل شروط التحالف العلاجي وأكثرها فعالية. هذا هو المثال المثالي للعلاقة العلاجية.</div>
+      <div class="expl-fr">Transfert (+) + Contre-transfert (+) = conditions idéales de l'alliance thérapeutique. C'est la relation thérapeutique modèle la plus propice au changement et à la guérison.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 ثقة المريض + حماس المعالج = نقل إيجابي + نقل مضاد إيجابي = D. هذه العلاقة المثالية.</div>
+      <div class="expl-fr">💡 Confiance patient + enthousiasme thérapeute = Transfert (+) + Contre-transfert (+) = D. Relation thérapeutique optimale.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (C) نقل إيجابي/نقل مضاد محايد يفترض أن المعالج غير مكترث. لكن النص يقول "متحمس" = إيجابي. D هو الصحيح.</div>
+      <div class="expl-fr">⚠️ Piège : (C) sous-entend un thérapeute neutre. Mais "motivé à mobiliser toutes les ressources" = contre-transfert positif. → D et pas C.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end #reactions -->
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 8 — PSYCHOLOGIE DE LA PRESCRIPTION (Q36–Q38)
+═══════════════════════════════════════════════════ -->
+<div class="section-wrap" id="prescription">
+  <div class="section-title">Psychologie de la Prescription <span class="section-count">3 questions</span></div>
+
+<!-- Q36 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q36</span><span class="q-ref">QCM n°09 U1 2024</span></div>
+  <div class="q-fr">La non-observance peut avoir plusieurs fonctions, lesquelles :</div>
+  <div class="q-ar">عدم الامتثال للعلاج (non-observance) يمكن أن يؤدي عدة وظائف، أيها؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Une tentative de prise de distance par rapport aux parents, au médecin, au corps malade</li>
+    <li class="opt"><span class="ltr">B.</span> L'essai de réappropriation du corps</li>
+    <li class="opt"><span class="ltr">C.</span> Une représentation symbolique du thérapeute</li>
+    <li class="opt"><span class="ltr">D.</span> Une fonction de projection</li>
+    <li class="opt"><span class="ltr">E.</span> La réponse à objet contraphobique</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : BCE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الرسمية: BCE. عدم الامتثال يعمل كـ: (B) محاولة استعادة ملكية الجسد (استقلالية)، (C) تمثيل رمزي للمعالج (رفضه رمزياً)، (E) استجابة للكائن المضاد للرهاب (الدواء يثير خوفاً). A وD أيضاً ممكنان لكن المصحح الرسمي يختار BCE.</div>
+      <div class="expl-fr">Réponse officielle BCE. La non-observance peut fonctionner comme : (B) réappropriation du corps, (C) représentation symbolique du thérapeute (rejet symbolique), (E) réponse à un objet contraphobique (médicament source d'angoisse). Corrigé officiel BCE.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 وظائف عدم الامتثال: استعادة الاستقلالية والسيطرة على الجسد، التمثيل الرمزي للعلاقة بالمعالج، التعبير عن الرهاب من الدواء أو المرض، استراتيجية للتحكم في القلق، التعبير عن الغضب من الطبيب أو المرض.</div>
+      <div class="expl-fr">Fonctions de la non-observance : réappropriation du corps/autonomie, représentation symbolique du thérapeute, réponse contraphobique (anxiété liée au médicament), stratégie de contrôle de l'angoisse, expression du refus de la maladie.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 الإجابة الرسمية: BCE. عدم الامتثال ليس مجرد إهمال بل له وظائف نفسية متعددة.</div>
+      <div class="expl-fr">💡 Réponse officielle BCE. La non-observance n'est pas simple négligence, elle a des fonctions psychologiques multiples et complexes.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (A) "أخذ مسافة من الأبوين" قد يبدو صحيحاً لكن المصحح الرسمي لا يختاره. اتبع BCE.</div>
+      <div class="expl-fr">⚠️ Piège : (A) "prise de distance par rapport aux parents" peut sembler vrai mais le corrigé officiel ne le retient pas. Suivre BCE.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q37 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q37</span><span class="q-ref">QCM n°11 U1 2022</span></div>
+  <div class="q-fr">Khalid est suivi pour des incontinences. Un professeur réputé lui administre la première injection de toxine botulique. Dans l'heure suivante, il ressent une amélioration alors que l'effet est censé être perçu après plusieurs jours. Quelle proposition pourrait expliquer cette amélioration ?</div>
+  <div class="q-ar">خالد لديه حقنة توكسين بوتوليني من أستاذ مشهور. في ساعة واحدة يشعر بتحسن رغم أن التأثير يحتاج أياماً. ما تفسير هذا التحسن؟</div>
+  <ul class="options">
+    <li class="opt correct"><span class="ltr">A.</span> Effet placebo sur le malade</li>
+    <li class="opt"><span class="ltr">B.</span> Identification au thérapeute</li>
+    <li class="opt"><span class="ltr">C.</span> Traitement antalgique associé</li>
+    <li class="opt"><span class="ltr">D.</span> Principe actif de toxine botulique</li>
+    <li class="opt"><span class="ltr">E.</span> Le stade précoce de la maladie</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (A) تأثير الوهم (Effet placebo). التحسن خلال ساعة واحدة في حين أن التأثير الدوائي الفعلي يحتاج أياماً = تأثير الوهم. سمعة الأستاذ المشهور تعزز التوقعات الإيجابية = تأثير وهمي قوي.</div>
+      <div class="expl-fr">Effet placebo (A) : amélioration dans l'heure = impossible pharmacologiquement (toxine botulique met plusieurs jours). L'amélioration est due aux attentes positives renforcées par la réputation du professeur. C'est le mécanisme placebo classique.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 تأثير الوهم = تحسن حقيقي ناتج عن التوقعات الإيجابية وليس عن التأثير الدوائي. عوامل تقوية الوهم: شهرة الطبيب، سلطته، بيئة العلاج، التواصل الإيجابي. ≠ تأثير نقيض الوهم (Nocebo) = تأثير سلبي.</div>
+      <div class="expl-fr">Effet placebo = amélioration réelle due aux attentes positives (pas à la pharmacologie). Facteurs amplificateurs : réputation du médecin, autorité, environnement thérapeutique, communication positive. ≠ Nocebo (effet négatif par attentes négatives).</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 تحسن أسرع من الممكن دوائياً + طبيب مشهور + توقعات إيجابية = تأثير وهمي (Placebo).</div>
+      <div class="expl-fr">💡 Amélioration plus rapide que pharmacologiquement possible + médecin réputé + attentes positives = Effet Placebo.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (D) المادة الفعالة للتوكسين تحتاج أياماً = لا يمكن أن تكون المسؤولة عن تحسن في ساعة. (A) الوهم = الإجابة الوحيدة المنطقية.</div>
+      <div class="expl-fr">⚠️ Piège : (D) toxine botulique met 2-3 jours pour agir → ne peut pas expliquer l'amélioration en 1 heure. Seul l'effet placebo (A) explique ce délai incompatible avec la pharmacologie.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q38 -->
+<div class="qcm-card">
+  <div class="q-header"><span class="q-num">Q38</span><span class="q-ref">QCM n°12 U1 2022</span></div>
+  <div class="q-fr">La 2ème injection de Khalid est administrée par un résident réputé, sous contrôle du professeur. Quand le patient découvre que c'est le résident, il s'inquiète. Quelques minutes après, il se plaint de douleurs et d'une pollakiurie inhabituelle qui persistent plusieurs jours. Les explorations ne montrent aucune anomalie. Quelle est l'explication la plus plausible ?</div>
+  <div class="q-ar">الحقنة الثانية أعطاها مقيم (تحت إشراف الأستاذ). حين علم خالد، قلق. بعد دقائق: ألم وتكرار غير اعتيادي للتبول استمرا أياماً. الفحوصات طبيعية. ما أكثر تفسير منطقي؟</div>
+  <ul class="options">
+    <li class="opt"><span class="ltr">A.</span> Effet secondaire</li>
+    <li class="opt"><span class="ltr">B.</span> Effet placebo</li>
+    <li class="opt correct"><span class="ltr">C.</span> Effet nocebo</li>
+    <li class="opt"><span class="ltr">D.</span> Effet miroir</li>
+    <li class="opt"><span class="ltr">E.</span> Effet régressif</li>
+  </ul>
+  <div class="answer-badge">✓ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">📖 Explication / الشرح</div>
+      <div class="expl-ar">الإجابة الصحيحة هي (C) تأثير نقيض الوهم (Effet nocebo). خالد قلق بعد معرفة أن المقيم هو من أعطاه الحقنة (توقعات سلبية). هذا القلق أنتج أعراضاً حقيقية (ألم، تكرار تبول) دون سبب عضوي = تأثير نقيض الوهم. عكس الوهم تماماً.</div>
+      <div class="expl-fr">Effet Nocebo (C) : les attentes négatives (inquiétude face au résident) génèrent des symptômes réels sans cause organique (explorations normales). C'est l'exact inverse de l'effet placebo : les attentes négatives créent des effets indésirables.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-notes">📝 Notes / ملاحظات</div>
+      <div class="expl-ar">🩺 تأثير الوهم (Placebo) = توقعات إيجابية → تحسن. تأثير نقيض الوهم (Nocebo) = توقعات سلبية → أعراض حقيقية بدون أسباب عضوية. كلاهما ينشأ من التوقعات النفسية.</div>
+      <div class="expl-fr">Placebo = attentes (+) → amélioration. Nocebo = attentes (-) → symptômes réels sans cause organique. Les deux sont de puissants effets psychologiques sur la physiologie réelle du patient.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-retenir">🧠 À retenir / ما يجب حفظه</div>
+      <div class="expl-ar">💡 Placebo = وهم إيجابي. Nocebo = وهم سلبي. قلق + أعراض بلا سبب عضوي = Nocebo. C هي الإجابة.</div>
+      <div class="expl-fr">💡 Placebo = effet positif des attentes. Nocebo = effet négatif des attentes. Inquiétude → symptômes sans cause organique = Nocebo. Réponse C.</div>
+    </div>
+    <div class="expl-section">
+      <div class="expl-label label-pieges">⚠️ Pièges / الفخاخ</div>
+      <div class="expl-ar">⚠️ فخ: (A) الأعراض الجانبية تكون بسبب الدواء والفحوصات ستكشف أسباباً. هنا الفحوصات طبيعية = ليس أعراضاً جانبية. (C) Nocebo = الإجابة الصحيحة الوحيدة.</div>
+      <div class="expl-fr">⚠️ Piège : (A) Effets secondaires = liés à la pharmacologie, explorations positives. Ici explorations normales → pas d'effet secondaire organique. Seul Nocebo (C) explique des symptômes sans cause organique.</div>
+    </div>
+  </div>
+</div>
+</div><!-- end #prescription -->
+
+</main><!-- end .main-content -->
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section-wrap').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+// Activate first section by default
+document.addEventListener('DOMContentLoaded', () => {
+  const firstBtn = document.querySelector('.nav-btn');
+  if (firstBtn) showSection('entretien', firstBtn);
+});
+</script>
+</body>
+</html>

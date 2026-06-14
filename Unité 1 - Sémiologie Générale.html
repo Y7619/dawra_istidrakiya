@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sémiologie Générale - Cours Complet PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0f172a; --sidebar-bg: #111827; --card-bg: #1e2740;
+  --border: rgba(255,255,255,0.07); --accent: #3b82f6;
+  --accent2: #10b981; --accent3: #f59e0b; --accent4: #8b5cf6;
+  --text: #e2e8f0; --muted: #94a3b8; --danger: #ef4444;
+}
+body { background: var(--bg); color: var(--text); font-family: 'Tajawal', 'Inter', sans-serif; display: flex; min-height: 100vh; }
+
+.sidebar { width: 270px; background: var(--sidebar-bg); border-left: 1px solid var(--border); position: fixed; right: 0; top: 0; height: 100vh; overflow-y: auto; padding: 1.5rem 1rem; z-index: 200; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent; }
+.sidebar h2 { font-family: 'Inter', sans-serif; font-size: 1rem; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); text-align: center; }
+.nav-btn { display: flex; justify-content: space-between; align-items: center; width: 100%; background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 0.7rem 1rem; margin-bottom: 0.4rem; border-radius: 8px; font-family: 'Tajawal', sans-serif; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; text-align: right; }
+.nav-btn:hover, .nav-btn.active { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.4); color: #93c5fd; }
+
+.main-content { flex: 1; margin-right: 270px; padding: 2rem 2.5rem; max-width: 1100px; }
+
+.header-banner { background: linear-gradient(135deg, #1e3a5f 0%, #1a2236 100%); border: 1px solid rgba(59,130,246,0.2); border-radius: 16px; padding: 2.5rem; text-align: center; margin-bottom: 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+.header-banner h1 { font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 0.4rem; }
+.header-banner .subtitle { color: #94a3b8; font-size: 1.05rem; }
+
+.course-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; margin-bottom: 1.5rem; transition: border-color 0.25s, box-shadow 0.25s; direction: rtl; text-align: right; line-height: 1.7; }
+.course-card:hover { border-color: rgba(59,130,246,0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+.course-header { font-size: 1.35rem; font-weight: 800; color: #93c5fd; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; display: flex; align-items: center; justify-content: flex-start; gap: 10px; direction: rtl; }
+.french-term { font-family: 'Inter', sans-serif; color: #e2e8f0; font-size: 1rem; font-weight: 600; direction: ltr; display: inline-block; background-color: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 6px; border: 1px solid var(--border); margin: 0 4px; }
+.keyword { color: var(--accent3); font-weight: 700; background-color: rgba(245, 158, 11, 0.1); padding: 3px 8px; border-radius: 5px; }
+
+.detail-text { font-size: 1.05rem; color: #cbd5e1; }
+ul, ol { padding-right: 25px; margin-top: 10px; margin-bottom: 10px; }
+li { margin-bottom: 8px; }
+
+.welcome-box { background-color: rgba(59,130,246,0.1); border-right: 4px solid var(--accent); padding: 18px; border-radius: 8px; margin-bottom: 25px; font-weight: 600; font-size: 1.1rem; color: #bfdbfe; direction: rtl; text-align: right; }
+.section-title { background: linear-gradient(90deg, #1e293b, #0f172a); color: #f1f5f9; padding: 14px 24px; border-radius: 10px; margin-top: 40px; margin-bottom: 25px; font-size: 1.5rem; font-weight: 800; direction: rtl; text-align: right; border-right: 4px solid var(--accent2); }
+
+.sound-block { border-radius: 8px; padding: 16px; margin-top: 15px; margin-bottom: 15px; font-weight: 500; }
+.sound-matite { background-color: rgba(239, 68, 68, 0.1); border-right: 4px solid var(--danger); color: #fca5a5; }
+.sound-sonorite { background-color: rgba(16, 185, 129, 0.1); border-right: 4px solid var(--accent2); color: #6ee7b7; }
+.sound-tympanisme { background-color: rgba(14, 165, 233, 0.1); border-right: 4px solid #0ea5e9; color: #7dd3fc; }
+.piege { background-color: rgba(244, 63, 94, 0.1); border-right: 4px solid #f43f5e; padding: 15px 20px; margin-top: 15px; border-radius: 8px; font-size: 1rem; color: #fda4af; font-weight: 700; }
+
+.table-container { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; background-color: transparent; }
+th, td { border: 1px solid var(--border); padding: 12px 15px; text-align: right; color: #e2e8f0; }
+th { background-color: rgba(255,255,255,0.05); font-weight: 700; color: #93c5fd; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <h2>UNITÉ 1 - MODULES</h2>
+  <button class="nav-btn" onclick="window.location.href='index.html'"><span>🏠 Accueil / الرئيسية</span></button>
+  <button class="nav-btn active" onclick="window.location.href='Unité 1 - Sémiologie Générale.html'"><span>Sémiologie Générale</span></button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Sémiologie Pneumologique.html'"><span>Pneumologie</span></button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Sémiologie Cardiologique.html'"><span>Cardiologie</span></button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Physiopathologie.html'"><span>Physiopathologie</span></button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Biochimie.html'"><span>Biochimie</span></button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Radiologie.html'"><span>Radiologie</span></button>
+</aside>
+
+<main class="main-content">
+  <div class="header-banner">
+    <h1>Sémiologie Générale</h1>
+    <div class="subtitle">Cours complet et structuré - Unité 1</div>
+  </div>
+  <div class="welcome-box">
+    
+            📌 تم دمج التفسيرات الفيزيائية والتشبيهات السمعية ("طب طب")، والخريطة الجغرافية المفصلة للقفص الصدري، والتمييز الدقيق بين الحالات الطبيعية والمرضية للرئة داخل المحور الثالث ليكون دليلاً نموذجياً يضمن التميز المطلق ليلة الامتحان!
+        
+  </div>
+  <div class="section-title">
+    المحور الأول: مفهوم المرض والأعراض والعلامات الطبية <span class="french-term">Introduction &amp; Signes</span>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">1. طبيعة المرض ذي الأعراض السريرية الظاهرة <span class="french-term">La maladie symptomatique</span></div>
+    <div class="detail-text">
+                عندما يهاجم ميكروب الجسم، فإنه يعبر عن نفسه سريرياً. المرض الذي نطلق عليه اسم <span class="keyword">Symptomatique</span> هو المرض الذي يكسر حاجز الصمت والهدوء داخل الجسم ويعبر عن نفسه بشكل رئيسي وأولي عبر <span class="keyword">العلامات الوظيفية <span class="french-term">Les signes fonctionnels</span></span>. هذه العلامات هي أول الشكاوى التي يشعر بها المريض وتدفعه للذهاب إلى الطبيب.
+            </div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">2. التفكيك الأكاديمي والعميق لأنواع العلامات الثلاثة <span class="french-term">Les trois types de signes</span></div>
+    <div class="detail-text">
+                لكي تضمن الإجابة الصحيحة، احفظ الفروقات السريرية الدقيقة التالية:
+                <ul>
+<li><strong>العلامات الوظيفية <span class="french-term">Signes fonctionnels</span>:</strong> هي أحاسيس وشكاوى <span class="keyword">ذاتية <span class="french-term">Subjectifs</span></span> يختبرها ويشعر بها المريض وحده داخل جسده، ولا يستطيع الطبيب قياسها بعينيه أو سماعها مباشرة، بل يكتشفها فقط عن طريق الإنصات للمريض أثناء <span class="keyword">الاستجـواب <span class="french-term">L'interrogatoire</span></span>. 
+                    <br/><em>أمثلة شائعة:</em> الألم <span class="french-term">La douleur</span>، الغثيان <span class="french-term">La nausée</span>، الدوار وفقدان التوازن <span class="french-term">Le vertige</span>، وضيق أو عسر التنفس <span class="french-term">La dyspnée</span>.</li>
+<li><strong>العلامات الفيزيائية أو الجسدية <span class="french-term">Signes physiques</span>:</strong> هي علامات وظواهر <span class="keyword">موضوعية <span class="french-term">Objectifs</span></span> يكتشفها الطبيب بنفسه وبحواسه (بالعين، اللمس، أو السمع) أثناء الفحص الجسدي للمريض حتى لو كان المريض فاقداً للوعي.
+                    <br/><em>أمثلة شائعة:</em> رصد الاصفرار في ملتحمة العين <span class="french-term">Ictère</span>، تحسس تضخم الكبد <span class="french-term">Hépatomégalie</span>، وسماع لغط أو أصوات غير طبيعية في القلب بواسطة السماعة الطبية.</li>
+<li><strong>العلامات العامة <span class="french-term">Signes généraux</span>:</strong> هي مؤشرات حيوية تعكس حالة واعتلال الجسم كاملاً كمنظومة موحدة، وتسمى خماسية العلامات العامة: الوزن <span class="french-term">Le poids</span>، الطول <span class="french-term">La taille</span>، درجة الحرارة المركزية <span class="french-term">La température</span>، فقدان الشهية <span class="french-term">L'anorexie</span>، والتعب والإرهاق الشديد الكاسح <span class="french-term">L'asthénie</span>.</li>
+</ul>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">3. علم المتلازمات والوحدة السريرية <span class="french-term">Le Syndrome</span></div>
+    <div class="detail-text">
+<span class="keyword">المتلازمة <span class="french-term">Le syndrome</span></span> ليست مرضاً محدداً بحد ذاتها، بل هي عبارة عن تجميع سريري متناسق ومترابط لمجموعة من العلامات الوظيفية، الفيزيائية والعامة التي تظهر معاً وتتحرك كحزمة واحدة.
+                <br/><strong>القاعدة الذهبية:</strong> <span class="keyword">أمراض مختلفة ذات أسباب متنوعة تماماً يمكنها أن تؤدي إلى ظهور نفس المتلازمة السريرية</span> <span class="french-term">Différentes maladies peuvent provoquer le même syndrome</span>. (مثال: متلازمة الاصفرار قد تنتج عن فقر دم، أو حصوة مرارية، أو ورم).
+            </div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">4. أهداف العلاج الطبي وتصنيفاته <span class="french-term">Les buts du traitement</span></div>
+    <div class="detail-text">
+                الهدف من تقديم العلاج للمريض ينقسم بدقة إلى:
+                <ol>
+<li><strong>علاج سببي <span class="french-term">Traitement étiologique</span>:</strong> يستهدف القضاء على جذر وأصل السبب الأساسي للمرد (مثل إعطاء مضاد حيوي لقتل البكتيريا).</li>
+<li><strong>علاج شفائي <span class="french-term">Traitement curatif</span>:</strong> يهدف إلى التخلص التام والنهائي من المرض وإعادة المريض لحالته الصحية الأصلية.</li>
+<li><strong>علاج تلطيفي <span class="french-term">Traitement palliatif</span>:</strong> يُقدم عندما يكون المرض مستعصياً (مثل السرطانات المتقدمة)؛ ويكون هدفه الأوحد والحصري هو <span class="keyword">تحسين جودة حياة المريض وتخفيف معاناته <span class="french-term">Améliorer la qualité de vie des malades</span></span>.</li>
+</ol>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">1. القيمة الرسمية للملاحظة الطبية <span class="french-term">L'observation médicale</span></div>
+    <div class="detail-text">
+                الملاحظة الطبية هي الملف والوثيقة الرسمية الشاملة التي يكتبها الطبيب للمريض. هي وثيقة <span class="keyword">طبية قانونية <span class="french-term">Médico-légal</span></span>، ويجب أن تدون بدقة لضمان <span class="keyword">متابعة حالة المريض <span class="french-term">Le suivi du malade</span></span>.
+                <br/><strong>مكونات الفحص الإكلينيكي <span class="french-term">L'examen clinique</span>:</strong> يتكون <strong>حصرياً ومن قطبين فقط</strong> هما: الاستجواب <span class="french-term">L'interrogatoire / L'anamnèse</span> + الفحص الجسدي <span class="french-term">L'examen physique</span>.
+            </div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">2. قصة المرض الحالي وتفاصيلها الزمنيـة <span class="french-term">Histoire de la maladie</span></div>
+    <div class="detail-text">
+                هي العمود الفقري للاستجواب؛ حيث يقوم الطبيب بترتيب وتدوين الشكاوى الرئيسية للمريض بناءً على تسلسلها <span class="keyword">الزمني والتاريخي <span class="french-term">Chronologique</span></span> الدقيق, مع التركيز على تحديد تاريخ ظهور أول عرض <span class="french-term">Date d'apparition des symptômes</span> وتتبع تطوره والعوامل التي تخففه وتسكنه <span class="french-term">Facteurs sédatifs</span>.
+            </div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">3. التمييز الدقيق بين الحالة المدنية والسوابق الفسيولوجية <span class="french-term">État civil vs Antécédents</span></div>
+    <div class="detail-text">
+<ul>
+<li><strong>الحالة المدنية <span class="french-term">État civil</span>:</strong> تشمل الهوية الشخصية والاجتماعية للمريض: الاسم، السن، الجنس، مكان الإقامة، المهنة، بالإضافة إلى <span class="keyword">الوضع العائلي والاجتماعي <span class="french-term">Situation familiale</span></span> (مثل: متزوج، أعزب).</li>
+<li><strong>السوابق الفسيولوجية <span class="french-term">Antécédents physiologiques</span>:</strong> هي أحداث وتغيرات حيوية طبيعية تماماً وليست أمراضاً مرت في حياة المريض. الكلمة المفتاحية لها هي <span class="keyword">التلقيحات والتحصينات <span class="french-term">La vaccination</span></span>، وتواريخ الدورة الشهرية والحمل والولادة عند النساء.</li>
+</ul>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">4. السلوكيات النفسية للمرّضى أثناء الاستجواب <span class="french-term">Psychologie des malades</span></div>
+    <div class="detail-text">
+<ul>
+<li><strong>المريض الثرثار <span class="french-term">Le malade bavard</span>:</strong> مريض يتدفق في الكلمات الخارجة عن النطاق الطبي، وتكمن ميزته الكبرى في أنه <span class="keyword">يأخذ زمام المبادرة والسيطرة على الحوار <span class="french-term">Prend l'initiative</span></span>، بل ويقوم هو بـ <span class="keyword">طرح الأسئلة واستجواب الطبيب نفسه <span class="french-term">Il interroge le médecin</span></span>.</li>
+<li><strong>المريض الاحتجاجي <span class="french-term">Le malade revendicateur</span>:</strong> مريض يشعر دائماً بالظلم، ويتخذ دائماً موقفاً <span class="keyword">دفاعياً وهجومياً مستمراً <span class="french-term">Il adopts une attitude défensive</span></span>، ويكون ساخطاً على الأطباء السابقين.</li>
+</ul>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">1. شروط الفحص والتحليل العاجل بجانب السرير <span class="french-term">Conditions d'examen</span></div>
+    <div class="detail-text">
+<ul>
+<li><strong>الأدوات الأساسية الدنيا:</strong> لكي يبدأ الطبيب فحصاً جسدياً شرعياً، يجب أن تتوفر لديه ثلاثة أشياء: السماعة الطبية <span class="french-term">Stéthoscope</span>، جهاز قياس ضغط الدم <span class="french-term">Tensiomètre</span>، وخافض اللسان الخشبي <span class="french-term">Abaisse-langue</span>.</li>
+<li><strong>الفحص الفوري بجانب السرير <span class="french-term">Au lit du malade</span>:</strong> التحليل البيولوجي السريع والوحيد الذي يستطيع الطبيب القيام به فوراً وبنفسه دون مختبر هو: <span class="keyword">كيمياء البول الشريطية <span class="french-term">La chimie des urines</span></span> بواسطة شريط البول الجاف <span class="french-term">Bandelette urinaire</span>.</li>
+<li><strong>التأمل والمعاينة <span class="french-term">L'inspection</span>:</strong> هي أول خطوات الفحص الفيزيائي، وتعتمد اعتماداً مطلقاً على استخدام <span class="keyword">العين المجردة <span class="french-term">À l'œil nu</span></span>.</li>
+</ul>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">2. الشرح الفيزيائي والسريري المفصل لأصوات القرع الثلاثة بنظام "طب طب" <span class="french-term">Physique des 3 bruits</span></div>
+    <div class="detail-text">
+                عندما يضع الطبيب إصحبه الوسطى اليسرى ملتصقة بالجلد ويطرقها بإصبعه الطارقة، فإن الاهتزاز يخترق جدار الصدر والبطن ليعطي ثلاثة أصوات مختلفة تماماً نصنفها فيزيائياً تِبعاً لنغمة "طب طب":
+            </div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">3. الخريطة الجغرافية والهندسية للوصول إلى سماع الرئة <span class="french-term">Technique de percussion</span></div>
+    <div class="detail-text">
+                للوصول إلى سماع الرئة وإخراج صوت الـ **Sonorité** النقي، يتبع الطبيب خريطة جغرافية دقيقة لتفادي العظام والعضلات السميكة وتفادي تداخل الفراغات الريبية الضيقة:
+                
+                <div class="sub-section">
+<strong>A. الأماكن الاستراتيجية للقرع على الصدر (الخريطة الجسدية):</strong>
+<ul>
+<li><strong>من الخلف (الظهر - الجدار الخلفي):</strong> هو **أفضل وأسهل مكان** لسماع الرئة بنقاء. نطلب من المريض أن يشبك ذراعيه أمام صدره (كأنه يعانق نفسه)؛ هذه الحركة تجعل عظام لوحي الكتف تتباعد وتفتح لنا مساحة رئوية واسعة. نقرع في الفراغات المحصورة بين العمود الفقري ولوحي الكتف من الأعلى إلى الأسفل بشكل مقارن.</li>
+<li><strong>من الأمام (الصدر):</strong> نقرع في الفراغات الريبية (بين الأضلاع) ابتداءً من تحت عظمة الترقوة مباشرة. 
+                        <br/>⚠️ <em>ملاحظة هامة:</em> في الجهة اليسرى من الأمام، ستختفي السنورتي ويظهر ماتيتي بسبب كتلة القلب، وفي الجهة اليمنى من الأسفل ستظهر ماتيتي بسبب كتلة الكبد.</li>
+<li><strong>من الجانبين (تحت الإبط):</strong> نطلب من المريض رفع يده فوق رأسه، ونقرع في الفراغات الريبية الجانبية، وهي منطقة ممتازة لأن عضلاتها خفيفة وتظهر السنورتي بوضوح.</li>
+</ul>
+</div>
+<div class="sub-section">
+<strong>B. كيف تطبق الحركة وتتأكد هندسياً أنك في الفراغ الريبي الضيق؟</strong>
+<ol>
+<li><strong>الجس أولاً (<span class="french-term">Palpation</span>):</strong> نقوم بجس الصدر باليد لتحديد حواف الأضلاع والفراغات بينها بدقة.</li>
+<li><strong>وضعية اليد المستقبلة (اليسرى):</strong> ضع إصبعك الأوسط المسمى بالإصبع الميقاع أو المستقبل <span class="french-term">Le doigt plessimètre</span> مستقراً ومثبتاً بقوة داخل الفراغ بين الضلعين موازياً لهما. **ارفع بقية أصابع يدك في الهواء كلياً** ولا تجعلها تلمس جدار الصدر حتى لا تكتم الرنين الاهتزازي للرئة.</li>
+<li><strong>وضعية اليد الطارقة (اليمنى):</strong> نستخدم طرف الإصبع الأوسط الطارق <span class="french-term">Le doigt percuteur</span>.</li>
+<li><strong>الضربة السحرية:</strong> انقر بسرعة وخفة فوق المفصل الأوسط لإصبعك المستقر على الصدر. الحركة يجب أن تأتي **من مفصل المعصم <span class="french-term">Le poignet</span> فقط**، وليس من المرفق أو الذراع. ويجب أن ترتد إصبعك الطارقة فوراً بعد النقرة (مثل نقرة الطائر) لتسمح للموجة بالخروج والارتداد لأذنك.
+                        <br/>🔍 <em>كيف تتأكد؟</em> من خلال الصوت نفسه؛ إذا كنت في الفراغ الصحيح ستسمع رنيناً مرناً (**Sonorité**)، وإذا زحف إصبعك بالخطأ فوق عظم الضلع الصلب الضيق فسينكتم الصوت فوراً ويتحول إلى (**Matité**)، مما يجعلك تعدل وضعية إصبعك إكلينيكياً.</li>
+</ol>
+</div>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">4. المواجهة والمقارنة المرضية الكبرى لصوت الرئة ليلة الامتحان <span class="french-term">Sémiologie pathologique</span></div>
+    <div class="detail-text">
+                السر الكامن وراء الأسئلة التنافسية يرتكز على معرفة **"نوع المادة المسببة للمرض"** التي دخلت وطردت هواء الرئة الطبيعي:
+                
+                <div class="table-container">
+<table>
+<thead>
+<tr>
+<th>حالة الرئة السريرية</th>
+<th>المادة الدخيلة وتفسيرها الفيزيائي</th>
+<th>الصوت الناتج عند القرع <span class="french-term">Le bruit perçu</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>الحالة العادية الطبيعية<br/><span class="french-term">État normal</span></strong></td>
+<td>مزيج متوازن نسيجي مرن + هواء فسيولوجي دقيق متخلل داخل الحويصلات.</td>
+<td><span class="keyword">سونورتي (Sonorité)</span><br/>رنين معتدل وناعم وطبيعي.</td>
+</tr>
+<tr>
+<td><strong>الحالة المرضية الأولى: دخول سائل<br/><span class="french-term">Pleurésie / Épanchement liquidien</span></strong></td>
+<td>يمتلئ الغشاء المحيط بالرئة بـ **سائل مائي كثيف**. الفيزيولوجيا تخبرنا أن السوائل تصد الاهتزازات تماماً وتتصرف كالأعضاء الصلبة، فتمتص المياه النقرة وينكتم الصوت تماماً.</td>
+<td><span class="keyword">ماتيتي (Matité)</span><br/>صوت جاف، مكتوم، ميت وصامت قليل.</td>
+</tr>
+<tr>
+<td><strong>الحالة المرضية الثانية: دخول هواء زائد<br/><span class="french-term">Pneumothorax</span></strong></td>
+<td>يحدث ثقب في الرئة فيخرج الهواء وينحبس في التجويف الصدري بكميات ضخمة وتحت **ضغط عالٍ جداً**، فينكمش النسيج الرئوي ويصبح الصدر كـ **بالون منفوخ بشدة أو طبلة مشدودة**، فيرتد الصوت بقوة وحدة.</td>
+<td><span class="keyword">تيمبانيسم (Tympanisme)</span><br/>صوت حاد جداً، قوي وطويل يشبه الطبل الحقيقي.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">1. الفسيولوجيا الحرارية والتأرجح اليومي <span class="french-term">La température centrale</span></div>
+    <div class="detail-text">
+                درجة حرارة جسم الإنسان المركزية ثابتة فسيولوجياً وتتراوح بين 36°م و 37°م، ولذلك يسمى الإنسان بكائن ثابت الحرارة <span class="french-term">Homéotherme</span>. لكن هذه الحرارة <span class="keyword">تتغير وتتأرجح فسيولوجياً على مدار اليوم والليل <span class="french-term">Varie au cours du nycthémère</span></span>؛ حيث تسجل أدنى قيمة لها في الصباح الباكر وتدخل ذروتها الارتفاعية في المساء. المركز الرئيسي المسؤول عن ضبط وتنظيم حرارة الجسم في الدماغ هو <span class="keyword">الوطاء <span class="french-term">Hypothalamus</span></span>.
+            </div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">2. علامات الخطورة الحادة وتأثير الدورة المبيضية <span class="french-term">Signes de gravité &amp; Cycle</span></div>
+    <div class="detail-text">
+<ul>
+<li><strong>أخطر علامة طوارئ ترافق مريضاً محمومًا:</strong> ظهور <span class="keyword">فرفرية صاعقة <span class="french-term">Un purpura / Purpura fulminans</span></span> وهي بقع ونقاط نزفية حمراء داكنة تحت الجلد لا تختفي عند الضغط عليها، وتعني انتشاراً صاعقاً للميكروب في الدم وتطلب علاجاً فورياً بالمضادات الحيوية.</li>
+<li><strong>تأثير الدورة المبيضية عند المرأة:</strong> ابتداءً من <span class="keyword">اليوم 14 وهو يوم الإباضة <span class="french-term">L'ovulation</span>، ترتفع الحرارة فوراً بمقدار (0.2°C إلى 0.3°C)</span> تحت تأثير إفراز هرمون البروجسترون <span class="french-term">Progestérone</span>.</li>
+</ul>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">3. جدول منحنيات الحرارة الثلاثة الأهم للامتحان <span class="french-term">Les courbes thermiques</span></div>
+    <div class="detail-text"></div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">1. علم السمنة ومؤشر كتلة الجسم <span class="french-term">Obésité &amp; IMC</span></div>
+    <div class="detail-text">
+<ul>
+<li><strong>السمنة الأنثوية <span class="french-term">Obésité gynoïde</span>:</strong> تتركز فيها الدهون في النصف السفلي من الجسم؛ وتحديداً في <span class="keyword">منطقة الحوض والأطراف السفلية <span class="french-term">Ceinture pelvienne et membres inférieurs</span></span>.</li>
+<li><strong>السمنة الذكرية أو البطنية <span class="french-term">Obésité androïde</span>:</strong> تتركز فيها الدهون في <span class="keyword">الجزء العلوي من الجسم والجدار البطني <span class="french-term">Partie supérieure et paroi abdominale</span></span> وهي النوع الأخطر المسبب لأمراض القلب وتصلب الشرايين.</li>
+<li><strong>القياس الطبي لمحيط الخصر <span class="french-term">Tour de taille</span>:</strong> يكون بوضع شريط القياس <span class="keyword">فوق السرة مباشرة <span class="french-term">Juste au-dessus du nombril</span></span> وبشكل أفقي.</li>
+<li><strong>مؤشر كتلة الجسم <span class="french-term">IMC</span>:</strong> إذا كانت النتيجة محصورة بين القيمة 18.5 و 24.9 كجم/م²، فإن بنية الجسم تعتبر <span class="keyword">طبيعية تماماً <span class="french-term">Corpulence normale</span></span>.</li>
+<li><strong>الاندفاع الغذائي القهري <span class="french-term">La compulsion alimentaire</span>:</strong> تناول كميات ضخمة من الطعام فجأة <span class="keyword">دون الشعور بأي جوع فسيولوجي حقيقي</span>.</li>
+</ul>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">2. نقصان الوزن وتغير الشهية <span class="french-term">Amaigrissement et Appétit</span></div>
+    <div class="detail-text">
+<ul>
+<li><strong>نقصان الوزن مع شهية مفتوحة وكثرة أكل <span class="french-term">Amaigrissement + Polyphagie</span>:</strong> المريض يأكل بشراهة ومع ذلك ينحف؛ وهي علامة مميزة لمرض <span class="keyword">فرط نشاط الغدة الدرقية <span class="french-term">Hyperthyroïdie</span></span> ومرض السكري.</li>
+<li><strong>نقصان الوزن مع فقدان الشهية <span class="french-term">Amaigrissement + Anorexie</span>:</strong> المريض يرفض الأكل وينحف بشدة؛ وتصاحب ثلاثة أمراض: الأورام والسرطانات <span class="french-term">Cancer</span> (خاصة سرطان المعدة)، ومرض السل المزمن <span class="french-term">Tuberculose</span>، وحالات الاكتاب النفسي الحاد <span class="french-term">Dépression</span>.</li>
+</ul>
+</div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">3. المواجهة السريرية الكبرى بين متلازمات الجفاف <span class="french-term">Déshydratation Intracellulaire vs Extracellulaire</span></div>
+    <div class="detail-text"></div>
+  </div>
+
+  <div class="course-card">
+    <div class="course-header">4. الوذمات والبول وتحليل سرعة الترسيب <span class="french-term">Rétention hydrosodée &amp; VS</span></div>
+    <div class="detail-text">
+<ul>
+<li><strong>الوذمات تحت الجلد <span class="french-term">Œdèmes</span>:</strong> تتميز سريرياً بأنها: بيضاء، لينة، غير مؤلمة، وتترك حفرة عميقة ومستمرة عند ضغط إبهام الطبيب عليها وتسمى بـ <span class="keyword">علامة الحفرة <span class="french-term">Signe du godet</span></span>.
+                    <br/>⚠️ <em>تنبيه صارم للوذمات القلبية:</em> في سؤال طبيعة الوذمة ذات المنشأ القلبي الناتجة عن قصور القلب <span class="french-term">Œdèmes d'origine cardiaque</span>، الخيار المعتمد كإجابة صحيحة في ورقة تصحيح الكلية الإلكترونية هو الخيار <strong>E</strong> حرفياً: <span class="keyword">Rosés fermes gardant mal le godet</span>.</li>
+<li><strong>مصطلحات كمية البول الإجمالية <span class="french-term">La diurèse</span> في 24 ساعة:</strong>
+<br/>• انقطاع البول تماماً <span class="french-term">Anurie</span>: عندما تهبط كمية بول المريض لـ <span class="keyword">أقل من 100 ملل</span> في 24 ساعة.
+                        <br/>• shuh وقلة البول <span class="french-term">Oligurie</span>: عندما تكون كمية البول محصورة و<span class="keyword">أقل من 500 ملل</span> في 24 ساعة.
+                    </li>
+<li><strong>تحليل سرعة ترسب الدم <span class="french-term">Vitesse de sédimentation VS</span>:</strong> يرتفع بشكل فسيولوجي **كاذب وطبيعي تماماً** (بدون وجود أي مرض) عند <span class="keyword">المرأة الحامل <span class="french-term">Femme enceinte</span></span> نتيجة زيادة بروتينات الفيبرينوجين المصاحبة لتغيرات الحمل الطبيعية.</li>
+</ul>
+</div>
+  </div>
+
+</main>
+</body>
+</html>
