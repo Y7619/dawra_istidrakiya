@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Radiologie U2 - Neuro &amp; Ostéo-Articulaire | Cours PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f172a;--sidebar-bg:#111827;--card-bg:#1e2740;
+  --border:rgba(255,255,255,0.07);--accent:#6366f1;
+  --accent2:#10b981;--accent3:#f59e0b;--accent4:#ec4899;
+  --text:#e2e8f0;--muted:#94a3b8;--danger:#ef4444;
+}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal','Inter',sans-serif;display:flex;min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{width:270px;background:var(--sidebar-bg);border-left:1px solid var(--border);position:fixed;right:0;top:0;height:100vh;overflow-y:auto;padding:1.5rem 1rem;z-index:200;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent}
+.sidebar h2{font-family:'Inter',sans-serif;font-size:.9rem;color:#a5b4fc;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);text-align:center}
+.nav-section{font-size:.75rem;color:#6366f1;text-transform:uppercase;letter-spacing:.08em;margin:1rem 0 .4rem;padding-right:.5rem;font-weight:700}
+.nav-btn{display:flex;justify-content:space-between;align-items:center;width:100%;background:transparent;border:1px solid var(--border);color:var(--muted);padding:.6rem .9rem;margin-bottom:.3rem;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:.88rem;cursor:pointer;transition:all .2s;text-align:right}
+.nav-btn:hover,.nav-btn.active{background:rgba(99,102,241,.12);border-color:rgba(99,102,241,.4);color:#a5b4fc}
+.badge{background:rgba(99,102,241,.15);color:#a5b4fc;padding:.12rem .45rem;border-radius:12px;font-size:.75rem;font-weight:700}
+
+/* MAIN */
+.main-content{flex:1;margin-right:270px;padding:2rem 2.5rem;max-width:1100px}
+
+/* HEADER */
+.header-banner{background:linear-gradient(135deg,#1e1b4b 0%,#1a2236 60%,#0f172a 100%);border:1px solid rgba(99,102,241,.25);border-radius:16px;padding:2.5rem;text-align:center;margin-bottom:2.5rem;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.header-banner h1{font-family:'Inter',sans-serif;font-size:2rem;font-weight:800;color:#f1f5f9;margin-bottom:.5rem}
+.header-banner .subtitle{color:#94a3b8;font-size:1rem}
+.header-banner .badges{display:flex;gap:.75rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+.h-badge{padding:.35rem 1rem;border-radius:20px;font-size:.8rem;font-weight:600}
+.h-badge.neuro{background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.3)}
+.h-badge.osteo{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)}
+
+/* SECTION TITLE */
+.section-wrap{margin-bottom:3rem}
+.section-title{font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:800;color:#a5b4fc;border-bottom:2px solid rgba(99,102,241,.3);padding-bottom:.6rem;margin-bottom:2rem;display:flex;justify-content:space-between;align-items:center}
+.section-title.osteo{color:#6ee7b7;border-color:rgba(16,185,129,.3)}
+.section-count{font-size:.82rem;color:var(--muted);background:rgba(99,102,241,.1);padding:.2rem .7rem;border-radius:20px}
+.section-title.osteo .section-count{background:rgba(16,185,129,.1)}
+
+/* QCM CARD */
+.qcm-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;margin-bottom:1.5rem;transition:border-color .25s,box-shadow .25s}
+.qcm-card:hover{border-color:rgba(99,102,241,.35);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+.q-num{background:linear-gradient(135deg,#4338ca,#6366f1);color:#fff;padding:.3rem .9rem;border-radius:20px;font-weight:700;font-size:.88rem;white-space:nowrap}
+.q-ref{font-size:.75rem;color:var(--muted);font-family:'Inter',sans-serif}
+.q-fr{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:600;color:#e2e8f0;margin-bottom:.6rem;direction:ltr;text-align:left;line-height:1.6}
+.q-ar{font-size:.95rem;color:#94a3b8;direction:rtl;text-align:right;line-height:1.7;margin-bottom:1rem;font-style:italic}
+
+/* OPTIONS */
+.options{list-style:none;margin:1rem 0;direction:ltr;text-align:left}
+.opt{padding:.55rem .9rem;margin-bottom:.4rem;border-radius:8px;border:1px solid var(--border);font-size:.95rem;color:var(--muted);display:flex;align-items:flex-start;gap:.7rem;transition:background .2s}
+.opt.correct{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.4);color:#6ee7b7}
+.ltr{font-family:'Inter',sans-serif;font-weight:700;min-width:1.5rem;color:#6366f1}
+.opt.correct .ltr{color:#10b981}
+
+/* ANSWER & EXPLANATION */
+.answer-badge{display:inline-block;background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.35);padding:.35rem 1rem;border-radius:20px;font-weight:700;font-size:.88rem;margin:.8rem 0}
+.expl-block{margin-top:1rem;border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.expl-section{padding:1rem 1.2rem;border-bottom:1px solid var(--border)}
+.expl-section:last-child{border-bottom:none}
+.expl-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;padding:.2rem .6rem;border-radius:6px;display:inline-block}
+.label-expl{background:rgba(99,102,241,.12);color:#a5b4fc}
+.label-notes{background:rgba(245,158,11,.12);color:#fbbf24}
+.label-retenir{background:rgba(16,185,129,.12);color:#34d399}
+.label-pieges{background:rgba(239,68,68,.12);color:#f87171}
+.expl-fr{font-family:'Inter',sans-serif;font-size:.92rem;color:#cbd5e1;direction:ltr;text-align:left;line-height:1.6;margin-bottom:.5rem}
+.expl-ar{font-size:.92rem;color:#94a3b8;direction:rtl;text-align:right;line-height:1.7}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <h2>🔬 Radiologie U2</h2>
+  <button class="nav-btn" onclick="window.location.href='index.html'">🏠 الرئيسية / Accueil</button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Radiologie.html'">☢️ Radiologie U1</button>
+  <div class="nav-section">🧠 Neuroradiologie</div>
+  <button class="nav-btn active" onclick="document.getElementById('sec-neuro').scrollIntoView({behavior:'smooth'})">
+    <span>Radiologie Neurologique</span><span class="badge">39 QCM</span>
+  </button>
+  <div class="nav-section">🦴 Ostéo-Articulaire</div>
+  <button class="nav-btn" onclick="document.getElementById('sec-osteo').scrollIntoView({behavior:'smooth'})">
+    <span>Radiologie Ostéo-Articulaire</span><span class="badge">41 QCM</span>
+  </button>
+  <hr style="border:none;border-top:1px solid var(--border);margin:1rem 0">
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Sémiologie Générale.html'">Sémiologie Générale</button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Sémiologie Pneumologique.html'">Pneumologie</button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Sémiologie Cardiologique.html'">Cardiologie</button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Physiopathologie.html'">Physiopathologie</button>
+  <button class="nav-btn" onclick="window.location.href='Unité 1 - Biochimie.html'">Biochimie</button>
+</aside>
+
+<main class="main-content">
+  <div class="header-banner">
+    <h1>🔬 Radiologie — Unité 2</h1>
+    <div class="subtitle">Collection MDM · QCMs classés par années · Explications bilingues</div>
+    <div class="badges">
+      <span class="h-badge neuro">🧠 Neuroradiologie — 39 QCM</span>
+      <span class="h-badge osteo">🦴 Ostéo-Articulaire — 41 QCM</span>
+    </div>
+  </div>
+
+  <div class="section-wrap" id="sec-neuro">
+    <div class="section-title">🧠 Radiologie Neurologique <span class="section-count">39 QCM</span></div>
+
+<div class="qcm-card" id="N1">
+  <div class="q-header">
+    <span class="q-num">N1</span>
+    <span class="q-ref">QCM n°31 U2 2024</span>
+  </div>
+  <div class="q-fr">Devant un déficit neurologique focal, quels sont les examens complémentaires indiqués ?</div>
+  <div class="q-ar">📌 Devant un déficit neurologique focal, quels sont les examens complémentaires indiqués ?</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> IRM cérébrale avec séquence de diffusion</li>
+<li class="opt correct"><span class="ltr">B.</span> Scanner cérébrale sans injection de produit de contraste</li>
+<li class="opt"><span class="ltr">C.</span> Scanner cérébrale d'emblée avec injection de produit de contraste</li>
+<li class="opt correct"><span class="ltr">D.</span> Angio-IRM cérébrale</li>
+<li class="opt"><span class="ltr">E.</span> IRM médullaire</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">IRM cérébrale avec séquence de diffusion (A), scanner sans injection (B) et Angio-IRM (D) sont les 3 examens clés. Le scanner AVEC injection d'emblée (C) est contre-indiqué avant d'éliminer une hémorragie.</div>
+      <div class="expl-ar">أمام عجز عصبي بؤري: IRM مع séquence diffusion للإقفار، scanner بدون حقن لاستبعاد النزيف، وAngio-IRM للتشوهات الوعائية. Scanner avec injection مباشرةً هو خطأ لأنه يُخفي النزيف.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N2">
+  <div class="q-header">
+    <span class="q-num">N2</span>
+    <span class="q-ref">QCM n°32 U2 2024</span>
+  </div>
+  <div class="q-fr">Un scanner cérébral sans produit de contraste peut déceler des hyperdensités spontanées telles que :</div>
+  <div class="q-ar">📌 Un scanner cérébral sans produit de contraste peut déceler des hyperdensités spontanées telles que :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des calcifications physiologiques</li>
+<li class="opt correct"><span class="ltr">B.</span> Un hématome intra-parenchymateux</li>
+<li class="opt correct"><span class="ltr">C.</span> Un hématome extra-dural au stade aigu</li>
+<li class="opt"><span class="ltr">D.</span> Un accident vasculaire cérébral ischémique</li>
+<li class="opt"><span class="ltr">E.</span> Un hématome sous dural chronique</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Sur scanner sans injection, les hyperdensités spontanées correspondent aux calcifications (A), hématomes (B et C au stade aigu). L'AVC ischémique (D) donne une hypoDENSITÉ. L'HSD chronique (E) est isodense au LCR.</div>
+      <div class="expl-ar">في scanner بدون حقن: الكثافات العالية = تكلسات + هيماتومات حادة. AVC إقفاري = نقص كثافة. HSD المزمن = مشابه للـ LCR (لا يظهر كهيپردانس).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N3">
+  <div class="q-header">
+    <span class="q-num">N3</span>
+    <span class="q-ref">QCM n°33 U2 2024</span>
+  </div>
+  <div class="q-fr">Un hématome extra-dural :</div>
+  <div class="q-ar">📌 Un hématome extra-dural :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Se forme entre l'os et la dure mère</li>
+<li class="opt"><span class="ltr">B.</span> Apparaît de façon spontanée</li>
+<li class="opt correct"><span class="ltr">C.</span> A une forme en lentille biconvexe</li>
+<li class="opt"><span class="ltr">D.</span> Se forme entre arachnoïde et pie mère</li>
+<li class="opt correct"><span class="ltr">E.</span> Secondaire à un traumatisme cérébral</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ACE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">HED: entre l'os et la dure-mère (A) ✓, en lentille biconvexe (C) ✓, post-traumatique (E) ✓. Il ne dépasse PAS les sutures. La forme spontanée et le siège entre arachnoïde et pie mère décrivent l'HSD.</div>
+      <div class="expl-ar">الهيماتوم فوق الجافية: بين العظم والأم الجافية، شكل عدسي ثنائي التحدب، يعقب صدمة. لا يتجاوز الخيوط العظمية. الشكل بين الأم العنكبوتية والأم الحنون = صفة HSD وليس HED.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N4">
+  <div class="q-header">
+    <span class="q-num">N4</span>
+    <span class="q-ref">QCM n°34 U2 2024</span>
+  </div>
+  <div class="q-fr">Un hématome sous dural :</div>
+  <div class="q-ar">📌 Un hématome sous dural :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Devient semblable au LCR au stade chronique</li>
+<li class="opt correct"><span class="ltr">B.</span> Se voit chez les personnes âgées</li>
+<li class="opt"><span class="ltr">C.</span> Souvent associé à une fracture osseuse en regard</li>
+<li class="opt correct"><span class="ltr">D.</span> A une forme en croissant</li>
+<li class="opt correct"><span class="ltr">E.</span> Se forme entre la dure mère et l'arachnoïde</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABDE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">HSD: Peut prendre l'aspect du LCR au stade chronique (A), touche surtout les personnes âgées (B), forme en croissant (D), siège entre dure-mère et arachnoïde (E). PAS de fracture en regard (≠ HED).</div>
+      <div class="expl-ar">الهيماتوم تحت الجافية: بين الأم الجافية والأم العنكبوتية، شكل هلالي، عند المسنين، يشبه LCR في الطور المزمن. لا توجد كسور في مقابله (هذه صفة HED).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N5">
+  <div class="q-header">
+    <span class="q-num">N5</span>
+    <span class="q-ref">QCM n°35 U2 2024</span>
+  </div>
+  <div class="q-fr">L'échographie transfontanellaire :</div>
+  <div class="q-ar">📌 L'échographie transfontanellaire :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Est réalisable chez le nouveau-né et le nourrisson avant fermeture de la fontanelle antérieure</li>
+<li class="opt"><span class="ltr">B.</span> N'explore pas le parenchyme cérébral</li>
+<li class="opt"><span class="ltr">C.</span> N'explore pas le système ventriculaire</li>
+<li class="opt correct"><span class="ltr">D.</span> Permet de déceler toute modification de l'écho structure du parenchyme cérébral</li>
+<li class="opt correct"><span class="ltr">E.</span> Explore le système ventriculaire et les espaces péri-cérébraux</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ADE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">L'ETF (A, D, E) explore : parenchyme cérébral, système ventriculaire et espaces péri-cérébraux, mais PAS la moelle épinière. Réalisable tant que la fontanelle antérieure est ouverte (avant 18 mois).</div>
+      <div class="expl-ar">تصوير فوق الصوت عبر اليافوخ: يدرس الدماغ، البطينات والفضاءات المحيطة. لا يدرس الحبل الشوكي. يُجرى قبل إغلاق اليافوخ الأمامي (قبل 18 شهرًا).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N6">
+  <div class="q-header">
+    <span class="q-num">N6</span>
+    <span class="q-ref">QCM n°61 U2 2023</span>
+  </div>
+  <div class="q-fr">Quels sont les examens complémentaires indiqués en neuroradiologie ?</div>
+  <div class="q-ar">📌 Quels sont les examens complémentaires indiqués en neuroradiologie ?</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Scanner cérébrale sans et avec injection de produit de contraste</li>
+<li class="opt correct"><span class="ltr">B.</span> IRM cérébrale</li>
+<li class="opt correct"><span class="ltr">C.</span> Échographie transfontanellaire</li>
+<li class="opt correct"><span class="ltr">D.</span> IRM médullaire</li>
+<li class="opt"><span class="ltr">E.</span> Coro-scanner</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABCD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">En neuroradiologie: TDM (A), IRM (B), ETF (C) et IRM médullaire (D) sont tous indiqués selon le contexte. Le coro-scanner (E) est pour le cœur, pas pour le cerveau.</div>
+      <div class="expl-ar">في التصوير الشعاعي العصبي: TDM، IRM الدماغية، فوق الصوت عبر اليافوخ وIRM الشوكية كلها مشار إليها. Coro-scanner خاص بالقلب وليس الدماغ.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N7">
+  <div class="q-header">
+    <span class="q-num">N7</span>
+    <span class="q-ref">QCM n°62 U2 2023</span>
+  </div>
+  <div class="q-fr">Devant un déficit neurologique focal, quels sont les examens complémentaires indiqués ?</div>
+  <div class="q-ar">📌 Devant un déficit neurologique focal, quels sont les examens complémentaires indiqués ?</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> IRM cérébrale avec séquence de diffusion</li>
+<li class="opt correct"><span class="ltr">B.</span> Scanner cérébrale sans injection de produit de contraste</li>
+<li class="opt"><span class="ltr">C.</span> Scanner cérébrale d'emblée avec injection de produit de contraste</li>
+<li class="opt correct"><span class="ltr">D.</span> Angio-IRM cérébrale</li>
+<li class="opt"><span class="ltr">E.</span> IRM médullaire</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ABD</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ABD</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N8">
+  <div class="q-header">
+    <span class="q-num">N8</span>
+    <span class="q-ref">QCM n°63 U2 2023</span>
+  </div>
+  <div class="q-fr">Un scanner cérébral sans produit de contraste peut déceler des hyperdensités spontanées telles que :</div>
+  <div class="q-ar">📌 Un scanner cérébral sans produit de contraste peut déceler des hyperdensités spontanées telles que :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des calcifications physiologiques</li>
+<li class="opt correct"><span class="ltr">B.</span> Un hématome intra-parenchymateux</li>
+<li class="opt correct"><span class="ltr">C.</span> Un hématome extra-dural au stade aigu</li>
+<li class="opt"><span class="ltr">D.</span> Un accident vasculaire cérébral ischémique</li>
+<li class="opt"><span class="ltr">E.</span> Un hématome sous dural chronique</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ABC</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ABC</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N9">
+  <div class="q-header">
+    <span class="q-num">N9</span>
+    <span class="q-ref">QCM n°64 U2 2023</span>
+  </div>
+  <div class="q-fr">Un hématome extra-dural :</div>
+  <div class="q-ar">📌 Un hématome extra-dural :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Se forme entre l'os et la dure mère</li>
+<li class="opt"><span class="ltr">B.</span> Apparaît de façon spontanée</li>
+<li class="opt"><span class="ltr">C.</span> A une forme en croissant</li>
+<li class="opt"><span class="ltr">D.</span> Se forme entre arachnoïde et pie mère</li>
+<li class="opt correct"><span class="ltr">E.</span> Secondaire à un traumatisme cérébral</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N10">
+  <div class="q-header">
+    <span class="q-num">N10</span>
+    <span class="q-ref">QCM n°65 U2 2023</span>
+  </div>
+  <div class="q-fr">Un hématome sous dural :</div>
+  <div class="q-ar">📌 Un hématome sous dural :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> A une forme en lentille biconvexe</li>
+<li class="opt correct"><span class="ltr">B.</span> Se voit chez les personnes âgées</li>
+<li class="opt"><span class="ltr">C.</span> Souvent associé à une fracture osseuse en regard</li>
+<li class="opt correct"><span class="ltr">D.</span> A une forme en croissant</li>
+<li class="opt correct"><span class="ltr">E.</span> Se forme entre la dure mère et l'arachnoïde</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BDE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>BDE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>BDE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N11">
+  <div class="q-header">
+    <span class="q-num">N11</span>
+    <span class="q-ref">QCM n°66 U2 2023</span>
+  </div>
+  <div class="q-fr">Un accident vasculaire cérébral ischémique est :</div>
+  <div class="q-ar">📌 Un accident vasculaire cérébral ischémique est :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Décelé sur IRM cérébrale avec séquence diffusion dans les 06 premières heures suivant le déficit neurologique</li>
+<li class="opt"><span class="ltr">B.</span> Se voit sous forme d'une hyperdensité spontanée sur scanner cérébral non injecté</li>
+<li class="opt correct"><span class="ltr">C.</span> Non décelé sur scanner cérébral dans les 06 premières heures suivant le déficit neurologique</li>
+<li class="opt correct"><span class="ltr">D.</span> Se voit en scanner, sous forme d'une hypodensité systématisée dans un territoire artériel précis</li>
+<li class="opt"><span class="ltr">E.</span> Se voit au stade subaigu, sur un scanner cérébral non injecté</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ACD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">AVC ischémique: L'IRM séquence diffusion est positive dès les premières minutes (A) ✓. Le scanner est NÉGATIF dans les 6 premières heures (C) ✓. Au stade subaigu, il se voit en hypodensité systématisée (D) ✓. PAS d'hyperdensité spontanée (≠ hématome).</div>
+      <div class="expl-ar">AVC إقفاري: IRM diffusion إيجابي في الدقائق الأولى. Scanner سلبي في الـ 6 ساعات الأولى. في الطور تحت الحاد يظهر كنقص كثافة في التروية العصبية. لا يوجد فرط كثافة spontané.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N12">
+  <div class="q-header">
+    <span class="q-num">N12</span>
+    <span class="q-ref">QCM n°67 U2 2023</span>
+  </div>
+  <div class="q-fr">L'échographie transfontanellaire :</div>
+  <div class="q-ar">📌 L'échographie transfontanellaire :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Est réalisable chez le nouveau-né et le nourrisson avant fermeture de la fontanelle antérieure</li>
+<li class="opt"><span class="ltr">B.</span> N'explore pas le parenchyme cérébral</li>
+<li class="opt correct"><span class="ltr">C.</span> N'explore pas la moelle épinière</li>
+<li class="opt correct"><span class="ltr">D.</span> Permet de déceler toute modification de l'écho structure du parenchyme cérébral</li>
+<li class="opt correct"><span class="ltr">E.</span> Explore le système ventriculaire et les espaces péricérébraux</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ACDE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ACDE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ACDE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N13">
+  <div class="q-header">
+    <span class="q-num">N13</span>
+    <span class="q-ref">QCM n°68 U2 2023</span>
+  </div>
+  <div class="q-fr">Un hématome extra-dural sur scanner est :</div>
+  <div class="q-ar">📌 Un hématome extra-dural sur scanner est :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Spontanément hyperdense au stade aigu</li>
+<li class="opt correct"><span class="ltr">B.</span> De densité semblable au LCR au stade chronique</li>
+<li class="opt correct"><span class="ltr">C.</span> A une forme en lentille biconvexe</li>
+<li class="opt"><span class="ltr">D.</span> A une forme en croissant</li>
+<li class="opt"><span class="ltr">E.</span> Jamais associé à une fracture osseuse</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">HED sur scanner: hyperdense au stade aigu (A) ✓, biconvexe (C) ✓, associé à une fracture (≠ E). L'aspect LCR est pour l'HSD chronique. La forme en croissant est celle de l'HSD.</div>
+      <div class="expl-ar">HED في scanner: فرط كثافة في الطور الحاد، شكل ثنائي التحدب، مصاحب لكسر. مشابه LCR = HSD مزمن. شكل هلالي = HSD.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N14">
+  <div class="q-header">
+    <span class="q-num">N14</span>
+    <span class="q-ref">QCM n°64 U2 2022</span>
+  </div>
+  <div class="q-fr">La coupe native en TDM cérébrale est :</div>
+  <div class="q-ar">📌 La coupe native en TDM cérébrale est :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Coupe axiale</li>
+<li class="opt"><span class="ltr">B.</span> Coupe sagittale</li>
+<li class="opt"><span class="ltr">C.</span> Coupe coronale</li>
+<li class="opt"><span class="ltr">D.</span> Reconstruction axiale</li>
+<li class="opt"><span class="ltr">E.</span> Reconstruction sagittale</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>A</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>A</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N15">
+  <div class="q-header">
+    <span class="q-num">N15</span>
+    <span class="q-ref">QCM n°66 U2 2022</span>
+  </div>
+  <div class="q-fr">Les pathologies malformatives vasculaires cérébrales et rachidiennes sont mieux explorées en :</div>
+  <div class="q-ar">📌 Les pathologies malformatives vasculaires cérébrales et rachidiennes sont mieux explorées en :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> TDM cérébrale</li>
+<li class="opt"><span class="ltr">B.</span> IRM cérébrale</li>
+<li class="opt"><span class="ltr">C.</span> Radiographie du crâne</li>
+<li class="opt correct"><span class="ltr">D.</span> Angio-TDM cérébrale</li>
+<li class="opt correct"><span class="ltr">E.</span> Angio-IRM cérébrale</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : DE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>DE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>DE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N16">
+  <div class="q-header">
+    <span class="q-num">N16</span>
+    <span class="q-ref">QCM n°68 U2 2022</span>
+  </div>
+  <div class="q-fr">Sur un scanner cérébral, en fenêtre parenchymateuse (cochez les réponses justes) :</div>
+  <div class="q-ar">📌 Sur un scanner cérébral, en fenêtre parenchymateuse (cochez les réponses justes) :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Le parenchyme cérébral est noir</li>
+<li class="opt correct"><span class="ltr">B.</span> Le parenchyme cérébral est gris</li>
+<li class="opt"><span class="ltr">C.</span> Le LCR est blanc</li>
+<li class="opt correct"><span class="ltr">D.</span> Le LCR est noir</li>
+<li class="opt correct"><span class="ltr">E.</span> L'os est blanc</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BDE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">En fenêtre parenchymateuse: le parenchyme est gris (B), le LCR est noir (D), l'os est blanc (E). Ce sont les 3 densités de référence du scanner cérébral.</div>
+      <div class="expl-ar">في نافذة الحمة: الدماغ رمادي، LCR أسود، العظم أبيض. هذه هي الكثافات المرجعية الثلاث في scanner الدماغ.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N17">
+  <div class="q-header">
+    <span class="q-num">N17</span>
+    <span class="q-ref">QCM n°70 U2 2022</span>
+  </div>
+  <div class="q-fr">L'IRM cérébrale est indiquée dans les situations suivantes (cochez les réponses fausses) :</div>
+  <div class="q-ar">📌 L'IRM cérébrale est indiquée dans les situations suivantes (cochez les réponses fausses) :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> En urgence après un traumatisme crânien</li>
+<li class="opt"><span class="ltr">B.</span> Exploration d'un déficit neurologique focal à la recherche d'un accident vasculaire ischémique</li>
+<li class="opt"><span class="ltr">C.</span> Exploration de la pathologie inflammatoire de la substance blanche telle que la sclérose en plaque</li>
+<li class="opt correct"><span class="ltr">D.</span> Exploration d'une lombosciatalgie</li>
+<li class="opt"><span class="ltr">E.</span> Évaluation post-traitement des tumeurs cérébrales</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Réponses FAUSSES : A (le scanner est préféré en urgence crânienne) et D (l'IRM n'est PAS indiquée en 1ère intention pour la lombosciatalgie simple, on commence par la radio puis TDM).</div>
+      <div class="expl-ar">الإجابات الخاطئة: A (Scanner هو الأول في صدمات الرأس الطارئة) وD (IRM ليست الأولى في عرق النسا البسيط).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N18">
+  <div class="q-header">
+    <span class="q-num">N18</span>
+    <span class="q-ref">QCM n°61 U2 2021</span>
+  </div>
+  <div class="q-fr">En neuroradiologie, la séquence FLAIR en IRM permet :</div>
+  <div class="q-ar">📌 En neuroradiologie, la séquence FLAIR en IRM permet :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> D'éliminer le signal de la graisse</li>
+<li class="opt"><span class="ltr">B.</span> D'éliminer les signaux des liquides stationnaires</li>
+<li class="opt"><span class="ltr">C.</span> De détecter les zones de traumatisme</li>
+<li class="opt"><span class="ltr">D.</span> De visualiser les vaisseaux cérébraux</li>
+<li class="opt correct"><span class="ltr">E.</span> De détecter les lésions inflammatoires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : E</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">FLAIR élimine le signal des liquides STATIONNAIRES (LCR) (B), permettant de visualiser les lésions inflammatoires péri-ventriculaires (E). Elle ne visualise PAS les vaisseaux (c'est l'Angio-IRM).</div>
+      <div class="expl-ar">FLAIR تلغي إشارة السوائل الساكنة (LCR)، مما يكشف الآفات الالتهابية المحيطة بالبطينات. لا تُظهر الأوعية (هذه وظيفة Angio-IRM).</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N19">
+  <div class="q-header">
+    <span class="q-num">N19</span>
+    <span class="q-ref">QCM n°62 U2 2021</span>
+  </div>
+  <div class="q-fr">La technique de choix pour mettre en évidence un AVC ischémique dans les premières heures est :</div>
+  <div class="q-ar">📌 La technique de choix pour mettre en évidence un AVC ischémique dans les premières heures est :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> La TDM</li>
+<li class="opt correct"><span class="ltr">B.</span> L'IRM cérébrale</li>
+<li class="opt"><span class="ltr">C.</span> L'angioscanner cérébral</li>
+<li class="opt"><span class="ltr">D.</span> L'IRM médullaire</li>
+<li class="opt"><span class="ltr">E.</span> L'échographie transfontanellaire</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>B</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>B</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N20">
+  <div class="q-header">
+    <span class="q-num">N20</span>
+    <span class="q-ref">QCM n°63 U2 2021</span>
+  </div>
+  <div class="q-fr">L'image d'un hématome sous dural aigu au scanner est :</div>
+  <div class="q-ar">📌 L'image d'un hématome sous dural aigu au scanner est :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Une image péri cérébrale hyperdense en lentille biconvexe</li>
+<li class="opt correct"><span class="ltr">B.</span> Une image péri cérébrale hyperdense en croissant</li>
+<li class="opt"><span class="ltr">C.</span> Une image intra parenchymateuse hyperdense</li>
+<li class="opt"><span class="ltr">D.</span> Une collection de sang entre l'arachnoïde et la pie mère</li>
+<li class="opt"><span class="ltr">E.</span> Une collection de sang entre l'os et la dure mère</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>B</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>B</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N21">
+  <div class="q-header">
+    <span class="q-num">N21</span>
+    <span class="q-ref">QCM n°64 U2 2021</span>
+  </div>
+  <div class="q-fr">Parmi les calcifications normales sur une TDM cérébrale, on cite :</div>
+  <div class="q-ar">📌 Parmi les calcifications normales sur une TDM cérébrale, on cite :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Les calcifications hypophysaires</li>
+<li class="opt"><span class="ltr">B.</span> Les calcifications vasculaires</li>
+<li class="opt correct"><span class="ltr">C.</span> Les calcifications de la faux du cerveau</li>
+<li class="opt"><span class="ltr">D.</span> Les calcifications tumorales</li>
+<li class="opt"><span class="ltr">E.</span> Les calcifications osseuses</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>C</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>C</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N22">
+  <div class="q-header">
+    <span class="q-num">N22</span>
+    <span class="q-ref">QCM n°69 U2 2021</span>
+  </div>
+  <div class="q-fr">Le méningiome :</div>
+  <div class="q-ar">📌 Le méningiome :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Est une tumeur intra-axiale</li>
+<li class="opt correct"><span class="ltr">B.</span> Est une tumeur extra-axiale</li>
+<li class="opt"><span class="ltr">C.</span> Prend naissance au niveau des os de la voûte crânienne</li>
+<li class="opt"><span class="ltr">D.</span> Prend naissance au niveau des plexus choroïdes</li>
+<li class="opt"><span class="ltr">E.</span> Prend naissance au niveau des noyaux gris centraux</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Le méningiome est EXTRA-axial (B): il prend naissance sur les méninges (arachnoïde), pas sur les os ni les plexus choroïdes ni les noyaux gris.</div>
+      <div class="expl-ar">الورم السحائي خارج محوري: ينشأ من السحايا (الأم العنكبوتية)، وليس من العظام ولا الضفائر المشيمية ولا النوى الرمادية.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N23">
+  <div class="q-header">
+    <span class="q-num">N23</span>
+    <span class="q-ref">QCM n°09 S2 2020</span>
+  </div>
+  <div class="q-fr">En neuroradiologie, la séquence FLAIR en IRM permet :</div>
+  <div class="q-ar">📌 En neuroradiologie, la séquence FLAIR en IRM permet :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> D'éliminer le signal de la graisse</li>
+<li class="opt correct"><span class="ltr">B.</span> D'éliminer les signaux des liquides circulants</li>
+<li class="opt"><span class="ltr">C.</span> De détecter les zones hémorragiques</li>
+<li class="opt"><span class="ltr">D.</span> De visualiser les vaisseaux cérébraux</li>
+<li class="opt correct"><span class="ltr">E.</span> De détecter les zones inflammatoires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>BE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>BE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N24">
+  <div class="q-header">
+    <span class="q-num">N24</span>
+    <span class="q-ref">QCM n°10 S2 2020</span>
+  </div>
+  <div class="q-fr">En scanner cérébral non injecté :</div>
+  <div class="q-ar">📌 En scanner cérébral non injecté :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Une image d'abcès cérébral se traduit par une hypodensité à contours irréguliers</li>
+<li class="opt"><span class="ltr">B.</span> Une image d'AVC ischémique se traduit par une hyperdensité à contours irréguliers</li>
+<li class="opt"><span class="ltr">C.</span> L'abcès est systématisé dans un territoire artériel</li>
+<li class="opt"><span class="ltr">D.</span> L'AVC donne une hyperdensité cortico-sous corticale</li>
+<li class="opt correct"><span class="ltr">E.</span> L'abcès donne une hypodensité sous corticale</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N25">
+  <div class="q-header">
+    <span class="q-num">N25</span>
+    <span class="q-ref">QCM n°11 S2 2020</span>
+  </div>
+  <div class="q-fr">L'image d'un hématome extra dural aigu en scanner est :</div>
+  <div class="q-ar">📌 L'image d'un hématome extra dural aigu en scanner est :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Une image péri-cérébrale hyperdense en lentille biconvexe</li>
+<li class="opt"><span class="ltr">B.</span> Une image péri-cérébrale hyperdense en croissant</li>
+<li class="opt"><span class="ltr">C.</span> Une image intraparenchymateuse hyperdense</li>
+<li class="opt"><span class="ltr">D.</span> Une collection de sang qui dépasse généralement les sutures</li>
+<li class="opt correct"><span class="ltr">E.</span> Une collection de sang entre l'os et la dure mère</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N26">
+  <div class="q-header">
+    <span class="q-num">N26</span>
+    <span class="q-ref">QCM n°12 S2 2020</span>
+  </div>
+  <div class="q-fr">Parmi les calcifications normales sur une TDM cérébrale, on cite :</div>
+  <div class="q-ar">📌 Parmi les calcifications normales sur une TDM cérébrale, on cite :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Les calcifications hypophysaires</li>
+<li class="opt"><span class="ltr">B.</span> Les calcifications vasculaires</li>
+<li class="opt correct"><span class="ltr">C.</span> Les calcifications de la faux du cerveau</li>
+<li class="opt"><span class="ltr">D.</span> Les calcifications tumorales</li>
+<li class="opt correct"><span class="ltr">E.</span> Les calcifications épiphysaires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : CE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>CE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>CE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N27">
+  <div class="q-header">
+    <span class="q-num">N27</span>
+    <span class="q-ref">QCM n°18 S2 2020</span>
+  </div>
+  <div class="q-fr">En cas d'infarctus cérébral artériel :</div>
+  <div class="q-ar">📌 En cas d'infarctus cérébral artériel :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Le scanner est positif dès la première heure</li>
+<li class="opt"><span class="ltr">B.</span> Le scanner montre une hyperdensité</li>
+<li class="opt correct"><span class="ltr">C.</span> Le scanner montre une hypodensité systématisée dans un territoire artériel cérébral</li>
+<li class="opt correct"><span class="ltr">D.</span> L'artère sylvienne est la plus souvent en cause</li>
+<li class="opt"><span class="ltr">E.</span> L'angioscanner cérébral montre une obstruction artérielle du territoire controlatéral à l'infarctus</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : CD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">En cas d'infarctus cérébral: l'artère sylvienne est la plus souvent en cause (D) ✓. Le scanner montre une hypodensité systématisée (C) ✓, pas positive dans la 1ère heure. L'angioscanner montre l'obstruction du côté IPSILATÉRAL.</div>
+      <div class="expl-ar">في احتشاء الدماغ: الشريان الكبير في المنطقة هو الأكثر تضررًا. Scanner يُظهر نقص كثافة منتظم. سلبي في الساعة الأولى. Angioscanner يُظهر الانسداد في نفس الجانب.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N28">
+  <div class="q-header">
+    <span class="q-num">N28</span>
+    <span class="q-ref">QCM n°10 RT 2019</span>
+  </div>
+  <div class="q-fr">Parmi les calcifications normales sur une TDM cérébrale, on cite :</div>
+  <div class="q-ar">📌 Parmi les calcifications normales sur une TDM cérébrale, on cite :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Les calcifications hypophysaires</li>
+<li class="opt"><span class="ltr">B.</span> Les calcifications vasculaires</li>
+<li class="opt correct"><span class="ltr">C.</span> Les calcifications de la faux du cerveau</li>
+<li class="opt correct"><span class="ltr">D.</span> Les calcifications des plexus choroïdes</li>
+<li class="opt"><span class="ltr">E.</span> Les calcifications thalamiques</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : CD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>CD</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>CD</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N29">
+  <div class="q-header">
+    <span class="q-num">N29</span>
+    <span class="q-ref">QCM n°18 RT 2019</span>
+  </div>
+  <div class="q-fr">En neuroradiologie, la séquence FLAIR en IRM permet :</div>
+  <div class="q-ar">📌 En neuroradiologie, la séquence FLAIR en IRM permet :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> D'éliminer le signal de la graisse</li>
+<li class="opt"><span class="ltr">B.</span> D'éliminer les signaux des liquides stationnaires</li>
+<li class="opt correct"><span class="ltr">C.</span> De détecter les zones d'œdème</li>
+<li class="opt"><span class="ltr">D.</span> De visualiser les vaisseaux cérébraux</li>
+<li class="opt correct"><span class="ltr">E.</span> De détecter les pathologies inflammatoires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : CE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>CE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>CE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N30">
+  <div class="q-header">
+    <span class="q-num">N30</span>
+    <span class="q-ref">QCM n°19 RT 2019</span>
+  </div>
+  <div class="q-fr">Au scanner cérébral non injecté :</div>
+  <div class="q-ar">📌 Au scanner cérébral non injecté :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Une image d'abcès cérébral se traduit par une hypodensité à contours réguliers</li>
+<li class="opt"><span class="ltr">B.</span> Une image d'AVC ischémique se traduit par une hypodensité à contours irréguliers</li>
+<li class="opt"><span class="ltr">C.</span> L'abcès est systématisé dans un territoire artériel</li>
+<li class="opt correct"><span class="ltr">D.</span> L'AVC donne une hypodensité cortico-sous corticale</li>
+<li class="opt"><span class="ltr">E.</span> L'abcès donne une hyperdensité sous corticale spontanée</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>D</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>D</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N31">
+  <div class="q-header">
+    <span class="q-num">N31</span>
+    <span class="q-ref">QCM n°20 RT 2019</span>
+  </div>
+  <div class="q-fr">L'image d'un hématome sous dural aigu au scanner est :</div>
+  <div class="q-ar">📌 L'image d'un hématome sous dural aigu au scanner est :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Une image péri cérébrale hyperdense en lentille biconvexe</li>
+<li class="opt correct"><span class="ltr">B.</span> Une image péri cérébrale hyperdense en croissant</li>
+<li class="opt"><span class="ltr">C.</span> Une image intra parenchymateuse hyperdense</li>
+<li class="opt"><span class="ltr">D.</span> Une collection de sang entre l'arachnoïde et la pie mère</li>
+<li class="opt"><span class="ltr">E.</span> Une collection de sang entre l'os et la dure mère</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>B</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>B</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N32">
+  <div class="q-header">
+    <span class="q-num">N32</span>
+    <span class="q-ref">QCM n°10 S2 2019</span>
+  </div>
+  <div class="q-fr">Parmi les calcifications normales sur une TDM cérébrale, on cite :</div>
+  <div class="q-ar">📌 Parmi les calcifications normales sur une TDM cérébrale, on cite :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Les calcifications hypophysaires</li>
+<li class="opt"><span class="ltr">B.</span> Les calcifications vasculaires</li>
+<li class="opt correct"><span class="ltr">C.</span> Les calcifications de la faux du cerveau</li>
+<li class="opt correct"><span class="ltr">D.</span> Les calcifications des plexus choroïdes</li>
+<li class="opt"><span class="ltr">E.</span> Les calcifications thalamiques</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : CD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>CD</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>CD</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N33">
+  <div class="q-header">
+    <span class="q-num">N33</span>
+    <span class="q-ref">QCM n°18 S2 2019</span>
+  </div>
+  <div class="q-fr">En neuroradiologie, la séquence FLAIR en IRM permet :</div>
+  <div class="q-ar">📌 En neuroradiologie, la séquence FLAIR en IRM permet :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> D'éliminer le signal de la graisse</li>
+<li class="opt"><span class="ltr">B.</span> D'éliminer les signaux des liquides stationnaires</li>
+<li class="opt correct"><span class="ltr">C.</span> De détecter les zones d'œdème</li>
+<li class="opt"><span class="ltr">D.</span> De visualiser les vaisseaux cérébraux</li>
+<li class="opt correct"><span class="ltr">E.</span> De détecter les pathologies inflammatoires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : CE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>CE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>CE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N34">
+  <div class="q-header">
+    <span class="q-num">N34</span>
+    <span class="q-ref">QCM n°19 S2 2019</span>
+  </div>
+  <div class="q-fr">En scanner cérébral non injecté :</div>
+  <div class="q-ar">📌 En scanner cérébral non injecté :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Une image d'abcès cérébral se traduit par une hypodensité à contours réguliers</li>
+<li class="opt"><span class="ltr">B.</span> Une image d'AVC ischémique se traduit par une hypodensité à contours irréguliers</li>
+<li class="opt"><span class="ltr">C.</span> L'abcès est systématisé dans un territoire artériel</li>
+<li class="opt correct"><span class="ltr">D.</span> L'AVC donne une hypodensité cortico-sous corticale</li>
+<li class="opt"><span class="ltr">E.</span> L'abcès donne une hyperdensité sous corticale spontanée</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>D</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>D</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N35">
+  <div class="q-header">
+    <span class="q-num">N35</span>
+    <span class="q-ref">QCM n°20 S2 2019</span>
+  </div>
+  <div class="q-fr">L'image d'un hématome sous dural aigu au scanner est :</div>
+  <div class="q-ar">📌 L'image d'un hématome sous dural aigu au scanner est :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Une image péri-cérébrale hyperdense en lentille biconvexe</li>
+<li class="opt correct"><span class="ltr">B.</span> Une image péri-cérébrale hyperdense en croissant</li>
+<li class="opt"><span class="ltr">C.</span> Une image intraparenchymateuse hyperdense</li>
+<li class="opt"><span class="ltr">D.</span> Une collection de sang entre l'arachnoïde et la pie mère</li>
+<li class="opt"><span class="ltr">E.</span> Une collection de sang entre l'os et la dure mère</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>B</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>B</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N36">
+  <div class="q-header">
+    <span class="q-num">N36</span>
+    <span class="q-ref">QCM n°17 RT 2017</span>
+  </div>
+  <div class="q-fr">L'hématome extra dural donne une image scanographique :</div>
+  <div class="q-ar">📌 L'hématome extra dural donne une image scanographique :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Péri cérébrale en croissant</li>
+<li class="opt"><span class="ltr">B.</span> Péri cérébrale ronde</li>
+<li class="opt correct"><span class="ltr">C.</span> Péri cérébrale en lentille biconvexe</li>
+<li class="opt"><span class="ltr">D.</span> Linéaire</li>
+<li class="opt"><span class="ltr">E.</span> Toutes les réponses sont justes</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>C</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>C</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N37">
+  <div class="q-header">
+    <span class="q-num">N37</span>
+    <span class="q-ref">QCM n°18 RT 2017</span>
+  </div>
+  <div class="q-fr">L'image d'un hématome cérébral aigu au scanner est :</div>
+  <div class="q-ar">📌 L'image d'un hématome cérébral aigu au scanner est :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Hypodense</li>
+<li class="opt correct"><span class="ltr">B.</span> Hyperdense</li>
+<li class="opt"><span class="ltr">C.</span> Isodense</li>
+<li class="opt"><span class="ltr">D.</span> Liquidienne</li>
+<li class="opt"><span class="ltr">E.</span> Toutes les réponses sont fausses</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>B</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>B</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N38">
+  <div class="q-header">
+    <span class="q-num">N38</span>
+    <span class="q-ref">QCM n°17 S2 2017</span>
+  </div>
+  <div class="q-fr">L'hématome extra dural donne une image scanographique :</div>
+  <div class="q-ar">📌 L'hématome extra dural donne une image scanographique :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Péri cérébrale en croissant</li>
+<li class="opt"><span class="ltr">B.</span> Péri cérébrale ronde</li>
+<li class="opt correct"><span class="ltr">C.</span> Péri cérébrale en lentille biconvexe</li>
+<li class="opt"><span class="ltr">D.</span> Linéaire</li>
+<li class="opt"><span class="ltr">E.</span> Toutes les réponses sont justes</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>C</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>C</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="N39">
+  <div class="q-header">
+    <span class="q-num">N39</span>
+    <span class="q-ref">QCM n°18 S2 2017</span>
+  </div>
+  <div class="q-fr">L'image d'un hématome cérébral aigu au scanner est :</div>
+  <div class="q-ar">📌 L'image d'un hématome cérébral aigu au scanner est :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Hypodense</li>
+<li class="opt correct"><span class="ltr">B.</span> Hyperdense</li>
+<li class="opt"><span class="ltr">C.</span> Isodense</li>
+<li class="opt"><span class="ltr">D.</span> Liquidienne</li>
+<li class="opt"><span class="ltr">E.</span> Toutes les réponses sont fausses</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>B</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>B</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <div class="section-wrap" id="sec-osteo">
+    <div class="section-title osteo">🦴 Radiologie Ostéo-Articulaire <span class="section-count">41 QCM</span></div>
+
+<div class="qcm-card" id="O1">
+  <div class="q-header">
+    <span class="q-num">O1</span>
+    <span class="q-ref">QCM n°36 U2 2024</span>
+  </div>
+  <div class="q-fr">Une lacune maligne présente les caractéristiques suivantes :</div>
+  <div class="q-ar">📌 Une lacune maligne présente les caractéristiques suivantes :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Des limites nettes</li>
+<li class="opt correct"><span class="ltr">B.</span> Des limites floues</li>
+<li class="opt correct"><span class="ltr">C.</span> Une corticale en regard rompue</li>
+<li class="opt"><span class="ltr">D.</span> Une corticale en regard non rompue</li>
+<li class="opt"><span class="ltr">E.</span> Absence de réaction périostée</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Lacune maligne: limites FLOUES (B) + corticale ROMPUE (C). Tout ce qui est 'net' et 'non rompu' oriente vers le bénin.</div>
+      <div class="expl-ar">الفجوة الخبيثة: حدود غير واضحة + قشرة مكسورة. كل ما هو 'واضح' و'غير مكسور' يوجه نحو الحميد.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O2">
+  <div class="q-header">
+    <span class="q-num">O2</span>
+    <span class="q-ref">QCM n°37 U2 2024</span>
+  </div>
+  <div class="q-fr">Une lacune bénigne présente les caractéristiques suivantes :</div>
+  <div class="q-ar">📌 Une lacune bénigne présente les caractéristiques suivantes :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des limites nettes</li>
+<li class="opt"><span class="ltr">B.</span> Des limites floues</li>
+<li class="opt correct"><span class="ltr">C.</span> Une réaction périostée non rompue</li>
+<li class="opt"><span class="ltr">D.</span> Une réaction périostée rompue</li>
+<li class="opt"><span class="ltr">E.</span> Une corticale rompue</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Lacune bénigne: limites NETTES (A) + réaction périostée NON rompue (C). Les limites floues et la corticale rompue = malin.</div>
+      <div class="expl-ar">الفجوة الحميدة: حدود واضحة + تفاعل سمحاقي غير مكسور. الحدود الغير واضحة والقشرة المكسورة = خبيث.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O3">
+  <div class="q-header">
+    <span class="q-num">O3</span>
+    <span class="q-ref">QCM n°38 U2 2024</span>
+  </div>
+  <div class="q-fr">Parmi les signes sémiologiques de l'arthrite, on distingue :</div>
+  <div class="q-ar">📌 Parmi les signes sémiologiques de l'arthrite, on distingue :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Une interligne articulaire pincée</li>
+<li class="opt correct"><span class="ltr">B.</span> Une déminéralisation osseuse de l'articulation</li>
+<li class="opt"><span class="ltr">C.</span> Des ostéophytes marginaux</li>
+<li class="opt"><span class="ltr">D.</span> Le respect des parties molles péri-articulaires</li>
+<li class="opt"><span class="ltr">E.</span> Des calcifications péri-articulaires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AB</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Arthrite: pincement de l'interligne (A) + déminéralisation (B). Les ostéophytes (C) sont une caractéristique de l'ARTHROSE, pas de l'arthrite.</div>
+      <div class="expl-ar">التهاب المفصل: ضيق الفضاء المفصلي + نزع المعادن. النوابت العظمية صفة الفصال العظمي وليس التهاب المفاصل.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O4">
+  <div class="q-header">
+    <span class="q-num">O4</span>
+    <span class="q-ref">QCM n°39 U2 2024</span>
+  </div>
+  <div class="q-fr">Parmi les signes sémiologiques de l'arthrose :</div>
+  <div class="q-ar">📌 Parmi les signes sémiologiques de l'arthrose :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Respect de l'interligne articulaire</li>
+<li class="opt correct"><span class="ltr">B.</span> Ostéophytes marginaux</li>
+<li class="opt correct"><span class="ltr">C.</span> Géodes sous chondrales</li>
+<li class="opt"><span class="ltr">D.</span> Épaississement des parties molles péri-articulaires</li>
+<li class="opt"><span class="ltr">E.</span> Des calcifications péri-articulaires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Arthrose: ostéophytes marginaux (B) + géodes sous-chondrales (C). L'interligne est DIMINUÉE (pincée), pas respectée.</div>
+      <div class="expl-ar">الفصال العظمي: نوابت عظمية + أكياس تحت الغضروف. الفضاء المفصلي ضيق وليس محفوظًا.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O5">
+  <div class="q-header">
+    <span class="q-num">O5</span>
+    <span class="q-ref">QCM n°40 U2 2024</span>
+  </div>
+  <div class="q-fr">Une lacune osseuse :</div>
+  <div class="q-ar">📌 Une lacune osseuse :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Toujours unique</li>
+<li class="opt correct"><span class="ltr">B.</span> Peut être unique ou multiple</li>
+<li class="opt correct"><span class="ltr">C.</span> Correspond à une ostéolyse</li>
+<li class="opt"><span class="ltr">D.</span> Correspond à une ostéo-condensation</li>
+<li class="opt correct"><span class="ltr">E.</span> Peut être bénigne ou maligne</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BCE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Lacune osseuse: peut être unique ou multiple (B), correspond à une ostéolyse (C), peut être bénigne ou maligne (E).</div>
+      <div class="expl-ar">الفجوة العظمية: قد تكون مفردة أو متعددة، تقابل تحلل عظمي، قد تكون حميدة أو خبيثة.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O6">
+  <div class="q-header">
+    <span class="q-num">O6</span>
+    <span class="q-ref">QCM n°69 U2 2023</span>
+  </div>
+  <div class="q-fr">Une lacune maligne présente les caractéristiques suivantes :</div>
+  <div class="q-ar">📌 Une lacune maligne présente les caractéristiques suivantes :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Des limites nettes</li>
+<li class="opt correct"><span class="ltr">B.</span> Des limites floues</li>
+<li class="opt correct"><span class="ltr">C.</span> Une corticale en regard rompue</li>
+<li class="opt"><span class="ltr">D.</span> Une corticale en regard non rompue</li>
+<li class="opt"><span class="ltr">E.</span> Absence de réaction périostée</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>BC</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>BC</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O7">
+  <div class="q-header">
+    <span class="q-num">O7</span>
+    <span class="q-ref">QCM n°70 U2 2023</span>
+  </div>
+  <div class="q-fr">Une lacune bénigne présente les caractéristiques suivantes :</div>
+  <div class="q-ar">📌 Une lacune bénigne présente les caractéristiques suivantes :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des limites nettes</li>
+<li class="opt"><span class="ltr">B.</span> Des limites floues</li>
+<li class="opt"><span class="ltr">C.</span> Une réaction périostée en regard rompue</li>
+<li class="opt correct"><span class="ltr">D.</span> Une réaction périostée en regard non rompue</li>
+<li class="opt"><span class="ltr">E.</span> Une corticale rompue</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AD</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AD</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O8">
+  <div class="q-header">
+    <span class="q-num">O8</span>
+    <span class="q-ref">QCM n°71 U2 2023</span>
+  </div>
+  <div class="q-fr">Parmi les signes sémiologiques de l'arthrite, on distingue :</div>
+  <div class="q-ar">📌 Parmi les signes sémiologiques de l'arthrite, on distingue :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Interligne articulaire pincée</li>
+<li class="opt correct"><span class="ltr">B.</span> Déminéralisation osseuse de l'articulation</li>
+<li class="opt"><span class="ltr">C.</span> Ostéophytes marginaux</li>
+<li class="opt"><span class="ltr">D.</span> Respect des parties molles péri-articulaires</li>
+<li class="opt"><span class="ltr">E.</span> Calcifications péri-articulaires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AB</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AB</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AB</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O9">
+  <div class="q-header">
+    <span class="q-num">O9</span>
+    <span class="q-ref">QCM n°72 U2 2023</span>
+  </div>
+  <div class="q-fr">Parmi les signes sémiologiques de l'arthrose, on distingue :</div>
+  <div class="q-ar">📌 Parmi les signes sémiologiques de l'arthrose, on distingue :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Respect de l'interligne articulaire</li>
+<li class="opt correct"><span class="ltr">B.</span> Ostéophytes marginaux</li>
+<li class="opt correct"><span class="ltr">C.</span> Géodes sous chondrales</li>
+<li class="opt"><span class="ltr">D.</span> Épaississement des parties molles péri-articulaires</li>
+<li class="opt"><span class="ltr">E.</span> Calcifications péri-articulaires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>BC</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>BC</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O10">
+  <div class="q-header">
+    <span class="q-num">O10</span>
+    <span class="q-ref">QCM n°73 U2 2023</span>
+  </div>
+  <div class="q-fr">La spondylodiscite associe :</div>
+  <div class="q-ar">📌 La spondylodiscite associe :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Une hauteur discale respectée</li>
+<li class="opt correct"><span class="ltr">B.</span> Un pincement discal</li>
+<li class="opt correct"><span class="ltr">C.</span> Anomalie de la courbure rachidienne</li>
+<li class="opt"><span class="ltr">D.</span> Respect de la courbure rachidienne</li>
+<li class="opt"><span class="ltr">E.</span> Respect de la morphologie vertébrale</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Spondylodiscite: pincement discal (B) + anomalie de courbure (C). La hauteur discale est DIMINUÉE et la morphologie vertébrale est ATTEINTE.</div>
+      <div class="expl-ar">التهاب الفقرات والقرص: ضيق القرص + تغير في الانحناء. ارتفاع القرص ينقص والشكل الفقري يتأثر.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O11">
+  <div class="q-header">
+    <span class="q-num">O11</span>
+    <span class="q-ref">QCM n°74 U2 2023</span>
+  </div>
+  <div class="q-fr">Le périoste correspond à :</div>
+  <div class="q-ar">📌 Le périoste correspond à :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Membrane péri-osseuse nourricière et protectrice</li>
+<li class="opt"><span class="ltr">B.</span> Membrane entre épiphyse et métaphyse</li>
+<li class="opt correct"><span class="ltr">C.</span> Membrane péri-osseuse réagissant aux différentes agressions</li>
+<li class="opt"><span class="ltr">D.</span> Membrane articulaire</li>
+<li class="opt"><span class="ltr">E.</span> Membrane musculaire</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Le périoste: membrane péri-osseuse nourricière (A) + réagit aux agressions (C). Ce n'est pas la membrane articulaire ni musculaire.</div>
+      <div class="expl-ar">السمحاق: غشاء محيط بالعظم يغذيه ويحميه، ويتفاعل مع الاعتداءات. ليس غشاءً مفصليًا أو عضليًا.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O12">
+  <div class="q-header">
+    <span class="q-num">O12</span>
+    <span class="q-ref">QCM n°75 U2 2023</span>
+  </div>
+  <div class="q-fr">La réaction périostée présente les caractères suivants :</div>
+  <div class="q-ar">📌 La réaction périostée présente les caractères suivants :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Rompue dans les tumeurs malignes</li>
+<li class="opt correct"><span class="ltr">B.</span> Non rompue dans les tumeurs bénignes</li>
+<li class="opt"><span class="ltr">C.</span> Rompue dans les tumeurs bénignes</li>
+<li class="opt"><span class="ltr">D.</span> Continue dans les tumeurs malignes</li>
+<li class="opt"><span class="ltr">E.</span> Continue dans les infections osseuses</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AB</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Réaction périostée: rompue dans les tumeurs MALIGNES (A) + non rompue dans les bénignes (B). Les infections osseuses → réaction continue (E).</div>
+      <div class="expl-ar">التفاعل السمحاقي: مكسور في الأورام الخبيثة، غير مكسور في الحميدة. الالتهابات العظمية → تفاعل مستمر.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O13">
+  <div class="q-header">
+    <span class="q-num">O13</span>
+    <span class="q-ref">QCM n°65 U2 2022</span>
+  </div>
+  <div class="q-fr">Une lacune maligne se traduit par :</div>
+  <div class="q-ar">📌 Une lacune maligne se traduit par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des limites floues</li>
+<li class="opt correct"><span class="ltr">B.</span> Une corticale en regard rompue</li>
+<li class="opt"><span class="ltr">C.</span> Des limites nettes</li>
+<li class="opt"><span class="ltr">D.</span> Une corticale en regard continue</li>
+<li class="opt"><span class="ltr">E.</span> Réaction périostée continue</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AB</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AB</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AB</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O14">
+  <div class="q-header">
+    <span class="q-num">O14</span>
+    <span class="q-ref">QCM n°67 U2 2022</span>
+  </div>
+  <div class="q-fr">Une arthrite se traduit sur une radiographie par :</div>
+  <div class="q-ar">📌 Une arthrite se traduit sur une radiographie par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Pincement de l'interligne articulaire</li>
+<li class="opt"><span class="ltr">B.</span> Respect de l'interligne articulaire</li>
+<li class="opt"><span class="ltr">C.</span> Respect des parties molles péri-articulaires</li>
+<li class="opt correct"><span class="ltr">D.</span> Des géodes sous chondrales</li>
+<li class="opt correct"><span class="ltr">E.</span> Épaississement des parties molles péri-articulaires</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ADE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ADE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ADE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O15">
+  <div class="q-header">
+    <span class="q-num">O15</span>
+    <span class="q-ref">QCM n°69 U2 2022</span>
+  </div>
+  <div class="q-fr">Une lacune bénigne se traduit par :</div>
+  <div class="q-ar">📌 Une lacune bénigne se traduit par :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Des limites floues</li>
+<li class="opt"><span class="ltr">B.</span> Une corticale en regard rompue</li>
+<li class="opt correct"><span class="ltr">C.</span> Des limites nettes</li>
+<li class="opt correct"><span class="ltr">D.</span> Une corticale en regard continue</li>
+<li class="opt correct"><span class="ltr">E.</span> Absence de réaction périostée</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : CDE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>CDE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>CDE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O16">
+  <div class="q-header">
+    <span class="q-num">O16</span>
+    <span class="q-ref">QCM n°65 U2 2021</span>
+  </div>
+  <div class="q-fr">Une arthrite se traduit par :</div>
+  <div class="q-ar">📌 Une arthrite se traduit par :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Un pincement de l'interligne articulaire</li>
+<li class="opt correct"><span class="ltr">B.</span> Un élargissement de l'interligne articulaire</li>
+<li class="opt"><span class="ltr">C.</span> Des ostéophytes</li>
+<li class="opt"><span class="ltr">D.</span> Un amincissement des parties molles péri-articulaires</li>
+<li class="opt"><span class="ltr">E.</span> Une destruction osseuse</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : B</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>B</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>B</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O17">
+  <div class="q-header">
+    <span class="q-num">O17</span>
+    <span class="q-ref">QCM n°66 U2 2021</span>
+  </div>
+  <div class="q-fr">Une arthrose se traduit par :</div>
+  <div class="q-ar">📌 Une arthrose se traduit par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Un pincement de l'interligne articulaire</li>
+<li class="opt"><span class="ltr">B.</span> Un élargissement de l'interligne articulaire</li>
+<li class="opt"><span class="ltr">C.</span> Un épaississement des parties molles péri-articulaires</li>
+<li class="opt"><span class="ltr">D.</span> Une destruction osseuse</li>
+<li class="opt"><span class="ltr">E.</span> Une intégrité de l'os sous chondral</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>A</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>A</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O18">
+  <div class="q-header">
+    <span class="q-num">O18</span>
+    <span class="q-ref">QCM n°67 U2 2021</span>
+  </div>
+  <div class="q-fr">Une spondylodiscite se traduit par :</div>
+  <div class="q-ar">📌 Une spondylodiscite se traduit par :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Des fractures vertébrales</li>
+<li class="opt"><span class="ltr">B.</span> Une statique rachidienne normale</li>
+<li class="opt correct"><span class="ltr">C.</span> Toujours un pincement discal</li>
+<li class="opt"><span class="ltr">D.</span> Rarement un pincement discal</li>
+<li class="opt"><span class="ltr">E.</span> Une intégrité des parties molles péri-rachidiennes</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : C</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>C</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>C</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O19">
+  <div class="q-header">
+    <span class="q-num">O19</span>
+    <span class="q-ref">QCM n°68 U2 2021</span>
+  </div>
+  <div class="q-fr">Une lacune osseuse de nature bénigne se traduit par :</div>
+  <div class="q-ar">📌 Une lacune osseuse de nature bénigne se traduit par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des limites nettes</li>
+<li class="opt"><span class="ltr">B.</span> Des limites floues</li>
+<li class="opt"><span class="ltr">C.</span> Une réaction périostée rompue</li>
+<li class="opt"><span class="ltr">D.</span> Une réaction périostée pleine homogène non rompue</li>
+<li class="opt"><span class="ltr">E.</span> Une destruction de la corticale osseuse</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : A</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>A</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>A</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O20">
+  <div class="q-header">
+    <span class="q-num">O20</span>
+    <span class="q-ref">QCM n°70 U2 2021</span>
+  </div>
+  <div class="q-fr">En cas de lésions lacunaires osseuses multiples de la voûte du crâne, le diagnostic le plus probable est :</div>
+  <div class="q-ar">📌 En cas de lésions lacunaires osseuses multiples de la voûte du crâne, le diagnostic le plus probable est :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Le traumatisme crânien</li>
+<li class="opt"><span class="ltr">B.</span> Le méningiome</li>
+<li class="opt"><span class="ltr">C.</span> L'hématome extradural</li>
+<li class="opt correct"><span class="ltr">D.</span> Le myélome multiple</li>
+<li class="opt"><span class="ltr">E.</span> L'hématome sous dural</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Lésions lacunaires multiples de la voûte = Myélome multiple (D). Le méningiome est unique et extra-axial. Le traumatisme et les hématomes ne donnent pas ce tableau.</div>
+      <div class="expl-ar">فجوات متعددة في القبة الجمجمية = الورم النقوي المتعدد. الورم السحائي مفرد وخارج محوري. الصدمة والهيماتومات لا تعطي هذه الصورة.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O21">
+  <div class="q-header">
+    <span class="q-num">O21</span>
+    <span class="q-ref">QCM n°15 S2 2020</span>
+  </div>
+  <div class="q-fr">Une lésion osseuse bénigne se traduit en imagerie par :</div>
+  <div class="q-ar">📌 Une lésion osseuse bénigne se traduit en imagerie par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des limites nettes</li>
+<li class="opt"><span class="ltr">B.</span> Des limites floues</li>
+<li class="opt"><span class="ltr">C.</span> Une rupture corticale osseuse</li>
+<li class="opt"><span class="ltr">D.</span> Une atteinte des parties molles</li>
+<li class="opt correct"><span class="ltr">E.</span> Une évolution lente</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O22">
+  <div class="q-header">
+    <span class="q-num">O22</span>
+    <span class="q-ref">QCM n°07 RT 2019</span>
+  </div>
+  <div class="q-fr">Quels sont les éléments anatomiques invisibles au scanner ?</div>
+  <div class="q-ar">📌 Quels sont les éléments anatomiques invisibles au scanner ?</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> L'os</li>
+<li class="opt correct"><span class="ltr">B.</span> Les ligaments</li>
+<li class="opt correct"><span class="ltr">C.</span> Les ménisques</li>
+<li class="opt"><span class="ltr">D.</span> Les calcifications</li>
+<li class="opt"><span class="ltr">E.</span> Les muscles</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Éléments INVISIBLES au scanner: ligaments (B) + ménisques (C). L'os et les calcifications sont blancs (hyperdenses), les muscles sont gris.</div>
+      <div class="expl-ar">العناصر غير الظاهرة في Scanner: الأربطة + الغضاريف الهلالية. العظم والتكلسات بيضاء، العضلات رمادية.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O23">
+  <div class="q-header">
+    <span class="q-num">O23</span>
+    <span class="q-ref">QCM n°08 RT 2019</span>
+  </div>
+  <div class="q-fr">Les caractéristiques d'une tumeur osseuse maligne sont :</div>
+  <div class="q-ar">📌 Les caractéristiques d'une tumeur osseuse maligne sont :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Les limites floues</li>
+<li class="opt correct"><span class="ltr">B.</span> La rupture de la corticale</li>
+<li class="opt"><span class="ltr">C.</span> Réaction périostée uni-lamellaire</li>
+<li class="opt correct"><span class="ltr">D.</span> Réaction périostée rompue</li>
+<li class="opt"><span class="ltr">E.</span> Contours réguliers</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ABD</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ABD</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O24">
+  <div class="q-header">
+    <span class="q-num">O24</span>
+    <span class="q-ref">QCM n°07 S2 2019</span>
+  </div>
+  <div class="q-fr">Quels sont les éléments anatomiques invisibles au scanner ?</div>
+  <div class="q-ar">📌 Quels sont les éléments anatomiques invisibles au scanner ?</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> L'os</li>
+<li class="opt correct"><span class="ltr">B.</span> Les ligaments</li>
+<li class="opt correct"><span class="ltr">C.</span> Les ménisques</li>
+<li class="opt"><span class="ltr">D.</span> Les calcifications</li>
+<li class="opt"><span class="ltr">E.</span> Les muscles</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>BC</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>BC</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O25">
+  <div class="q-header">
+    <span class="q-num">O25</span>
+    <span class="q-ref">QCM n°08 S2 2019</span>
+  </div>
+  <div class="q-fr">Les caractéristiques d'une tumeur osseuse maligne sont :</div>
+  <div class="q-ar">📌 Les caractéristiques d'une tumeur osseuse maligne sont :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Les limites floues</li>
+<li class="opt correct"><span class="ltr">B.</span> La rupture de la corticale</li>
+<li class="opt"><span class="ltr">C.</span> Réaction périostée uni-lamellaire</li>
+<li class="opt correct"><span class="ltr">D.</span> Réaction périostée rompue</li>
+<li class="opt"><span class="ltr">E.</span> Contours réguliers</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ABD</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ABD</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O26">
+  <div class="q-header">
+    <span class="q-num">O26</span>
+    <span class="q-ref">QCM n°14 RT 2018</span>
+  </div>
+  <div class="q-fr">Sur une radiographie du coude de profil :</div>
+  <div class="q-ar">📌 Sur une radiographie du coude de profil :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> La bourse graisseuse péri-articulaire antérieure est visible au contact de l'épiphyse humérale inférieure</li>
+<li class="opt"><span class="ltr">B.</span> La bourse graisseuse péri-articulaire antérieure n'est pas visible au contact de l'épiphyse humérale inférieure</li>
+<li class="opt"><span class="ltr">C.</span> Le refoulement de la bourse graisseuse péri-articulaire est une variante de la normale</li>
+<li class="opt"><span class="ltr">D.</span> Le refoulement de la bourse graisseuse péri-articulaire est physiologique</li>
+<li class="opt correct"><span class="ltr">E.</span> Le refoulement de la bourse graisseuse péri-articulaire est dû à un hématome</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O27">
+  <div class="q-header">
+    <span class="q-num">O27</span>
+    <span class="q-ref">QCM n°01 S2 2018</span>
+  </div>
+  <div class="q-fr">Une lacune osseuse maligne se traduit par :</div>
+  <div class="q-ar">📌 Une lacune osseuse maligne se traduit par :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Des limites nettes</li>
+<li class="opt correct"><span class="ltr">B.</span> Des limites floues</li>
+<li class="opt"><span class="ltr">C.</span> Des contours réguliers</li>
+<li class="opt correct"><span class="ltr">D.</span> Des contours irréguliers</li>
+<li class="opt correct"><span class="ltr">E.</span> Une rupture corticale</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BDE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>BDE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>BDE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O28">
+  <div class="q-header">
+    <span class="q-num">O28</span>
+    <span class="q-ref">QCM n°02 S2 2018</span>
+  </div>
+  <div class="q-fr">Une réaction périostée est :</div>
+  <div class="q-ar">📌 Une réaction périostée est :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Plurilamellaire rompue dans les tumeurs bénignes</li>
+<li class="opt correct"><span class="ltr">B.</span> Plurilamellaire rompue dans les infections de l'os</li>
+<li class="opt correct"><span class="ltr">C.</span> Plurilamellaire rompue dans les tumeurs malignes</li>
+<li class="opt"><span class="ltr">D.</span> Pleine homogène dans les tumeurs malignes</li>
+<li class="opt correct"><span class="ltr">E.</span> Unilamellaire dans les tumeurs bénignes</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BCE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>BCE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>BCE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O29">
+  <div class="q-header">
+    <span class="q-num">O29</span>
+    <span class="q-ref">QCM n°03 S2 2018</span>
+  </div>
+  <div class="q-fr">Un seul signe n'est pas en rapport avec la spondylodiscite :</div>
+  <div class="q-ar">📌 Un seul signe n'est pas en rapport avec la spondylodiscite :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Modification de la courbure rachidienne</li>
+<li class="opt"><span class="ltr">B.</span> Modification de la structure vertébrale</li>
+<li class="opt"><span class="ltr">C.</span> Reconstruction vertébrale</li>
+<li class="opt correct"><span class="ltr">D.</span> Tout le rachis est atteint</li>
+<li class="opt"><span class="ltr">E.</span> Abcès des parties molles</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Le seul signe N'EST PAS en rapport: Tout le rachis est atteint (D). La spondylodiscite est FOCALE (un ou deux niveaux), pas généralisée.</div>
+      <div class="expl-ar">العلامة الوحيدة غير المرتبطة: إصابة كل العمود الفقري. التهاب الفقرات والقرص بؤري (مستوى أو مستويين)، وليس معممًا.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O30">
+  <div class="q-header">
+    <span class="q-num">O30</span>
+    <span class="q-ref">QCM n°04 S2 2018</span>
+  </div>
+  <div class="q-fr">Dans les arthrites, on assiste à :</div>
+  <div class="q-ar">📌 Dans les arthrites, on assiste à :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Pincement de l'interligne articulaire</li>
+<li class="opt correct"><span class="ltr">B.</span> Œdème des parties molles</li>
+<li class="opt correct"><span class="ltr">C.</span> Géodes sous chondrales</li>
+<li class="opt"><span class="ltr">D.</span> Respect de la minéralisation épiphysaire</li>
+<li class="opt correct"><span class="ltr">E.</span> Épanchement articulaire</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABCE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ABCE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ABCE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O31">
+  <div class="q-header">
+    <span class="q-num">O31</span>
+    <span class="q-ref">QCM n°05 S2 2018</span>
+  </div>
+  <div class="q-fr">L'arthrose est évoquée devant :</div>
+  <div class="q-ar">📌 L'arthrose est évoquée devant :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> Réaction périostée</li>
+<li class="opt correct"><span class="ltr">B.</span> Géodes sous chondrale</li>
+<li class="opt correct"><span class="ltr">C.</span> Pincement de l'interligne articulaire</li>
+<li class="opt correct"><span class="ltr">D.</span> Ostéophytose marginale</li>
+<li class="opt correct"><span class="ltr">E.</span> Abcès des parties molles</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : BCDE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>BCDE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>BCDE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O32">
+  <div class="q-header">
+    <span class="q-num">O32</span>
+    <span class="q-ref">QCM n°10 RT 2017</span>
+  </div>
+  <div class="q-fr">L'ostéopénie se traduit par :</div>
+  <div class="q-ar">📌 L'ostéopénie se traduit par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Une raréfaction des travées osseuses</li>
+<li class="opt"><span class="ltr">B.</span> Une condensation des corticales</li>
+<li class="opt correct"><span class="ltr">C.</span> Un amincissement des corticales</li>
+<li class="opt"><span class="ltr">D.</span> Une multiplication des travées osseuses</li>
+<li class="opt correct"><span class="ltr">E.</span> Peut se voir de façon généralisée ou localisée</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ACE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Ostéopénie: raréfaction des travées (A) + amincissement des corticales (C) + peut être généralisée ou localisée (E). PAS de condensation ni de multiplication des travées.</div>
+      <div class="expl-ar">هشاشة العظام الإشعاعية: ضعف الشبكة العظمية + ترقيق القشرة + قد تكون معممة أو موضعية. لا يوجد تكثف أو ازدياد في الشبكة.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O33">
+  <div class="q-header">
+    <span class="q-num">O33</span>
+    <span class="q-ref">QCM n°11 RT 2017</span>
+  </div>
+  <div class="q-fr">Une lacune osseuse de nature maligne se traduit par :</div>
+  <div class="q-ar">📌 Une lacune osseuse de nature maligne se traduit par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des limites floues</li>
+<li class="opt"><span class="ltr">B.</span> Des limites nettes</li>
+<li class="opt"><span class="ltr">C.</span> Des contours réguliers</li>
+<li class="opt correct"><span class="ltr">D.</span> Des contours irréguliers</li>
+<li class="opt"><span class="ltr">E.</span> Réaction périostée non rompue</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AD</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AD</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O34">
+  <div class="q-header">
+    <span class="q-num">O34</span>
+    <span class="q-ref">QCM n°12 RT 2017</span>
+  </div>
+  <div class="q-fr">Une lacune bénigne se traduit par :</div>
+  <div class="q-ar">📌 Une lacune bénigne se traduit par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des limites nettes</li>
+<li class="opt"><span class="ltr">B.</span> Des limites floues</li>
+<li class="opt correct"><span class="ltr">C.</span> Des contours réguliers</li>
+<li class="opt"><span class="ltr">D.</span> Des contours irréguliers</li>
+<li class="opt correct"><span class="ltr">E.</span> Réaction périostée non rompue</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ACE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ACE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ACE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O35">
+  <div class="q-header">
+    <span class="q-num">O35</span>
+    <span class="q-ref">QCM n°13 RT 2017</span>
+  </div>
+  <div class="q-fr">La réaction périostée est :</div>
+  <div class="q-ar">📌 La réaction périostée est :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Pleine homogène dans les tumeurs bénignes</li>
+<li class="opt correct"><span class="ltr">B.</span> Non spiculée dans les tumeurs bénignes</li>
+<li class="opt correct"><span class="ltr">C.</span> Spiculée dans les tumeurs malignes</li>
+<li class="opt"><span class="ltr">D.</span> Spiculée dans les tumeurs bénignes</li>
+<li class="opt"><span class="ltr">E.</span> Toutes les réponses sont fausses</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ABC</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ABC</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O36">
+  <div class="q-header">
+    <span class="q-num">O36</span>
+    <span class="q-ref">—</span>
+  </div>
+  <div class="q-fr">Sur un cliché radiographique du rachis cervical, les trous de conjugaison sont mieux visibles :</div>
+  <div class="q-ar">📌 Sur un cliché radiographique du rachis cervical, les trous de conjugaison sont mieux visibles :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> De face</li>
+<li class="opt"><span class="ltr">B.</span> De profil</li>
+<li class="opt"><span class="ltr">C.</span> De face et de profil</li>
+<li class="opt correct"><span class="ltr">D.</span> En oblique</li>
+<li class="opt"><span class="ltr">E.</span> Toutes les réponses sont justes</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les trous de conjugaison du rachis cervical sont mieux visibles EN OBLIQUE (D). De face on voit les corps vertébraux, de profil les pédicules.</div>
+      <div class="expl-ar">الثقوب الفقرية في العمود الرقبي أحسن ظهورًا في الإسقاط المائل. الوجه الأمامي للجسم الفقري، الجانبي للعناق.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O37">
+  <div class="q-header">
+    <span class="q-num">O37</span>
+    <span class="q-ref">QCM n°16 RT 2017</span>
+  </div>
+  <div class="q-fr">L'ostéopénie se traduit par :</div>
+  <div class="q-ar">📌 L'ostéopénie se traduit par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Une raréfaction des travées osseuses</li>
+<li class="opt"><span class="ltr">B.</span> Une condensation des corticales</li>
+<li class="opt correct"><span class="ltr">C.</span> Un amincissement des corticales</li>
+<li class="opt"><span class="ltr">D.</span> Une multiplication des travées osseuses</li>
+<li class="opt correct"><span class="ltr">E.</span> Peut se voir de façon généralisée ou localisée</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ACE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ACE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ACE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O38">
+  <div class="q-header">
+    <span class="q-num">O38</span>
+    <span class="q-ref">QCM n°10 S2 2017</span>
+  </div>
+  <div class="q-fr">Une lacune osseuse de nature maligne se traduit par :</div>
+  <div class="q-ar">📌 Une lacune osseuse de nature maligne se traduit par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des limites floues</li>
+<li class="opt"><span class="ltr">B.</span> Des limites nettes</li>
+<li class="opt"><span class="ltr">C.</span> Des contours réguliers</li>
+<li class="opt correct"><span class="ltr">D.</span> Des contours irréguliers</li>
+<li class="opt"><span class="ltr">E.</span> Réaction périostée non rompue</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : AD</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>AD</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>AD</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O39">
+  <div class="q-header">
+    <span class="q-num">O39</span>
+    <span class="q-ref">QCM n°12 S2 2017</span>
+  </div>
+  <div class="q-fr">Une lacune bénigne se traduit par :</div>
+  <div class="q-ar">📌 Une lacune bénigne se traduit par :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Des limites nettes</li>
+<li class="opt"><span class="ltr">B.</span> Des limites floues</li>
+<li class="opt correct"><span class="ltr">C.</span> Des contours réguliers</li>
+<li class="opt"><span class="ltr">D.</span> Des contours irréguliers</li>
+<li class="opt correct"><span class="ltr">E.</span> Réaction périostée non rompue</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ACE</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ACE</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ACE</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O40">
+  <div class="q-header">
+    <span class="q-num">O40</span>
+    <span class="q-ref">QCM n°13 S2 2017</span>
+  </div>
+  <div class="q-fr">La réaction périostée est :</div>
+  <div class="q-ar">📌 La réaction périostée est :</div>
+  <ul class="options">
+<li class="opt correct"><span class="ltr">A.</span> Pleine homogène dans les tumeurs bénignes</li>
+<li class="opt correct"><span class="ltr">B.</span> Non spiculée dans les tumeurs bénignes</li>
+<li class="opt correct"><span class="ltr">C.</span> Spiculée dans les tumeurs malignes</li>
+<li class="opt"><span class="ltr">D.</span> Spiculée dans les tumeurs bénignes</li>
+<li class="opt"><span class="ltr">E.</span> Toutes les réponses sont fausses</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : ABC</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>ABC</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>ABC</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+
+<div class="qcm-card" id="O41">
+  <div class="q-header">
+    <span class="q-num">O41</span>
+    <span class="q-ref">QCM n°16 S2 2017</span>
+  </div>
+  <div class="q-fr">Sur un cliché radiographique du rachis cervical, les trous de conjugaison sont mieux visibles :</div>
+  <div class="q-ar">📌 Sur un cliché radiographique du rachis cervical, les trous de conjugaison sont mieux visibles :</div>
+  <ul class="options">
+<li class="opt"><span class="ltr">A.</span> De face</li>
+<li class="opt"><span class="ltr">B.</span> De profil</li>
+<li class="opt"><span class="ltr">C.</span> De face et de profil</li>
+<li class="opt correct"><span class="ltr">D.</span> En oblique</li>
+<li class="opt"><span class="ltr">E.</span> Toutes les réponses sont justes</li>
+  </ul>
+  <div class="answer-badge">✅ Réponse : D</div>
+  <div class="expl-block">
+    <div class="expl-section">
+      <div class="expl-label label-expl">💡 Explication / الشرح</div>
+      <div class="expl-fr">Les bonnes réponses sont : <strong>D</strong>. Repérez les mots-clés dans l'énoncé.</div>
+      <div class="expl-ar">الإجابات الصحيحة هي: <strong>D</strong>. انتبه للكلمات المفتاحية في السؤال.</div>
+    </div>
+  </div>
+</div>
+  </div>
+
+</main>
+<script>
+  // highlight active sidebar link on scroll
+  const sections = document.querySelectorAll('.section-wrap');
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navBtns.forEach(b => b.classList.remove('active'));
+        const id = e.target.id;
+        if (id === 'sec-neuro') navBtns[1].classList.add('active');
+        if (id === 'sec-osteo') navBtns[2].classList.add('active');
+      }
+    });
+  }, {threshold: 0.15});
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
